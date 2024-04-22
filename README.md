@@ -13,14 +13,14 @@ A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODER
 
 (Requires YARN, NPM and NODE)
 1. `Git clone https://github.com/5eh/LOCALE.git` : Install Repository
-2. `yarn install` : Primary root of LOCALE
-3. `cd packages/nextjs` : Root of marketplace
-4. `npm install` : In NextJS root
-5. `.env` : Contact Watson Lewis-Rodriguez for this
-6. `cd ../../` : Reenter primary root
+2. `cd packages/nextjs` : Root of marketplace
+3. `npm install` : In NextJS root
+4. `.env` : Create .env, contact Watson Lewis-Rodriguez for this
+5. `cd ../../` : Reenter primary root
+6. `yarn install` : Install yarn dependencies (Doing this before npm install in the packages/nextjs will likely cause you to reinstall packages after package is locked)
 7. `yarn chain` : Begin Contract
 8. `Ctrl + Shift + 5` : Open new terminal
-9. `cd packages/nextjs` : Reenter NextJS root
+9.  `cd packages/nextjs` : Reenter NextJS root
 10. `npm run dev` : Begin localhost
 11. `Ctrl + Shift + 5` : Open new terminal
 12. `node server` : Test database connection
