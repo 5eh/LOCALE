@@ -1,81 +1,93 @@
-# 🏗 Scaffold-ETH 2
+# LOCALE PITCH DECK
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+:::success
+:black_square_button: **ARTHUR LABS**: We enable global entrepreneurship.
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+:computer: Founded by **THOMAS OCOVOS** and **WATSON LEWIS-RODRIGUEZ**.
 
-⚙️ Built using NextJS, RainbowKit, Hardhat, Wagmi, Viem, and Typescript.
+:computer: With great help from **@Scott815**, **SUFI MOMIN**, **KRRISHH KOMAL**
+:::
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+## **Introduction:**
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+We are `ARTHUR LABS` . We develop systems that accelerate time to release products to market. Our proof of concept, is **LOCALE**.
 
-## Requirements
 
-Before you begin, you need to install the following tools:
+:::success
+:computer: **ARTHUR LABS**: We are developing a Fashion marketplace, for any designer in Austin Texas to sell their services. Called **LOCALE**.
+:::
 
-- [Node (>= v18.17)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+## **PROBLEM**
 
-## Quickstart
+:::danger
+Fashion designers and small business owners do not have efficient means of growing their business in Austin Texas, and do not have the resources or capabilities to directly sell their ideas to customers.
+:::
 
-To get started with Scaffold-ETH 2, follow the steps below:
+1. **FASHION ACCESSABILITY** - Small design agencies and businesses in Austin do not have access to a reliable online market that connects to customers.
+2. **MARKETPLACE USE** - Marketplaces are not generally designed for customized fashion marketplaces.
+3. **USER EXPERIENCE** - Customers are forced to use applications/markets that do not provide an authentically focused experience.
+4. **LACK OF CHOICE** - design agencies and fashion businesses do not have a variety of places to sell their products, and thus reliable on existing inhumane platforms.
+5. **COST AND MARGINS** - Small businesses can not afford the time, luxury or costs to develop beautiful and tailored made websites.
 
-1. Clone this repo & install dependencies
 
-```
-git clone https://github.com/scaffold-eth/scaffold-eth-2.git
-cd scaffold-eth-2
-yarn install
-```
+## **SOLUTION**
 
-2. Run a local network in the first terminal:
+:::info
+:black_square_button: **LOCALE**: A digital marketplace designed for small fashion businesses in Austin Texas.
+:::
 
-```
-yarn chain
-```
+1. **FASHION ACCESSABILITY** - Customized and reliable marketplace that suites each fashion company, with optimized visual experience for showcasing product and company.
+2. **MARKETPLACE USE** - Totally tailored and customized to the Austin market, and to the small businesses utilizing a general marketplace.
+3. **USER EXPERIENCE** - User reviewed and designed application experience.
+4. **LACK OF CHOICE** - A platform built for fashion companies, with a free experience. 
+5. **COST AND MARGINS** - No costs until a product is sold, all systems and infrastructure is provided for free until business grows. Free trial on selling goods until your business grows.
 
-This command starts a local Ethereum network using Hardhat. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `hardhat.config.ts`.
+## **PLAN**
 
-3. On a second terminal, deploy the test contract:
+:::success
+:black_square_button: **ARTHUR LABS**: Using the *DEAN* Marketplace System, we will develop **LOCALE**, where development is entirely and totally allocated towards small business experiences. 
+:::
 
-```
-yarn deploy
-```
+1. **PROBLEM DEFINITION**: Marketplace discovery, seek needs of users.
+2. **VISUAL EXPERIENCE**: Design and architect frontend application to suit users needs.
+3. **BRANDING INITIATION**: Design initial branding concepts related to `VISUAL EXPERIENCE` and `PROBLEM DEFINITION`.
+4. **LIVE DEPLOYMENT AND TESTS**: Retrieve feedback from small businesses and deploy live marketplace.
+5. **VERSION ITERATION**: Summarize, analyze and reiterate to improve experience, improving UX/UI, backend and business model.
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/hardhat/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/hardhat/deploy` to deploy the contract to the network. You can also customize the deploy script.
 
-4. On a third terminal, start your NextJS app:
+## **USER STORIES**
 
-```
-yarn start
-```
+#### **MARKETPLACE SELLERS**
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+1. ALICE (Small business owner)
+2. BOB (Solopreneur, no legal business)
+3. CHARLIE (Medium scaled business)
 
-**What's next**:
 
-- Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/hardhat/deploy`
-- Edit your smart contract test in: `packages/hardhat/test`. To run test use `yarn hardhat:test`
+#### **MARKETPLACE BUYERS**
 
-## Documentation
+1. DELILAH (New model in Austin)
+2. ELLA (Likes to support local businesses)
+3. FRANCISCO (Fashion photographer and large business owner)
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
+## **LIVE CUSTOMERS**
 
-To know more about its features, check out our [website](https://scaffoldeth.io).
+#### **RESEARCH NOTES**:
 
-## Contributing to Scaffold-ETH 2
+1. (Fashinza) Potential opportunity is categorizing products on **LOCALE** by `product sustainbility / envrionmentally sustainable`, maybe also `animal welfare`
+2. (Fashinza) Costs of promotions include: `advertising costs`, `free samples`, `publications`, `bulletins`
+3. (Fashinza) Counterfits are a concern
+4. (Dreamweaver) A lot/majority of people rely on `third-party recommendations` or reviews from others who have purchased the products before before designing.
+5. (Dreamweaver) People would like to have their own SEO'd brand if it's an ecom website in order to grow online presence. 
+6. (Dreamweaver) Instagram is a big avenue for posts and local community, hashtag optimization as well. 
+7. (Dreamweaver) Consider KPIs `[Consider human KPIs, that reflect human interaction beyond statistics]`
+8. (Dreamweaver) `Sphere of Influence` who organically share their posts and testimonials to spread brand name
+9. (Quora) Repeat clientele: Getting initial customers is easy relative to keeping them. 
 
-We welcome contributions to Scaffold-ETH 2!
+#### **RESEARCH REFERENCES**:
 
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+1. CHALLENGES OF RUNNING A FASHION BUSINESS: https://www.linkedin.com/pulse/challenges-running-fashion-business-tiwa-adetoye/
+2. CHALLENGES OF RUNNING YOUR OWN FASHION BUSINESS:
+https://fashinza.com/brands-and-retail/tips/challenges-of-running-your-own-fashion-company/
+3. CHALLENGES OF MARKETING A SMALL FASHION BUSINESS: https://www.dreamweaverbrandcommunications.com/blog/5-of-the-most-common-fashion-marketing-problems-solved/
+4. BIGGEST CHALLENGES FACING FASHION DESIGNERS TODAY: https://www.quora.com/What-are-the-biggest-challenges-facing-fashion-designers-today-when-selling-an-item-How-do-up-and-coming-fashion-designers-market-their-products
