@@ -4,16 +4,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ImGithub, ImInstagram, ImYoutube } from "react-icons/im";
+import { ArrowLeftCircleIcon, ArrowRightCircleIcon, CheckIcon, EnvelopeOpenIcon } from "@heroicons/react/24/outline";
 import Authentication from "~~/app/authentication/page";
 import { Button } from "~~/components/buttons/Button";
 import Footer from "~~/components/footer";
 import { Navbar } from "~~/components/navbar";
 import Ratings from "~~/components/ratings";
-import { ImGithub, ImInstagram, ImYoutube } from "react-icons/im";
-import { ArrowLeftCircleIcon, ArrowRightCircleIcon, CheckIcon, EnvelopeOpenIcon } from "@heroicons/react/24/outline";
-
-// src/app/profile/page.tsx
-/* ESLINT-DISABLE */
 
 const reviews = [
   {
