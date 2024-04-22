@@ -5,8 +5,9 @@
   <a href="https://arthurlabs.net">ARTHUR LABS</a>
 </h4>
 
+<p align="center">
 A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODERN TECHNOLOGY.
-
+</p>
 
 ## Installation
 
