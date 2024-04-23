@@ -1,14 +1,13 @@
 "use client";
 
 import React, { Fragment, useState } from "react";
+import Listings from "./listings";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import TestListing from "~~/app/explore/listingsTest";
 import { Service_Provider } from "~~/components/Types/publicUserData";
 import { Listing_Data } from "~~/components/Types/userListingData";
-import { FORM_SELECTION } from '~~/marketplaceVariables/form';
-
+import { FORM_SELECTION } from "~~/marketplaceVariables/form";
 
 interface SortingProps {
   creator: Service_Provider;
@@ -22,7 +21,7 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-  const subCategories = FORM_SELECTION.map(service => ({ name: service.title, href: `/explore/${service.id}` }));
+const subCategories = FORM_SELECTION.map(service => ({ name: service.title, href: `/explore/${service.id}` }));
 
 const filters = [
   {
@@ -267,7 +266,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
 
               {/* Listing grid */}
               <div className="lg:col-span-3">
-                <TestListing creator={creator} listing={listing} />
+                <Listings creator={creator} listing={listing} />
               </div>
             </div>
           </section>

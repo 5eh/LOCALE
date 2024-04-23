@@ -13,19 +13,9 @@ import { Button } from "~~/components/buttons/Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "~~/components/hoverOverName";
 import Ratings from "~~/components/ratings";
 
-// src/app/purchase/previewCard.tsx
 
-/* ESLINT-DISABLE */
-
-interface DataProps {
-  creator: Service_Provider | undefined | null;
-  listing: Listing_Data;
-}
-
-export default function PreviewCard({ creator, listing }: DataProps) {
+export default function PreviewCard({ creator, listing }) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedListing, setSelectedListing] = useState<Listing_Data | undefined>(undefined);
-  const [selectedCreator, setSelectedCreator] = useState<Service_Provider | undefined>(undefined);
 
   const ClickModal = ({
     open,
@@ -43,14 +33,14 @@ export default function PreviewCard({ creator, listing }: DataProps) {
           <div className="mx-auto max-w-2xl  bg-gray-900/95 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
             <div className=" sm:p-10 lg:flex-auto">
               <h3 className="text-2xl font-bold tracking-tight text-gray-200">
-                {selectedListing.title.toUpperCase() ? selectedListing.title.toUpperCase() : "Unknown"}
+                {listing.title.toUpperCase() ? listing.title.toUpperCase() : "Unknown"}
               </h3>
               <div className="flex gap-2 center">
-                <p className="text-base leading-7 text-gray-100">${selectedListing.price}</p>
-                <p className="text-base leading-7 text-gray-300">{selectedListing.location.toUpperCase()}</p>
+                <p className="text-base leading-7 text-gray-100">${listing.price}</p>
+                <p className="text-base leading-7 text-gray-300">{listing.location.toUpperCase()}</p>
               </div>
-              <p className="text-base leading-7 text-gray-400 italic">{selectedListing.serviceType.toUpperCase()}</p>
-              <p className="mt-2 text-base leading-7 text-gray-300">{selectedListing.description}</p>
+              <p className="text-base leading-7 text-gray-400 italic">{listing.serviceType.toUpperCase()}</p>
+              <p className="mt-2 text-base leading-7 text-gray-300">{listing.description}</p>
 
               <div className="mt-10 flex items-center gap-x-2">
                 <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
@@ -105,14 +95,14 @@ export default function PreviewCard({ creator, listing }: DataProps) {
             <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
               <div className="rounded-2xl lg:pr-10 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
                 <div className="mx-auto">
-                  <img src={selectedListing.photo} alt="" className="w-full" />
+                  <img src={listing.photo} alt="" className="w-full" />
                 </div>
 
                 <div className="mt-10 flex items-center gap-x-2">
                   <div className="h-px flex-auto bg-gray-300" />
 
                   <Button className="inline-flex items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-                    <a href={`/purchase/${selectedListing.listingID}`}>PROCEED TO CHECKOUT</a>
+                    <a href={`/purchase/${listing.listingID}`}>PROCEED TO CHECKOUT</a>
                   </Button>
 
                   <Button className="inline-flex items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
@@ -138,7 +128,7 @@ export default function PreviewCard({ creator, listing }: DataProps) {
               className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80"
               onClick={() => {
                 setModalOpen(true);
-                setSelectedListing(data);
+                setlisting(data);
               }}
             >
               <img
@@ -152,8 +142,8 @@ export default function PreviewCard({ creator, listing }: DataProps) {
             </div>
           </div>
         ))}
-        {modalOpen && selectedListing && (
-          <ClickModal open={modalOpen} setOpen={setModalOpen} listing={selectedListing} creator={creator} />
+        {modalOpen && listing && (
+          <ClickModal open={modalOpen} setOpen={setModalOpen} listing={listing} creator={creator} />
         )}
       </div>
     </div>

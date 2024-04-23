@@ -558,7 +558,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           <span className='text-blue-400'>Web3 Disclaimer</span>
           
           <p className='text-gray-400'>{COMPANY} is powered and secured by the Ethereum Blockchain. By pressing <span className='text-blue-400'>DEPLOY ON BLOCKCHAIN</span>{" "}
-            You understand the risks and considerations when publishing information into a public database. The information you are providing in the form above will be stored in a public ledeger, where anyone has access to this information.
+            You understand the risks and considerations when publishing information into a public database. The information you are providing in the form above will be stored in a public ledger, where anyone has access to this information.
             smart contracts additionally carry risks in the form of bugs, hacks, and other vulnerabilities. By pressing <span className='text-blue-400'>DEPLOY ON BLOCKCHAIN</span>{" "}you are agreeing to these terms and conditions.
           </p>
 

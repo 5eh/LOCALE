@@ -1,192 +1,164 @@
 // src/app/explore/listings.tsx
+
 /* ESLINT-DISABLE */
+"use client";
 
-'use client';
-import { CheckIcon } from 'lucide-react';
-import Link from 'next/link';
-import { useState } from 'react';
+import React, { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { HoverCard, HoverCardContent, HoverCardTrigger } from "../../components/hoverOverName";
+import { CheckCircleIcon } from "@heroicons/react/24/outline";
+import Modal from "~~/components/Modal";
+import { Service_Provider } from "~~/components/Types/publicUserData";
+import { Listing_Data } from "~~/components/Types/userListingData";
+import { Button } from "~~/components/buttons/Button";
+import Ratings from "~~/components/ratings";
 
-import { Button } from '@/components/buttons/Button';
-import Modal from '@/components/Modal';
-import Ratings from '@/components/ratings';
-import { Service_Provider } from '@/components/Types/publicUserData';
-import { Listing_Data } from '@/components/Types/userListingData';
+// src/app/explore/listings.tsx
 
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from '../../components/hoverOverName';
+/* ESLINT-DISABLE */
 
 interface DataProps {
   creator: Service_Provider | undefined | null;
-  listing: Listing_Data;
+  listing: Listing_Data[];
 }
 
 export default function Listings({ creator, listing }: DataProps) {
   const [modalOpen, setModalOpen] = useState(false);
-  const [selectedListing, setSelectedListing] = useState<
-    Listing_Data | undefined
-  >(undefined);
-  const [selectedCreator, setSelectedCreator] = useState<
-    Service_Provider | undefined
-  >(undefined);
+  const [selectedListing, setSelectedListing] = useState<Listing_Data | undefined>(undefined);
+  const [selectedCreator, setSelectedCreator] = useState<Service_Provider | undefined>(undefined);
 
-  const ClickModal = ({
-    open,
-    setOpen,
-    creator,
-  }: {
-    open: boolean;
-    setOpen: (open: boolean) => void;
-    listing: Listing_Data;
-    creator: Service_Provider;
-  }) => {
-    return (
-      <Modal open={open} onClose={() => setOpen(false)}>
-        <div className='mx-auto max-w-7xl '>
-          <div className='mx-auto max-w-2xl  bg-gray-900/95 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none'>
-            <div className=' sm:p-10 lg:flex-auto'>
-              <h3 className='text-2xl font-bold tracking-tight text-gray-200'>
-                {selectedListing.title.toUpperCase()
-                  ? selectedListing.title.toUpperCase()
-                  : 'Unknown'}
-              </h3>
-              <div className='flex gap-2 center'>
-                <p className='text-base leading-7 text-gray-100'>
-                  ${selectedListing.price}
-                </p>
-                <p className='text-base leading-7 text-gray-300'>
-                  {selectedListing.location.toUpperCase()}
-                </p>
-              </div>
-              <p className='text-base leading-7 text-gray-400 italic'>
-                {selectedListing.serviceType.toUpperCase()}
-              </p>
-              <p className='mt-2 text-base leading-7 text-gray-300'>
-                {selectedListing.description}
-              </p>
+  // To handle the checkout process
+  const router = useRouter();
 
-              <div className='mt-10 flex items-center gap-x-2'>
-                <h4 className='flex-none text-sm font-semibold leading-6 text-indigo-600'>
-                  {creator.name.toUpperCase()}
-                </h4>
-
-                <span className='inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10'>
-                  VERIFIED
-                </span>
-                <span className='inline-flex items-center gap-x-0.5 rounded-md bg-red-300 px-2 py-1 text-xs font-medium text-red-800 ring-1 ring-inset ring-red-700/10'>
-                  REPUTABLE
-                </span>
-                <span className='inline-flex items-center gap-x-0.5 rounded-md bg-green-300 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-700/10'>
-                  WEB3 ENABLED
-                </span>
-                <div className='h-px flex-auto bg-gray-300' />
-              </div>
-              <div className='flex mt-2 mr-2 pl-1 pb-1'>
-                <a href={`/profile/${creator.username}`}>
-                  <span className='relative inline-block'>
-                    <img
-                      className='h-24 w-24 rounded-md'
-                      src={creator?.avatar}
-                      alt=''
-                    />
-                  </span>
-                </a>
-                <div className='block ml-2 text-white'>
-                  <Ratings
-                    rating={creator?.rating ?? 0}
-                    amountOfReviews={creator?.amountOfReviews ?? 0}
-                  />
-
-                  <p className='text-base leading-7 text-gray-100'>
-                    {creator?.amountOfReviews} REVIEWS
-                  </p>
-
-                  <p className='text-base leading-7 text-gray-400 italic'>
-                    {creator?.bio ? creator.bio : 'No bio available'}
-                  </p>
-                </div>
-              </div>
-              <p>
-                <a
-                  href={creator.media.mediaLinkOne}
-                  className='text-base leading-7 text-gray-400 italic'
-                >
-                  {creator.media.mediaLinkOne}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={creator.media.mediaLinkTwo}
-                  className='text-base leading-7 text-gray-400 italic'
-                >
-                  {' '}
-                  {creator.media.mediaLinkTwo}
-                </a>
-              </p>
-              <p>
-                <a
-                  href={creator.media.mediaLinkThree}
-                  className='text-base leading-7 text-gray-400 italic'
-                >
-                  {creator.media.mediaLinkThree}
-                </a>
-              </p>
-            </div>
-
-            <div className='-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0'>
-              <div className='rounded-2xl lg:pr-10 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16'>
-                <div className='mx-auto'>
-                  <img src={selectedListing.photo} alt='' className='w-full' />
-                </div>
-
-                <div className='mt-10 flex items-center gap-x-2'>
-                  <div className='h-px flex-auto bg-gray-300' />
-
-                  <Button className='inline-flex items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white'>
-<<<<<<< HEAD
-                    <a href={`/purchase/${selectedListing.listingID}`}>
-                      PROCEED TO CHECKOUT
-                    </a>
-=======
-                    <Link
-                      key={listing.listingID}
-                      href={`/explore/purchase/${listing.listingID}`}
-                    >
-                      PROCEED TO CHECKOUT
-                    </Link>
->>>>>>> df153401bd591234a09867dd299149cc8f3e8aab
-                  </Button>
-
-                  <Button className='inline-flex items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white'>
-                    <Link href={`/message/${creator.username}`}>
-                      MESSAGE {creator.name.toUpperCase()}
-                    </Link>
-                  </Button>
-
-                  <div className='h-px flex-auto bg-gray-300' />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Modal>
-    );
+  const handleCheckout = () => {
+    if (selectedListing && selectedListing._id) {
+      const href = `explore/purchase/${selectedListing._id}`; // Using template literals to construct the path
+      router.push(href);
+    }
   };
 
   return (
-    <div className='mx-auto max-w-2xl px-2 sm:px-3 lg:max-w-7xl lg:px-4'>
-      <div className='mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8'>
-        {listing.map((data) => {
-          const matchedCreator = Array.isArray(creator)
-            ? creator.find((c) => c._id === data.creator)
-            : undefined;
+    <div className="mx-auto max-w-2xl px-2 sm:px-3 lg:max-w-7xl lg:px-4">
+      <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+        {listing.map(data => {
+          const matchedCreator = Array.isArray(creator) ? creator.find(c => c._id === data.creator) : undefined;
+
+          const ClickModal = ({
+            open,
+            setOpen,
+            listing,
+            creator,
+          }: {
+            open: boolean;
+            setOpen: (open: boolean) => void;
+            listing: Listing_Data;
+            creator: Service_Provider;
+          }) => {
+            return (
+              <Modal open={open} onClose={() => setOpen(false)}>
+                <div className="mx-auto max-w-7xl ">
+                  <div className="mx-auto max-w-2xl  bg-gray-900/95 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+                    <div className=" sm:p-10 lg:flex-auto">
+                      <h3 className="text-2xl font-bold tracking-tight text-gray-200">
+                        {selectedListing?.title ? selectedListing.title.toUpperCase() : "Unknown"}
+                      </h3>
+                      <div className="flex gap-2 center">
+                        <p className="text-base leading-7 text-gray-100">${selectedListing?.price}</p>
+                        <p className="text-base leading-7 text-gray-300">{selectedListing?.location.toUpperCase()}</p>
+                      </div>
+                      <p className="text-base leading-7 text-gray-400 italic">
+                        {selectedListing?.serviceType ? selectedListing.serviceType.toUpperCase() : "UNDEFINED"}
+                      </p>
+
+                      <p className="mt-2 text-base leading-7 text-gray-300">{selectedListing?.description}</p>
+
+                      <div className="mt-10 flex items-center gap-x-2">
+                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          {creator.name.toUpperCase()}
+                        </h4>
+
+                        <span className="inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
+                          VERIFIED
+                        </span>
+                        <span className="inline-flex items-center gap-x-0.5 rounded-md bg-red-300 px-2 py-1 text-xs font-medium text-red-800 ring-1 ring-inset ring-red-700/10">
+                          REPUTABLE
+                        </span>
+                        <span className="inline-flex items-center gap-x-0.5 rounded-md bg-green-300 px-2 py-1 text-xs font-medium text-green-800 ring-1 ring-inset ring-green-700/10">
+                          WEB3 ENABLED
+                        </span>
+                        <div className="h-px flex-auto bg-gray-300" />
+                      </div>
+                      <div className="flex mt-2 mr-2 pl-1 pb-1">
+                        <a href={`/profile/${creator.username}`}>
+                          <span className="relative inline-block">
+                            <img className="h-24 w-24 rounded-md" src={creator?.profilePicture} alt="" />
+                          </span>
+                        </a>
+                        <div className="block ml-2 text-white">
+                          <Ratings rating={creator?.rating ?? 0} amountOfReviews={creator?.amountOfReviews ?? 0} />
+
+                          <p className="text-base leading-7 text-gray-100">{creator?.amountOfReviews} REVIEWS</p>
+
+                          <p className="text-base leading-7 text-gray-400 italic">
+                            {creator?.bio ? creator.bio : "No bio available"}
+                          </p>
+                        </div>
+                      </div>
+                      <p>
+                        <a href={creator.media.mediaLinkOne} className="text-base leading-7 text-gray-400 italic">
+                          {creator.media.mediaLinkOne}
+                        </a>
+                      </p>
+                      <p>
+                        <a href={creator.media.mediaLinkTwo} className="text-base leading-7 text-gray-400 italic">
+                          {" "}
+                          {creator.media.mediaLinkTwo}
+                        </a>
+                      </p>
+                      <p>
+                        <a href={creator.media.mediaLinkThree} className="text-base leading-7 text-gray-400 italic">
+                          {creator.media.mediaLinkThree}
+                        </a>
+                      </p>
+                    </div>
+
+                    <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
+                      <div className="rounded-2xl lg:pr-10 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                        <div className="mx-auto">
+                          <img src={selectedListing?.photo} alt="" className="w-full" />
+                        </div>
+
+                        <div className="mt-10 flex items-center gap-x-2">
+                          <div className="h-px flex-auto bg-gray-300" />
+
+                          <Button
+                            onClick={handleCheckout}
+                            className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
+                          >
+                            PROCEED TO CHECKOUT
+                          </Button>
+
+                          <Link href={`/message/${creator.username}`}>
+                            <Button className="inline-flex items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+                              MESSAGE {creator.name.toUpperCase()}
+                            </Button>
+                          </Link>
+
+                          <div className="h-px flex-auto bg-gray-300" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Modal>
+            );
+          };
 
           return (
-            <div key={data.listingID} className='group relative'>
+            <div key={data.listingID} className="group relative">
               <div
-                className='aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80'
+                className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md lg:aspect-none group-hover:opacity-75 lg:h-80"
                 onClick={() => {
                   setModalOpen(true);
                   setSelectedListing(data);
@@ -196,23 +168,23 @@ export default function Listings({ creator, listing }: DataProps) {
                 <img
                   src={data.photo}
                   alt={`Photo of ${data.photo}`}
-                  className='h-full w-full object-cover object-center lg:h-full lg:w-full'
+                  className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
-              <div className='mt-4 flex max-w-max justify-between'>
+              <div className="mt-4 flex max-w-max justify-between">
                 <HoverName creator={matchedCreator} listing={data} />
               </div>
+              {modalOpen && selectedListing && selectedCreator && (
+                <ClickModal
+                  open={modalOpen}
+                  setOpen={setModalOpen}
+                  listing={selectedListing}
+                  creator={selectedCreator}
+                />
+              )}
             </div>
           );
         })}
-        {modalOpen && selectedListing && selectedCreator && (
-          <ClickModal
-            open={modalOpen}
-            setOpen={setModalOpen}
-            listing={selectedListing}
-            creator={selectedCreator}
-          />
-        )}
       </div>
     </div>
   );
@@ -221,65 +193,58 @@ export default function Listings({ creator, listing }: DataProps) {
 export function HoverName(props: DataProps) {
   const { creator, listing } = props;
 
-  // Create API to call MongoDB listings
+  const renderFeatures = () => {
+    if (Array.isArray(listing.features) && listing.features.length > 0) {
+      return listing.features.map((feature, index) => (
+        <div key={index} className="flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
+          <CheckCircleIcon width={24} height={24} className="m-3" />
+          <p className="text-sm flex-1 text-left">
+            {feature.feature}: {feature.value}
+          </p>
+        </div>
+      ));
+    } else {
+      return <p className="text-sm">No Features Listed</p>;
+    }
+  };
 
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Button variant='link' className='text-sm text-gray-400'>
-          {listing.title ? listing.title : 'Unknown'}
+        <Button variant="link" className="text-sm text-gray-400">
+          {listing.title ? listing.title : "Unknown"}
         </Button>
       </HoverCardTrigger>
-      <HoverCardContent className='w-80 text-white z-3 bg-gray-900'>
-        <div className='flex justify-between space-x-4'>
-          <div className='space-y-1'>
-            <div className='text-sm flex gap-2'>
-              <p className='bold'>{creator ? creator.name : 'Unknown'}</p>
-              <div className='text-gray-400 italic cursor-pointer'>
-                <Link href={`/profile/${creator ? creator.username : ''}`}>
-                  {creator ? '@' + creator.username : 'Unknown'}
+      <HoverCardContent className="w-80 text-white z-3 bg-gray-900">
+        <div className="flex justify-between space-x-4">
+          <div className="space-y-1">
+            <div className="text-sm flex gap-2">
+              <p className="bold">{creator ? creator.name : "Unknown"}</p>
+              <div className="text-gray-400 italic cursor-pointer">
+                <Link href={`/profile/${creator ? creator.username : ""}`}>
+                  {creator ? "@" + creator.username : "Unknown"}
                 </Link>
               </div>
             </div>
-            <div className='text-sm flex'>
+            <div className="text-sm flex">
               {creator && creator.rating !== undefined ? (
-                <Ratings
-                  rating={creator?.rating ?? 0}
-                  amountOfReviews={creator?.amountOfReviews ?? 0}
-                />
+                <Ratings rating={creator?.rating ?? 0} amountOfReviews={creator?.amountOfReviews ?? 0} />
               ) : (
-                'No Ratings'
-              )}{' '}
-              <span className='italic text-gray-400 ml-1'>
-                ({creator?.amountOfReviews})
-              </span>
+                "No Ratings"
+              )}{" "}
+              <span className="italic text-gray-400 ml-1">({creator?.amountOfReviews})</span>
             </div>
-            {/* Additional content can go here */}
-            <div className='flex items-center pt-2'>
-              <span className='text-sm text-muted-foreground'>
-                {listing.description}
-              </span>
+            <div className="flex items-center pt-2">
+              <span className="text-sm text-muted-foreground">{listing.description}</span>
             </div>
 
-            <div className='flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md'>
-              <CheckIcon width={24} height={24} className='m-3' />
-              <p className='text-sm flex-1 text-left'>
-                {listing.features[0].feature}: {listing.features[0].value}
-              </p>
-            </div>
-            <div className='flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md'>
-              <CheckIcon width={24} height={24} className='m-3' />
-              <p className='text-sm flex-1 text-left'>
-                {listing.features[1].feature}: {listing.features[1].value}
-              </p>
-            </div>
+            {renderFeatures()}
 
-            <div className='text-xs text-gray-600'>
+            <div className="text-xs text-gray-600">
               {listing.quantityOfService === 1 ? (
-                <p className='text-red-400'>ONE TIME SERVICE</p>
-              ) : listing.quantityOfService > 1 &&
-                listing.quantityOfService <= 5 ? (
-                <p className='text-red-200'>FEW SPOTS LEFT </p>
+                <p className="text-red-400">ONE TIME SERVICE</p>
+              ) : listing.quantityOfService > 1 && listing.quantityOfService <= 5 ? (
+                <p className="text-red-200">FEW SPOTS LEFT </p>
               ) : (
                 <p>{listing.quantityOfService} REMAINING SPOTS FOR BOOKING</p>
               )}

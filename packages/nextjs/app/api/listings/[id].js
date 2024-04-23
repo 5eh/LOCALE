@@ -1,10 +1,8 @@
-// packages/nextjs/routes/listings/[id].js
-
 import { MongoClient, ObjectId } from "mongodb";
 import {
   MONGODB_LISTINGS_COLLECTION,
   MONGODB_LISTINGS_DATABASE,
-} from "../../../marketplaceVariables";
+} from "~~/marketplaceVariables";
 
 export default async function handler(req, res) {
   const uri = process.env.MONGODB_URI;

@@ -24,7 +24,8 @@ export const MARKETPLACE_DESCRIPTION =
   "We connect you with authentic fashion creators and excellent individuals near you!"; // Description of Marketplace
 
 // Transaction Costs
-export const SALE_PERCENTAGE_CHARGE = 0.025; // Adds a 5% charge to the sale price
+export const SALE_PERCENTAGE_CHARGE = 0.025; // Format it as 0.025 (2.5%)
+export const LOCAL_TAX_RATE = 0.0825; // Format it as 0.0825 (AUstin tax rate is 8.25%)
 
 // Currency
 export const CURRENCY = "USD"; // Used for currency formatting
