@@ -20,9 +20,8 @@ export const COMPANY = "OCOVOS & ARTHUR LABS"; // Name of Marketplace company
 export const MARKETPLACE_HEADER = "THE Modern Austin Fashion Marketplace" // Short header of company, used in Title and Header
 export const MARKETPLACE_SERVICE_PROVIDER = "fashion agency"; // Singular service provider type
 export const MARKETPLACE_SERVICE_PROVIDERS = "designers"; // Multiple service provider type
-export const MARKETPLACE_TEMPLATE_TYPE = 'service' // commerce, services, deliveries (READ: USE ONE OF THE THREE SELECTED. THESE WILL CUSTOMIZE USER INPUTS)
-export const MARKETPLACE_DESCRIPTION =
-  "We connect you with authentic fashion creators and excellent individuals near you!"; // Description of Marketplace
+export const MARKETPLACE_TEMPLATE_TYPE = "service" // commerce, services, deliveries (READ: USE ONE OF THE THREE SELECTED. THESE WILL CUSTOMIZE USER INPUTS)
+export const MARKETPLACE_DESCRIPTION = "We connect you with authentic fashion creators and excellent individuals near you!"; // Description of Marketplace
 
 // Transaction Costs
 export const SALE_PERCENTAGE_CHARGE = 0.025; // Format it as 0.025 (2.5%)

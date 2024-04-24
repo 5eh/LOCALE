@@ -2,17 +2,16 @@
 pragma solidity ^0.8.17;
 
 contract CommerceContract {
-    // Mapping to hold all product listings, accessible by a unique ID
+    address private owner;
+    address private deployer;
+
     mapping(string => ProductData) public products;
+    mapping(address => bytes32) private deliveryAddresses;  // Storing hashed delivery addresses
 
-    // Event that is emitted whenever a new product is listed
     event ProductListed(string listingID, address owner, uint32 price, uint32 quantity);
-
-    // Event for the product purchase
     event ProductPurchased(string listingID, address buyer, uint32 quantity);
-
-    // Event for confirming delivery and transferring the funds to the seller
     event DeliveryConfirmed(string listingID, address owner);
+    event DeliveryAddressUpdated(address user, string encryptedAddress);
 
     struct ProductData {
         string title;
@@ -25,7 +24,18 @@ contract CommerceContract {
         bool isDelivered;
     }
 
-    // Function to create a new product listing
+    string private listingTitle;
+
+    constructor() {
+        owner = msg.sender;  // Set the contract creator as the owner
+        deployer = msg.sender;  // Typically the same as owner, can be set to a different address if needed
+    }
+
+    modifier onlyOwnerOrDeployer() {
+        require(msg.sender == owner || msg.sender == deployer, "Not authorized");
+        _;
+    }
+
     function createProduct(
         string memory _title, 
         string memory _description, 
@@ -46,11 +56,10 @@ contract CommerceContract {
             creatorWallet: payable(msg.sender),
             isDelivered: false
         });
-
+        listingTitle = _title;  // Set the listing title to the title of the newly created product
         emit ProductListed(_listingID, msg.sender, _price, _quantity);
     }
 
-    // Function for customers to buy products
     function purchaseProduct(string memory _listingID, uint32 _quantity) public payable {
         ProductData storage product = products[_listingID];
         require(_quantity <= product.quantity, "Not enough items in stock");
@@ -60,7 +69,6 @@ contract CommerceContract {
         emit ProductPurchased(_listingID, msg.sender, _quantity);
     }
 
-    // Function for sellers to confirm delivery and receive payment
     function confirmDelivery(string memory _listingID) public {
         ProductData storage product = products[_listingID];
         require(msg.sender == product.creatorWallet, "Only the seller can confirm delivery");
@@ -70,5 +78,29 @@ contract CommerceContract {
         product.creatorWallet.transfer(address(this).balance);
 
         emit DeliveryConfirmed(_listingID, msg.sender);
+    }
+
+    function setDeliveryAddress(string memory _deliveryAddress) public {
+        bytes32 hashedAddress = keccak256(abi.encodePacked(_deliveryAddress));
+        deliveryAddresses[msg.sender] = hashedAddress;
+        emit DeliveryAddressUpdated(msg.sender, "Address updated securely");
+    }
+
+    function getDeliveryAddress(address user) public view onlyOwnerOrDeployer returns (string memory) {
+        require(deliveryAddresses[user] != 0, "No address set for this user");
+        return "Encrypted Address: Only viewable by contract owner or deployer";
+    }
+
+    function setListingTitle(string memory _listingTitle) public onlyOwnerOrDeployer {
+        listingTitle = _listingTitle;
+    }
+
+    function getListingTitle() public view returns (string memory) {
+        return listingTitle;
+    }
+
+    function getProductData(string memory listingID) public view returns (ProductData memory) {
+        require(products[listingID].creatorWallet != address(0), "Product does not exist");
+        return products[listingID];
     }
 }
