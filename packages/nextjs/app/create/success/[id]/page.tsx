@@ -72,13 +72,13 @@ export default function Success({ params }: PageProps) {
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-white">EARNINGS RATE</dt>
                 <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                  ${earningsRate(listing?.price)}.00
+                  {earningsRate(listing?.price)}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                 <dt className="text-sm font-medium leading-6 text-white">VERIFICATIONS</dt>
                 <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                  Email. Phone, ID
+                Passport ID
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

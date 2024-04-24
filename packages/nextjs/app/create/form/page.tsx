@@ -3,26 +3,23 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
-import { getAddress } from "viem";
 import { useAccount } from "wagmi";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import Authentication from "~~/app/authentication/page";
 import { Listing_Data, Upcharge } from "~~/components/Types/userListingData";
+import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
 import creators from "~~/routes/listings/creators";
-
 
 export default function Form() {
   const searchParams = useSearchParams() || new URLSearchParams();
   const serviceTitle = searchParams.get("title");
 
   return (
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12">
-        <FormInput serviceTitle={serviceTitle} />
-      </div>
-
+    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12">
+      <FormInput serviceTitle={serviceTitle} />
+    </div>
   );
 }
 
@@ -93,8 +90,6 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     const timeCreated = formatDateTime();
     const userWallet = address;
 
-  
-
     const completeData = {
       ...formData,
       userWallet,
@@ -118,7 +113,6 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
   useEffect(() => {
     if (redirectToSuccess) {
-      // Create success/dynamic layout
       router.push("/create/success/[id]");
     }
   }, [redirectToSuccess, router]);
@@ -178,6 +172,57 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     const newUpcharges = [...upcharges];
     newUpcharges.splice(index, 1);
     setUpcharges(newUpcharges);
+  };
+
+  // If Web3 is enabled, when user presses Deploy on blockchain, then the form will be submitted to the blockchain
+  // Otherwise, the form will be submitted to the backend
+
+  const { writeContractAsync: writeYourContractAsync } = useScaffoldWriteContract("CommerceContract");
+
+  const handleBlockchainSubmit = async () => {
+    if (!formData.title || !formData.description || !formData.price || !formData.quantityOfService || !formData.photo) {
+      console.error("All fields must be filled out");
+      return; // Ensure all required fields are filled
+    }
+
+    const listingID = await createListing(formData); // Assume createListing returns a unique ID for the product
+    const imageHash = "feafeafeafefae"; // Placeholder: Implement a method to hash or handle the image file appropriately
+
+    // Collect all arguments into an array
+    const args = [
+      formData.title,
+      formData.description,
+      parseInt(formData.price, 10), // Ensure price is an integer
+      parseInt(formData.quantityOfService, 10), // Ensure quantity is an integer
+      formData.serviceType, // Assuming `serviceType` maps to `_formSelectionType`
+      imageHash,
+      listingID,
+    ];
+
+    // Log the arguments to console for debugging
+    console.log("Submitting the following args to blockchain:", args);
+
+    // Check if all arguments are present
+    if (args.includes(undefined) || args.includes(null) || args.includes("")) {
+      console.error("One or more required arguments are missing:", args);
+      return; // Stop the function if any arguments are missing
+    }
+
+    try {
+      await writeYourContractAsync({
+        functionName: "createProduct",
+        args: args,
+        overrides: {
+          gasLimit: 300000, // Adjust gas limit as needed
+        },
+      });
+      console.log("Product created on blockchain with listing ID:", listingID);
+      setTimeout(() => {
+        router.push(`/create/success/${listingID}`);
+      }, 3000);
+    } catch (error) {
+      console.error("Error deploying to blockchain:", error);
+    }
   };
 
   if (!email) {
@@ -529,12 +574,10 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
       </div>
 
       <div className="mt-6 flex items-center gap-x-6 justify-center">
-        {/* Conditionally post on blockchain IF WEB3_FUNCTIONALITY is set to true */}
-
         {WEB3_FUNCTIONALITY && (
           <button
-            type="submit"
-            disabled
+            type="button"
+            onClick={handleBlockchainSubmit}
             className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
           >
             {isSubmitting ? "LOADING ... " : "DEPLOY ON BLOCKCHAIN"}
