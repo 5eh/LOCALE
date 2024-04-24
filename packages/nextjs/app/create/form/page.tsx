@@ -8,8 +8,6 @@ import { useAccount } from "wagmi";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import Authentication from "~~/app/authentication/page";
 import { Listing_Data, Upcharge } from "~~/components/Types/userListingData";
-import Footer from "~~/components/footer";
-import { Navbar } from "~~/components/navbar";
 import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
 import creators from "~~/routes/listings/creators";
@@ -20,33 +18,11 @@ export default function Form() {
   const serviceTitle = searchParams.get("title");
 
   return (
-    <div className="bg-gray-900">
-      <header className="absolute inset-x-0 top-0 z-50">
-        <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-          <div className="flex lg:flex-1">
-            <a href="#" className="-m-1.5 p-1.5">
-              <span className="sr-only">Arthur Labs</span>
-              <img />
-            </a>
-          </div>
-          <Navbar />
-          <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
-        </nav>
-      </header>
 
-      <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 lg:pt-24">
-          <h2 className="pt-4 text-4xl font-bold tracking-tight text-gray-300">
-            {(serviceTitle || "Create service").toUpperCase()}
-          </h2>
-        </div>
-      </main>
-
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-12">
         <FormInput serviceTitle={serviceTitle} />
       </div>
-      <Footer />
-    </div>
+
   );
 }
 

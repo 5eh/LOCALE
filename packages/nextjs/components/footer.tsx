@@ -31,7 +31,7 @@ const Footer = () => {
 
   return (
     <>
-    <footer className="relative mt-32 sm:mt-40" aria-labelledby="footer-heading">
+    <footer className="relative mt-2 sm:mt-4" aria-labelledby="footer-heading">
       <h2 id="footer-heading" className="sr-only">
         Footer
       </h2>
@@ -97,7 +97,7 @@ const Footer = () => {
                           href={item.href}
                           className="text-sm leading-6 text-gray-300 hover:text-white"
                         >
-                          {item.name}
+                          {item.name
                         </a>
                       </li>
                     ))}

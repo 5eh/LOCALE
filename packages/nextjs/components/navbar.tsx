@@ -1,17 +1,10 @@
 'use client';
 
 import { Popover, Transition } from '@headlessui/react';
-import { PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid';
-import {
-  ArrowPathIcon,
-  ChartPieIcon,
-  CursorArrowRaysIcon,
-  FingerPrintIcon,
-  SquaresPlusIcon,
-} from '@heroicons/react/24/outline';
+
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Fragment, useEffect, useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import { SlBubbles, SlHome, SlMagnifier, SlPlus, SlUser } from 'react-icons/sl';
 
 function ChevronUpIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -65,6 +58,7 @@ function MobileNavigation(
             <nav className='mt-3'>
               <ul className='text-center -my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300'>
                 <NavItem href='/'>Home</NavItem>
+                <NavItem href='/messages'>Messages</NavItem>
                 <NavItem href='/create'>Create</NavItem>
                 <NavItem href='/profile'>Profile </NavItem>
                 <NavItem href='/explore'>Explore</NavItem>
@@ -120,9 +114,9 @@ function DesktopNavigation(props: React.ComponentPropsWithoutRef<'nav'>) {
         <NavItem href='/create'>
           <SlPlus className='size-8 mt-2 mb-2' />
         </NavItem>
-        {/* <NavItem href='/messages'>
+        <NavItem href='/messages'>
           <SlBubbles className='size-8 mt-2 mb-2' />
-        </NavItem> */}
+        </NavItem>
         <NavItem href='/profile'>
           <SlUser className='size-8 mt-2 mb-2' />
         </NavItem>
@@ -140,7 +134,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className='pointer-events-none relative z-2 flex flex-none flex-col'
+        className='pointer-events-none relative sm:z-20 flex flex-none flex-col'
         style={{
           height: 'var(--header-height)',
           marginBottom: 'var(--header-mb)',

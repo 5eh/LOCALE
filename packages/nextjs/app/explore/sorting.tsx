@@ -46,7 +46,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
       <div>
         {/* Mobile filter dialog */}
         <Transition.Root show={mobileFiltersOpen} as={Fragment}>
-          <Dialog as="div" className="relative z-3 lg:hidden bg-gray-900" onClose={setMobileFiltersOpen}>
+          <Dialog as="div" className="relative lg:z-10 sm:z-2 lg:hidden bg-gray-900" onClose={setMobileFiltersOpen}>
             <Transition.Child
               as={Fragment}
               enter="transition-opacity ease-linear duration-300"
@@ -59,7 +59,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
               <div className="fixed inset-0 bg-gray-900" />
             </Transition.Child>
 
-            <div className="fixed inset-0 z-3 flex">
+            <div className="fixed inset-0 lg:z-10 sm:z-2 flex">
               <Transition.Child
                 as={Fragment}
                 enter="transition ease-in-out duration-300 transform"
@@ -145,7 +145,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+          <div className="flex items-baseline justify-between border-b border-gray-200 mb-6 mt-24">
             <h2 className="pt-4 text-4xl font-bold tracking-tight text-gray-300">EXPLORE</h2>
 
             <div className="flex items-center">
@@ -169,7 +169,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute bg-gray-900 right-0 z-3 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute bg-gray-900 right-0 lg:z-10 sm:z-2 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       {sortOptions.map(option => (
                         <Menu.Item key={option.name}>
@@ -203,7 +203,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
             </div>
           </div>
 
-          <section aria-labelledby="products-heading" className="pb-24 pt-6">
+          <section aria-labelledby="products-heading" className="mb-24 mt-6">
             <h2 id="products-heading" className="sr-only">
               Products
             </h2>

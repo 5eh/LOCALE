@@ -69,9 +69,9 @@ export default function Messages() {
     <>
       <div className="">
         {/* Static sidebar for desktop */}
-        <div className="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
+        <div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-72 lg:flex-col">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6">
+          <div className="flex grow flex-col gap-y-5 overflow-y-auto px-6">
             <div className="flex h-16 shrink-0 items-center"></div>
 
             <nav className="flex flex-1 flex-col">
@@ -85,7 +85,7 @@ export default function Messages() {
                           href={item.href}
                           className={classNames(
                             item.current
-                              ? "bg-gray-800 text-white"
+                              ? "text-white"
                               : "text-gray-400 hover:text-white hover:bg-gray-800",
                             "group flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold",
                           )}
@@ -139,7 +139,7 @@ export default function Messages() {
           </div>
         </div>
 
-        <div className="sticky top-0 z-40 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
+        <div className="sticky top-0 flex items-center gap-x-6 bg-gray-900 px-4 py-4 shadow-sm sm:px-6 lg:hidden">
           <button type="button" className="-m-2.5 p-2.5 text-gray-400 lg:hidden" onClick={() => setSidebarOpen(true)}>
             <span className="sr-only">Open sidebar</span>
             <Bars3Icon className="h-6 w-6" aria-hidden="true" />
@@ -154,40 +154,6 @@ export default function Messages() {
             />
           </a>
         </div>
-
-        <main className="py-10 lg:pl-72">
-          <header className="absolute inset-x-0 top-0 z-50">
-            <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-              <div className="flex lg:flex-1">
-                <a href="#" className="-m-1.5 p-1.5">
-                  <span className="sr-only">Arthur Labs</span>
-                  <img />
-                </a>
-              </div>
-              <Navbar />
-              <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
-            </nav>
-          </header>
-          <div className="px-4 sm:px-6 lg:px-8">
-            <div
-              className="absolute inset-x-0 top-4 -z-10 flex transform-gpu justify-center overflow-hidden blur-3xl"
-              aria-hidden="true"
-            >
-              <div
-                className="aspect-[1108/632] w-[69.25rem] flex-none bg-gradient-to-r from-[#80caff] to-[#4f46e5] opacity-25"
-                style={{
-                  clipPath:
-                    "polygon(73.6% 51.7%, 91.7% 11.8%, 100% 46.4%, 97.4% 82.2%, 92.5% 84.9%, 75.7% 64%, 55.3% 47.5%, 46.5% 49.4%, 45% 62.9%, 50.3% 87.2%, 21.3% 64.1%, 0.1% 100%, 5.4% 51.1%, 21.4% 63.9%, 58.9% 0.2%, 73.6% 51.7%)",
-                }}
-              />
-            </div>
-
-            <div className="pt-24">
-              {/* Messaging Component here */}
-              <p className="text-gray-300">Hello</p>
-            </div>
-          </div>
-        </main>
       </div>
     </>
   );

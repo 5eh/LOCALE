@@ -171,7 +171,7 @@ export default function Listings({ creator, listing }: DataProps) {
                   className="h-full w-full object-cover object-center lg:h-full lg:w-full"
                 />
               </div>
-              <div className="mt-4 flex max-w-max justify-between">
+              <div className="mt-4 z-10 flex max-w-max justify-between">
                 <HoverName creator={matchedCreator} listing={data} />
               </div>
               {modalOpen && selectedListing && selectedCreator && (
@@ -196,7 +196,7 @@ export function HoverName(props: DataProps) {
   const renderFeatures = () => {
     if (Array.isArray(listing.features) && listing.features.length > 0) {
       return listing.features.map((feature, index) => (
-        <div key={index} className="flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
+        <div key={index} className="flex z-10 items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
           <CheckCircleIcon width={24} height={24} className="m-3" />
           <p className="text-sm flex-1 text-left">
             {feature.feature}: {feature.value}
@@ -215,7 +215,7 @@ export function HoverName(props: DataProps) {
           {listing.title ? listing.title : "Unknown"}
         </Button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80 text-white z-3 bg-gray-900">
+      <HoverCardContent className="w-80 text-white z-10 bg-gray-900">
         <div className="flex justify-between space-x-4">
           <div className="space-y-1">
             <div className="text-sm flex gap-2">
