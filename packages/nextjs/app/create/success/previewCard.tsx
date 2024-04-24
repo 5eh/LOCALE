@@ -11,7 +11,7 @@ import { Listing_Data } from "~~/components/Types/userListingData";
 import { Button } from "~~/components/buttons/Button";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "~~/components/hoverOverName";
 import Ratings from "~~/components/ratings";
-import { CheckIcon } from "lucide-react";
+import { CheckmarkIcon } from 'react-hot-toast';
 
 
 interface DataProps {
@@ -194,13 +194,13 @@ export function HoverName(props: DataProps) {
             </div>
 
             <div className="flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
-              <CheckIcon width={24} height={24} className="m-3" />
+              <CheckmarkIcon width={24} height={24} className="m-3" />
               <p className="text-sm flex-1 text-left">
                 {listing.features[0].feature}: {listing.features[0].value}
               </p>
             </div>
             <div className="flex items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
-              <CheckIcon width={24} height={24} className="m-3" />
+              <CheckmarkIcon width={24} height={24} className="m-3" />
               <p className="text-sm flex-1 text-left">
                 {listing.features[1].feature}: {listing.features[1].value}
               </p>

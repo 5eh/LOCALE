@@ -2,6 +2,8 @@ import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
 import { Contract } from "ethers";
 
+import { WEB3_CONTRACT_TYPE } from "../../nextjs/marketplaceVariables/index.js";
+
 /**
  * Deploys a contract named "YourContract" using the deployer account and
  * constructor arguments set to the deployer address
@@ -9,6 +11,11 @@ import { Contract } from "ethers";
  * @param hre HardhatRuntimeEnvironment object.
  */
 const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
+  console.log(WEB3_CONTRACT_TYPE);
+  // This file 00_deploy_your_contract has two types of inputs: 'YourContract', and 'yourContract', find the differences and tailor it to the project.
+  // CommerceContract
+  // commerceContract
+  
   /*
     On localhost, the deployer account is the one that comes with Hardhat, which is already funded.
 
@@ -22,7 +29,7 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   const { deployer } = await hre.getNamedAccounts();
   const { deploy } = hre.deployments;
 
-  await deploy("YourContract", {
+  await deploy("CommerceContract", {
     from: deployer,
     // Contract constructor arguments
     args: [deployer],
@@ -33,12 +40,12 @@ const deployYourContract: DeployFunction = async function (hre: HardhatRuntimeEn
   });
 
   // Get the deployed contract to interact with it after deploying.
-  const yourContract = await hre.ethers.getContract<Contract>("YourContract", deployer);
-  console.log("👋 Initial greeting:", await yourContract.greeting());
+  const commerceContract = await hre.ethers.getContract<Contract>("CommerceContract", deployer);
+  console.log("👋 Initial greeting:", await commerceContract.greeting());
 };
 
 export default deployYourContract;
 
 // Tags are useful if you have multiple deploy files and only want to run one of them.
 // e.g. yarn deploy --tags YourContract
-deployYourContract.tags = ["YourContract"];
+deployYourContract.tags = ["CommerceContract"];

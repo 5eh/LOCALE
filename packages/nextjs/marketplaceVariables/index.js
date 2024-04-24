@@ -20,6 +20,7 @@ export const COMPANY = "OCOVOS & ARTHUR LABS"; // Name of Marketplace company
 export const MARKETPLACE_HEADER = "THE Modern Austin Fashion Marketplace" // Short header of company, used in Title and Header
 export const MARKETPLACE_SERVICE_PROVIDER = "fashion agency"; // Singular service provider type
 export const MARKETPLACE_SERVICE_PROVIDERS = "designers"; // Multiple service provider type
+export const MARKETPLACE_TEMPLATE_TYPE = 'service' // commerce, services, deliveries (READ: USE ONE OF THE THREE SELECTED. THESE WILL CUSTOMIZE USER INPUTS)
 export const MARKETPLACE_DESCRIPTION =
   "We connect you with authentic fashion creators and excellent individuals near you!"; // Description of Marketplace
 
@@ -57,7 +58,7 @@ export const dbConnect = process.env.MONGODB_URI;
 
 // Blockchain Format
 
-
+// IMPORTANT - IF WEB3_FUNCTIONALITY is set to true, then go to `marketplaceVariables` in Hardhat and add contract logic
 export const WEB3_FUNCTIONALITY = true; // True or False (True adds details and Web3 functionality to the marketplace)
 export const WEB3_CONTRACT_TYPE = "Commerce" // Commerce, Services, Deliveries (READ: USE ONE OF THE THREE SELECTED. THESE ARE CUSTOM CONTRACTS FOR YOUR MARKETPLACE.) 
 export const WEB3_BLOCKCHAIN = "Ethereum";

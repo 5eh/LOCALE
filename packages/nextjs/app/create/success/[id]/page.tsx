@@ -1,52 +1,67 @@
-// src/app/create/success/page.tsx
-import React from "react";
-import PreviewCard from "./previewCard";
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import PreviewCard from "../previewCard";
 import { Button } from "~~/components/buttons/Button";
 import Footer from "~~/components/footer";
 import { Navbar } from "~~/components/navbar";
+import creators from "~~/routes/listings/creators";
+import listings from "~~/routes/listings/listings";
+import { CURRENCY, LOCAL_TAX_RATE, SALE_PERCENTAGE_CHARGE } from '~~/marketplaceVariables';
 
-// Test data before connecting to DB
-const testData = [
-  {
-    listingID: "1",
-    title: "Landscape Photography Session",
-    description: "Professional landscape photography services in New York...",
-    location: "New York, NY",
-    features: [
-      { feature: "Duration", value: "2 hours" },
-      { feature: "Equipment", value: "Professional DSLR" },
-    ],
-    upcharges: [
-      { upcharge: "Extra Hour", value: 100 },
-      { upcharge: "Travel Outside City", value: 150 },
-    ],
-    photo:
-      "https://images.unsplash.com/photo-1542203061-00428f2ee9ea?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    price: 500,
-    creator: "1",
-    userWallet: "0x123abc",
-    quantityOfService: 5,
-    serviceType: "Photography",
-    timeCreated: "2021-03-01",
-  },
-];
 
-const testCreator = {
-  _id: "1",
-  name: "John Doe",
-  username: "johndoe",
-  avatar: "https://example.com/avatar.jpg",
-  rating: 4.5,
-  amountOfReviews: 30,
-  bio: "Experienced photographer based in New York...",
-  media: {
-    mediaLinkOne: "https://example.com/portfolio1",
-    mediaLinkTwo: "https://example.com/portfolio2",
-    mediaLinkThree: "https://example.com/portfolio3",
-  },
+type PageProps = {
+  params: { id?: Id };
 };
 
-function Success() {
+export default function Success({ params }: PageProps) {
+  // In the future, conditionally render the page *IF* the user is the creator
+  const router = useRouter();
+  const [listing, setListing] = useState(null);
+  const [creator, setCreator] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fetchedListingsData = await listings();
+        const fetchedCreatorsData = await creators();
+        const id = params?.id as Id;
+
+        console.log(id)
+
+        const matchingListing = fetchedListingsData.find(listing => listing._id === id);
+
+    
+        if (matchingListing) {
+          setListing(matchingListing);
+          const matchingCreator = fetchedCreatorsData.find(creator => creator._id === matchingListing.creator);
+          setCreator(matchingCreator);
+          console.log(creator, listing);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchData();
+  }, [router.isReady, router.query]);
+
+
+    function earningsRate(price) {
+      const totalDeductions = price * (LOCAL_TAX_RATE + SALE_PERCENTAGE_CHARGE);
+      const totalEarnings = price - totalDeductions;
+
+      // Format the total earnings as a currency
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: `${CURRENCY}`, // Update this as per your specific currency if needed
+        minimumFractionDigits: 2,
+      }).format(totalEarnings);
+    }
+
+
+
+  
   return (
     <div className="bg-gray-900">
       <header className="absolute inset-x-0 top-0 z-50">
@@ -70,21 +85,21 @@ function Success() {
 
       <div id="main" className="mx-auto lg:mt-8 lg:pt-8 max-w-7xl px-4 sm:px-6 lg:px-2">
         <div className="grid grid-cols-1 lg:grid-cols-2 lg:gap-8">
-          <div className="col-span-1">
-            <PreviewCard creator={testCreator} listing={testData} />
-          </div>
+          {/* <div className="col-span-1">
+            <PreviewCard creator={creator} listing={listing} />
+          </div> */}
 
           <div className="px-4 sm:px-0">
             <div className="mt-6 border-t border-white/10">
               <dl className="divide-y divide-white/10">
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-white">FULL NAME</dt>
-                  <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">Mary Jane</dd>
+                  <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">{creator?.name}</dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
                   <dt className="text-sm font-medium leading-6 text-white">EARNINGS RATE</dt>
                   <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                    $TOTAL - TAX - TX FEE
+                    ${earningsRate(listing?.price)}.00
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -100,9 +115,8 @@ function Success() {
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0 border-b border-white/10">
                   <dt className="text-sm font-medium leading-6 text-white">ABOUT</dt>
                   <dd className="mt-1 text-sm  text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                    Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat.
-                    Excepteur
-                  </dd>
+                    {listing?.description}
+                 </dd>
                 </div>
               </dl>
             </div>
@@ -116,7 +130,7 @@ function Success() {
 
               <div className="flex items-center gap-x-2">
                 <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-                  <a href={`/purchase/`}>VIEW PUBLIC LISTING</a>
+                  <a href={`/explore/purchase/${listing?._id}`}>VIEW PUBLIC LISTING</a>
                 </Button>
 
                 <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
@@ -138,5 +152,3 @@ function Success() {
     </div>
   );
 }
-
-export default Success;

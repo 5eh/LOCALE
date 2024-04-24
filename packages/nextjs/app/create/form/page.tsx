@@ -1,9 +1,10 @@
-// src/app/create/form/page.tsx
 "use client";
 
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
+import { getAddress } from "viem";
+import { useAccount } from "wagmi";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import Authentication from "~~/app/authentication/page";
 import { Listing_Data, Upcharge } from "~~/components/Types/userListingData";
@@ -11,6 +12,7 @@ import Footer from "~~/components/footer";
 import { Navbar } from "~~/components/navbar";
 import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
+import creators from "~~/routes/listings/creators";
 
 
 export default function Form() {
@@ -54,6 +56,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
   const router = useRouter();
   const [redirectToSuccess, setredirectToSuccess] = useState(false);
   const [email, setEmail] = useState("");
+  const [creator, setCreator] = useState("");
+  const { address } = useAccount();
 
   const [formData, setFormData] = useState<Omit<Listing_Data, "listingID" | "userID" | "userWallet" | "timeCreated">>({
     title: "",
@@ -84,17 +88,42 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     const words = serviceType.split(" ").filter(word => !wordsToRemove.includes(word.toLowerCase()));
     return words.join(" ");
   };
+
+  useEffect(() => {
+    const userEmail = localStorage.getItem("userEmail");
+    setEmail(userEmail);
+  }, []);
+
+  useEffect(() => {
+    const fetchCreator = async () => {
+      try {
+        const fetchedCreatorsData = await creators();
+        const matchingCreator = fetchedCreatorsData.find(
+          creator => creator.email === localStorage.getItem("userEmail"),
+        );
+        setCreator(matchingCreator?._id);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchCreator();
+  }, []);
+
   const handleSubmit = async event => {
     event.preventDefault();
     setIsSubmitting(true);
 
     const timeCreated = formatDateTime();
-    const userWallet = "0x123456789";
+    const userWallet = address;
+
+  
 
     const completeData = {
       ...formData,
       userWallet,
       timeCreated,
+      creator,
       serviceType: optimizeType(formData.serviceType),
     };
 
@@ -102,7 +131,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
       const id = await createListing(completeData);
       console.log("Form submission successful. ID:", id);
       setTimeout(() => {
-        router.push("/create/success");
+        router.push(`/create/success/${id}`);
       }, 3000);
     } catch (error) {
       console.error("Form submission failed:", error);
@@ -113,7 +142,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
   useEffect(() => {
     if (redirectToSuccess) {
-      router.push("/create/success");
+      // Create success/dynamic layout
+      router.push("/create/success/[id]");
     }
   }, [redirectToSuccess, router]);
 
@@ -173,11 +203,6 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     newUpcharges.splice(index, 1);
     setUpcharges(newUpcharges);
   };
-
-  useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail");
-    setEmail(userEmail);
-  }, []);
 
   if (!email) {
     return <Authentication />;
@@ -528,7 +553,6 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
       </div>
 
       <div className="mt-6 flex items-center gap-x-6 justify-center">
-    
         {/* Conditionally post on blockchain IF WEB3_FUNCTIONALITY is set to true */}
 
         {WEB3_FUNCTIONALITY && (
@@ -552,22 +576,26 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           {isSubmitting ? "LOADING ..." : "CREATE LISTING"}
         </button>
       </div>
-      
+
       {WEB3_FUNCTIONALITY && (
-      <div className='text-center uppercase mt-4'>
-          <span className='text-blue-400'>Web3 Disclaimer</span>
-          
-          <p className='text-gray-400'>{COMPANY} is powered and secured by the Ethereum Blockchain. By pressing <span className='text-blue-400'>DEPLOY ON BLOCKCHAIN</span>{" "}
-            You understand the risks and considerations when publishing information into a public database. The information you are providing in the form above will be stored in a public ledger, where anyone has access to this information.
-            smart contracts additionally carry risks in the form of bugs, hacks, and other vulnerabilities. By pressing <span className='text-blue-400'>DEPLOY ON BLOCKCHAIN</span>{" "}you are agreeing to these terms and conditions.
+        <div className="text-center uppercase mt-4">
+          <span className="text-blue-400">Web3 Disclaimer</span>
+
+          <p className="text-gray-400">
+            {COMPANY} is powered and secured by the Ethereum Blockchain. By pressing{" "}
+            <span className="text-blue-400">DEPLOY ON BLOCKCHAIN</span> You understand the risks and considerations when
+            publishing information into a public database. The information you are providing in the form above will be
+            stored in a public ledger, where anyone has access to this information. smart contracts additionally carry
+            risks in the form of bugs, hacks, and other vulnerabilities. By pressing{" "}
+            <span className="text-blue-400">DEPLOY ON BLOCKCHAIN</span> you are agreeing to these terms and conditions.
           </p>
 
-              <div>
-                <span className="text-blue-400">
-                  <a href="/blockchain-policy">READ MORE HERE</a>
-                </span>
-              </div>  
-      </div>
+          <div>
+            <span className="text-blue-400">
+              <a href="/blockchain-policy">READ MORE HERE</a>
+            </span>
+          </div>
+        </div>
       )}
     </form>
   );

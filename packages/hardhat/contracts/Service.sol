@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: Apache-2.0
-pragma solidity ^0.8.24;
+pragma solidity ^0.8.17;
 
 contract ServiceContract {
     // Mapping to hold all service listings, accessible by a unique ID

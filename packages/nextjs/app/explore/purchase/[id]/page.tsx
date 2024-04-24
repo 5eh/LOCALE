@@ -9,9 +9,8 @@ import { Navbar } from "~~/components/navbar";
 import {
   COMPANY,
   CURRENCY,
-  CURRENCY_SYMBOL,
   LOCAL_TAX_RATE,
-  MARKETPLACE_TYPE,
+  MARKETPLACE_TEMPLATE_TYPE,
   SALE_PERCENTAGE_CHARGE,
   WEB3_FUNCTIONALITY,
 } from "~~/marketplaceVariables";
@@ -69,16 +68,17 @@ export default function Purchase({ params }: PageProps) {
     );
   }
 
-  function earningsRate(price) {
-    const totalDeductions = price * (LOCAL_TAX_RATE + SALE_PERCENTAGE_CHARGE);
-    const totalEarnings = price - totalDeductions;
 
-    // Format the total earnings as a currency
+
+  function totalPrice(price) {
+    const taxAndChargeCalculation = (LOCAL_TAX_RATE + SALE_PERCENTAGE_CHARGE) * price;
+    const totalCost = price + taxAndChargeCalculation;
+
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: `${CURRENCY}`, // Update this as per your specific currency if needed
+      currency: CURRENCY,
       minimumFractionDigits: 2,
-    }).format(totalEarnings);
+    }).format(totalCost);
   }
 
   return (
@@ -118,9 +118,10 @@ export default function Purchase({ params }: PageProps) {
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-                  <dt className="text-sm font-medium leading-6 text-white">EARNINGS RATE</dt>
+                  <dt className="text-sm font-medium leading-6 text-white">TOTAL PRICE</dt>
                   <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
-                    {earningsRate(listing.price)}
+                    {/* {earningsRate(listing.price)} */}
+                    {/* {totalPrice(listing.price)} */}${listing.price}.00
                   </dd>
                 </div>
                 <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -142,53 +143,153 @@ export default function Purchase({ params }: PageProps) {
           </div>
 
           {/* DISABLE FOLLOWING FUNCTION UNLESS SERVICE MARKETPLACE */}
-          <div className="col-span-1">
-            <div className="border-2 border-white shadow sm:rounded-lg">
-              <div className="px-4 py-5 sm:p-6">
-                <h3 className="text-base font-semibold leading-6 text-gray-100">SCHEDULE INFORMATION</h3>
-                <form className="mt-5">
-                  <div className="w-full mt-3">
-                    <label htmlFor="time" className="sr-only">
-                      TIME
-                    </label>
-                    <input
-                      type="time"
-                      name="time"
-                      id="time"
-                      value={time}
-                      onChange={handleTimeChange}
-                      className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
-                      placeholder="Select Time"
-                    />
-                  </div>
-                  <div className="w-full mt-3">
-                    <label htmlFor="date" className="sr-only">
-                      DATE
-                    </label>
-                    <input
-                      type="date"
-                      name="date"
-                      id="date"
-                      className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
-                      placeholder="Select Date"
-                    />
-                  </div>
-                  <div className="w-full mt-3">
-                    <label htmlFor="description" className="sr-only">
-                      DESCRIPTION
-                    </label>
-                    <input
-                      type="text"
-                      name="description"
-                      id="description"
-                      className="block w-full rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
-                      placeholder="Please expect a party of 3 people. We will be bringing our dog. It's our sisters birthday, so we would like to take some photos with her."
-                    />
-                  </div>
-                </form>
+          {MARKETPLACE_TEMPLATE_TYPE === "service" && (
+            <div className="col-span-1">
+              <div className="border-2 border-white shadow sm:rounded-lg">
+                <div className="px-4 py-5 sm:p-6">
+                  <h3 className="text-base font-semibold leading-6 text-gray-100">SCHEDULE INFORMATION</h3>
+                  <form className="mt-5">
+                    <div className="w-full mt-3">
+                      <label htmlFor="time" className="sr-only">
+                        TIME
+                      </label>
+                      <input
+                        type="time"
+                        name="time"
+                        id="time"
+                        value={time}
+                        onChange={handleTimeChange}
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Time"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="date" className="sr-only">
+                        DATE
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        id="date"
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Date"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="description" className="sr-only">
+                        DESCRIPTION
+                      </label>
+                      <input
+                        type="text"
+                        name="description"
+                        id="description"
+                        className="block w-full rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Please expect a party of 3 people. We will be bringing our dog. It's our sisters birthday, so we would like to take some photos with her."
+                      />
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-          </div>
+          )}
+          {MARKETPLACE_TEMPLATE_TYPE === "commerce" && (
+            <div className="col-span-1">
+              <div className="border-2 border-white shadow sm:rounded-lg">
+                <div className="px-4 py-5 sm:p-6">
+                  <h3 className="text-base font-semibold leading-6 text-gray-100">DELIVERY INFORMATION</h3>
+                  <form className="mt-5">
+                    <div className="w-full mt-3">
+                      <label htmlFor="time" className="sr-only">
+                        TIME
+                      </label>
+                      <input
+                        type="time"
+                        name="time"
+                        id="time"
+                        value={time}
+                        onChange={handleTimeChange}
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Time"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="date" className="sr-only">
+                        DATE
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        id="date"
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Date"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="description" className="sr-only">
+                        DESCRIPTION
+                      </label>
+                      <input
+                        type="text"
+                        name="description"
+                        id="description"
+                        className="block w-full rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Please expect a party of 3 people. We will be bringing our dog. It's our sisters birthday, so we would like to take some photos with her."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          )}
+          {MARKETPLACE_TEMPLATE_TYPE === "delivery" && (
+            <div className="col-span-1">
+              <div className="border-2 border-white shadow sm:rounded-lg">
+                <div className="px-4 py-5 sm:p-6">
+                  <h3 className="text-base font-semibold leading-6 text-gray-100">DELIVERY INFORMATION</h3>
+                  <form className="mt-5">
+                    <div className="w-full mt-3">
+                      <label htmlFor="time" className="sr-only">
+                        TIME
+                      </label>
+                      <input
+                        type="time"
+                        name="time"
+                        id="time"
+                        value={time}
+                        onChange={handleTimeChange}
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Time"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="date" className="sr-only">
+                        DATE
+                      </label>
+                      <input
+                        type="date"
+                        name="date"
+                        id="date"
+                        className="block rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Select Date"
+                      />
+                    </div>
+                    <div className="w-full mt-3">
+                      <label htmlFor="description" className="sr-only">
+                        DESCRIPTION
+                      </label>
+                      <input
+                        type="text"
+                        name="description"
+                        id="description"
+                        className="block w-full rounded-md border border-gray-700 px-2 py-1 text-xs font-medium text-white bg-gray-800 shadow-sm ring-1 ring-gray-500 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-gray-500 hover:bg-gray-700 hover:text-white"
+                        placeholder="Please expect a party of 3 people. We will be bringing our dog. It's our sisters birthday, so we would like to take some photos with her."
+                      />
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          )}
 
           <div className="col-span-1">
             <div className="border-2 border-white shadow sm:rounded-lg">
@@ -243,18 +344,17 @@ export default function Purchase({ params }: PageProps) {
                 <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
                   <a href={`/share/`}>SHARE LISTING</a>
                 </Button>
-                
-                {WEB3_FUNCTIONALITY ? (
-                <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-                  <a href={`/purchase/`}>PURCHASE SERVICE ON BLOCKCHAIN</a>
-                </Button>
-                ) : (
-                <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-                  <a href={`/purchase/`}>PROCEED TO CHECKOUT</a>
-                </Button>
-                )}
 
-                </div>
+                {WEB3_FUNCTIONALITY ? (
+                  <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+                    <a href={`/purchase/`}>PURCHASE SERVICE ON BLOCKCHAIN</a>
+                  </Button>
+                ) : (
+                  <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+                    <a href={`/purchase/`}>PROCEED TO CHECKOUT</a>
+                  </Button>
+                )}
+              </div>
               <div className="h-px flex-1 bg-gray-300 ml-2"></div>
             </div>
           </div>
