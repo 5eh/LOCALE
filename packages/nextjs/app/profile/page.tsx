@@ -7,6 +7,7 @@ import { ArrowLeftCircleIcon, ArrowRightCircleIcon, CheckIcon, EnvelopeOpenIcon 
 import Authentication from "~~/app/authentication/page";
 import { Button } from "~~/components/buttons/Button";
 import Ratings from "~~/components/ratings";
+import { WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import creators from "~~/routes/listings/creators";
 
 // import listings from "~~/routes/listings/listings";
@@ -138,6 +139,30 @@ export default function Page() {
   return (
     <>
       <div id="main" className="mx-auto mt-12 pt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
+        {WEB3_FUNCTIONALITY && (
+          <div className="rounded w-full grid grid-cols-5 gap-4 pb-6">
+            <div className="flex flex-col   gap-[calc(20%-1rem)]">
+              <Button className="text-left border border-white w-full bg-gray-500/20  py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
+                UNFULFILLED
+              </Button>
+              <Button className="text-left border border-white w-full bg-gray-500/20 py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
+                PURCHASED
+              </Button>
+              <Button className="text-left border border-white w-full bg-gray-500/20 py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
+                ANALYTICS
+              </Button>
+            </div>
+            <div className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm  hover:border-white">
+              <p>| LISTING DATE</p>
+              <p>| EARNINGS RATE</p>
+              <p>| DELIVERY INFORMATION?</p>
+              <Button className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
+                SHIPPED
+              </Button>
+            </div>
+          </div>
+        )}
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
           <div className=" p-4 rounded-lg">
             <div className=" rounded-lg flex items-center">
