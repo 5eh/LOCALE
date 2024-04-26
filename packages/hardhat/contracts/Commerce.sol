@@ -6,12 +6,15 @@ contract CommerceContract {
     address private deployer;
 
     mapping(string => ProductData) public products;
-    mapping(address => bytes32) private deliveryAddresses;  // Storing hashed delivery addresses
+    mapping(string => address) private productBuyers;  // Track buyers for each product
+    mapping(address => string) private deliveryAddresses;  // Storing unhashed delivery addresses
+    mapping(address => string) private customInstructions;
 
     event ProductListed(string listingID, address owner, uint32 price, uint32 quantity);
     event ProductPurchased(string listingID, address buyer, uint32 quantity);
     event DeliveryConfirmed(string listingID, address owner);
-    event DeliveryAddressUpdated(address user, string encryptedAddress);
+    event DeliveryAddressUpdated(address user, string deliveryAddress);
+    event CustomInstructionsUpdated(address user, string instructions);
 
     struct ProductData {
         string title;
@@ -27,8 +30,8 @@ contract CommerceContract {
     string private listingTitle;
 
     constructor() {
-        owner = msg.sender;  // Set the contract creator as the owner
-        deployer = msg.sender;  // Typically the same as owner, can be set to a different address if needed
+        owner = msg.sender;
+        deployer = msg.sender;
     }
 
     modifier onlyOwnerOrDeployer() {
@@ -56,7 +59,6 @@ contract CommerceContract {
             creatorWallet: payable(msg.sender),
             isDelivered: false
         });
-        listingTitle = _title;  // Set the listing title to the title of the newly created product
         emit ProductListed(_listingID, msg.sender, _price, _quantity);
     }
 
@@ -65,34 +67,38 @@ contract CommerceContract {
         require(_quantity <= product.quantity, "Not enough items in stock");
         require(msg.value == product.price * _quantity, "Incorrect amount of Ether sent");
         product.quantity -= _quantity;
-
+        productBuyers[_listingID] = msg.sender; 
         emit ProductPurchased(_listingID, msg.sender, _quantity);
     }
 
     function confirmDelivery(string memory _listingID) public {
-        ProductData storage product = products[_listingID];
-        require(msg.sender == product.creatorWallet, "Only the seller can confirm delivery");
-        require(!product.isDelivered, "Product already delivered");
+        require(msg.sender == products[_listingID].creatorWallet, "Only the seller can confirm delivery");
+        require(!products[_listingID].isDelivered, "Product already delivered");
 
-        product.isDelivered = true;
-        product.creatorWallet.transfer(address(this).balance);
+        products[_listingID].isDelivered = true;
+        products[_listingID].creatorWallet.transfer(address(this).balance);
 
         emit DeliveryConfirmed(_listingID, msg.sender);
     }
 
     function setDeliveryAddress(string memory _deliveryAddress) public {
-        bytes32 hashedAddress = keccak256(abi.encodePacked(_deliveryAddress));
-        deliveryAddresses[msg.sender] = hashedAddress;
-        emit DeliveryAddressUpdated(msg.sender, "Address updated securely");
+        deliveryAddresses[msg.sender] = _deliveryAddress;
+        emit DeliveryAddressUpdated(msg.sender, _deliveryAddress);
     }
 
-    function getDeliveryAddress(address user) public view onlyOwnerOrDeployer returns (string memory) {
-        require(deliveryAddresses[user] != 0, "No address set for this user");
-        return "Encrypted Address: Only viewable by contract owner or deployer";
+    function getDeliveryAddress(address user) public view returns (string memory) {
+        require(bytes(deliveryAddresses[user]).length > 0, "No delivery address set by this user. Are you sure they have purchased?");
+        return deliveryAddresses[user];
     }
 
-    function setListingTitle(string memory _listingTitle) public onlyOwnerOrDeployer {
-        listingTitle = _listingTitle;
+    function setCustomInstructions(string memory _instructions) public {
+        customInstructions[msg.sender] = _instructions;
+        emit CustomInstructionsUpdated(msg.sender, _instructions);
+    }
+
+    function getCustomInstructions(address user) public view returns (string memory) {
+        require(bytes(customInstructions[user]).length > 0, "No custom instructions set for this user. Are you sure they have purchased?");
+        return customInstructions[user];
     }
 
     function getListingTitle() public view returns (string memory) {

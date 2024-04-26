@@ -34,6 +34,8 @@ const Page = () => {
     }
   };
 
+
+  
   useEffect(() => {
     if (totalCounter) {
       setCounter(totalCounter.toString());

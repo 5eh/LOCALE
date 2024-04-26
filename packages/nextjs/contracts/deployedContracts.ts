@@ -7,7 +7,7 @@ import { GenericContractsDeclaration } from "~~/utils/scaffold-eth/contract";
 const deployedContracts = {
   31337: {
     CommerceContract: {
-      address: "0x851356ae760d987E095750cCeb3bC6014560891C",
+      address: "0x5f3f1dBD7B74C6B46e8c44f98792A1dAf8d69154",
       abi: [
         {
           inputs: [],
@@ -26,7 +26,26 @@ const deployedContracts = {
             {
               indexed: false,
               internalType: "string",
-              name: "encryptedAddress",
+              name: "instructions",
+              type: "string",
+            },
+          ],
+          name: "CustomInstructionsUpdated",
+          type: "event",
+        },
+        {
+          anonymous: false,
+          inputs: [
+            {
+              indexed: false,
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+            {
+              indexed: false,
+              internalType: "string",
+              name: "deliveryAddress",
               type: "string",
             },
           ],
@@ -162,6 +181,25 @@ const deployedContracts = {
           name: "createProduct",
           outputs: [],
           stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "address",
+              name: "user",
+              type: "address",
+            },
+          ],
+          name: "getCustomInstructions",
+          outputs: [
+            {
+              internalType: "string",
+              name: "",
+              type: "string",
+            },
+          ],
+          stateMutability: "view",
           type: "function",
         },
         {
@@ -333,6 +371,19 @@ const deployedContracts = {
           inputs: [
             {
               internalType: "string",
+              name: "_instructions",
+              type: "string",
+            },
+          ],
+          name: "setCustomInstructions",
+          outputs: [],
+          stateMutability: "nonpayable",
+          type: "function",
+        },
+        {
+          inputs: [
+            {
+              internalType: "string",
               name: "_deliveryAddress",
               type: "string",
             },
@@ -342,24 +393,11 @@ const deployedContracts = {
           stateMutability: "nonpayable",
           type: "function",
         },
-        {
-          inputs: [
-            {
-              internalType: "string",
-              name: "_listingTitle",
-              type: "string",
-            },
-          ],
-          name: "setListingTitle",
-          outputs: [],
-          stateMutability: "nonpayable",
-          type: "function",
-        },
       ],
       inheritedFunctions: {},
     },
     FrankContract: {
-      address: "0x95401dc811bb5740090279Ba06cfA8fcF6113778",
+      address: "0xCD8a1C3ba11CF5ECfa6267617243239504a98d90",
       abi: [
         {
           inputs: [],
@@ -405,7 +443,7 @@ const deployedContracts = {
       inheritedFunctions: {},
     },
     ServiceContract: {
-      address: "0xf5059a5D33d5853360D16C683c16e67980206f36",
+      address: "0xb7278A61aa25c888815aFC32Ad3cC52fF24fE575",
       abi: [
         {
           anonymous: false,

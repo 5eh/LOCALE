@@ -7,6 +7,7 @@ import { useAccount } from "wagmi";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import Authentication from "~~/app/authentication/page";
 import { Listing_Data, Upcharge } from "~~/components/Types/userListingData";
+import { Button } from "~~/components/buttons/Button";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
@@ -163,8 +164,9 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     setUpcharges([...upcharges, { upcharge: "", value: "" }]);
   };
 
-  const updateUpchargeValue = (index: number, value: string | number, field: "upcharge" | "value") => {
-    const updatedUpcharges = upcharges.map((item, i) => (i === index ? { ...item, [field]: value } : item));
+  const updateUpchargeValue = (index, value, field) => {
+    const updatedValue = field === "value" ? Number(value) : value;
+    const updatedUpcharges = upcharges.map((item, i) => (i === index ? { ...item, [field]: updatedValue } : item));
     setUpcharges(updatedUpcharges);
   };
 
@@ -185,30 +187,32 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
       return; // Ensure all required fields are filled
     }
 
-    const listingID = await createListing(formData); // Assume createListing returns a unique ID for the product
-    const imageHash = "feafeafeafefae"; // Placeholder: Implement a method to hash or handle the image file appropriately
-
-    // Collect all arguments into an array
-    const args = [
-      formData.title,
-      formData.description,
-      parseInt(formData.price, 10), // Ensure price is an integer
-      parseInt(formData.quantityOfService, 10), // Ensure quantity is an integer
-      formData.serviceType, // Assuming `serviceType` maps to `_formSelectionType`
-      imageHash,
-      listingID,
-    ];
-
-    // Log the arguments to console for debugging
-    console.log("Submitting the following args to blockchain:", args);
-
-    // Check if all arguments are present
-    if (args.includes(undefined) || args.includes(null) || args.includes("")) {
-      console.error("One or more required arguments are missing:", args);
-      return; // Stop the function if any arguments are missing
-    }
-
+    // First, perform the database submission
     try {
+      const timeCreated = new Date().toISOString();
+      const completeData = {
+        ...formData,
+        timeCreated,
+        creator,
+        userWallet: address, // Assuming 'address' comes from useAccount() or similar context
+      };
+
+      const listingID = await createListing(completeData);
+      console.log("Form submission successful. ID:", listingID);
+
+      // Now handle the blockchain submission part
+      const imageHash = "yourImageHashingLogicHere"; // Implement your actual image hashing logic
+
+      const args = [
+        formData.title,
+        formData.description,
+        parseInt(formData.price, 10),
+        parseInt(formData.quantityOfService, 10),
+        formData.serviceType,
+        imageHash,
+        listingID,
+      ];
+
       await writeYourContractAsync({
         functionName: "createProduct",
         args: args,
@@ -216,12 +220,12 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           gasLimit: 300000, // Adjust gas limit as needed
         },
       });
+
       console.log("Product created on blockchain with listing ID:", listingID);
-      setTimeout(() => {
-        router.push(`/create/success/${listingID}`);
-      }, 3000);
+      router.push(`/create/success/${listingID}`);
     } catch (error) {
-      console.error("Error deploying to blockchain:", error);
+      console.error("Error during form handling:", error);
+      setIsSubmitting(false); // Update submission state
     }
   };
 
@@ -239,67 +243,64 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                 TITLE
               </label>
               <div className="mt-2">
-                <div className="flex rounded-md pl-2 bg-white/5 ring-1 ring-inset ring-white/10 focus-within:ring-2 focus-within:ring-inset focus-within:ring-indigo-500">
-                  <input
-                    type="title"
-                    name="title"
-                    id="title"
-                    autoComplete="title"
-                    className="pl-2  flex-1 border-0 bg-transparent py-1.5 pl-1 text-white focus:ring-0 sm:text-sm sm:leading-6"
-                    placeholder="Modern Urban Trench Coat"
-                    value={formData.title}
-                    onChange={handleInputChange}
-                  />
-                </div>
+                <input
+                  type="title"
+                  name="title"
+                  id="title"
+                  autoComplete="title"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  placeholder="Modern Urban Trench Coat"
+                  value={formData.title}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div className="col-span-full">
               <label htmlFor="description" className="block text-sm font-medium leading-6 text-white">
                 DESCRIPTION
               </label>
-              <div className="mt-2">
-                <textarea
-                  id="description"
-                  name="description"
-                  rows={3}
-                  className="pl-2  block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
-                  placeholder="Experience the blend of classic style and modern sustainability with our Modern Urban Trench Coat. Crafted from 100% recycled materials, this coat features a sleek, minimalist design perfect for the urban fashionista. The durable, water-resistant fabric makes it an ideal choice for any weather, while the stylish cut ensures you stay chic and comfortable."
-                  value={formData.description}
-                  onChange={handleInputChange}
-                />
-              </div>
-              <p className="mt-3 text-sm leading-6 text-gray-400">
+              <p className="mt-1 text-sm leading-6 text-gray-400">
                 Write a few sentences about the service you're providing.
               </p>
+
+              <textarea
+                id="description"
+                name="description"
+                rows={3}
+                className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                placeholder="Experience the blend of classic style and modern sustainability with our Modern Urban Trench Coat. Crafted from 100% recycled materials, this coat features a sleek, minimalist design perfect for the urban fashionista. The durable, water-resistant fabric makes it an ideal choice for any weather, while the stylish cut ensures you stay chic and comfortable."
+                value={formData.description}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="col-span-full">
               <label htmlFor="photo" className="block text-sm font-medium leading-6 text-white">
                 PHOTO
               </label>
 
-              <div className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10">
+              <label
+                htmlFor="photo"
+                className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10 cursor-pointer"
+              >
                 <div className="text-center justify-center">
                   <PhotoIcon className="mx-auto h-12 w-12 text-gray-500" aria-hidden="true" />
-                  <div className=" flex text-sm leading-6 text-gray-400">
-                    <label
-                      htmlFor="photo"
-                      className="relative cursor-pointer rounded-md bg-gray-900 font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500"
-                    >
-                      <span>Upload an image file</span>
-                      <input
-                        id="photo"
-                        name="photo"
-                        type="file"
-                        className="sr-only"
-                        value={formData.photo}
-                        onChange={handleInputChange}
-                      />
-                    </label>
-                    <p className="">or drag and drop</p>
+                  <div className="text-sm leading-6 text-gray-400">
+                    <span className="relative font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500">
+                      Upload an image file
+                    </span>
+                    <input
+                      id="photo"
+                      name="photo"
+                      type="file"
+                      className="sr-only"
+                      value={formData.photo}
+                      onChange={handleInputChange}
+                    />
+                    <p>or drag and drop</p>
                   </div>
                   <p className="text-xs leading-5 text-gray-400">PNG, JPG, GIF up to 10MB</p>
                 </div>
-              </div>
+              </label>
             </div>
 
             <div className="sm:col-span-3">
@@ -311,7 +312,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   type="number"
                   name="price"
                   id="price"
-                  className="pl-2  block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   placeholder="$249"
                   value={formData.price}
                   onChange={handleInputChange}
@@ -329,7 +330,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   id="includedFeatureOne"
                   autoComplete="given-name"
                   placeholder="Sustainable Materials"
-                  className="pl-2  block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={formData.features[0]?.feature || ""}
                   onChange={handleInputChange}
                 />
@@ -348,7 +349,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="includedFeatureTwo"
                   id="includedFeatureTwo"
                   placeholder="Fully local team"
-                  className="pl-2 block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={formData.features[1]?.feature || ""}
                   onChange={handleInputChange}
                 />
@@ -369,7 +370,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="city"
                   id="city"
                   autoComplete="address-level2"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={formData.location.split(",")[0] || ""}
                   onChange={handleInputChange}
                 />
@@ -386,7 +387,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="state"
                   id="state"
                   autoComplete="address-level1"
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={(formData.location.split(",")[1] || "").trim()} // Extract state from location
                   onChange={handleInputChange}
                 />
@@ -508,7 +509,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       min="1"
                       max="1000"
                       step="1"
-                      className="mt-2 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-sm leading-6 text-gray-700 shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-500 focus:ring-opacity-50"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                       placeholder="Enter quantity"
                       value={formData.quantityOfService}
                       onChange={handleInputChange}
@@ -521,45 +522,42 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
             <fieldset>
               <legend className="text-sm font-semibold leading-6 text-gray-400">
-                PREMIUM UPCHARGES TO THIS LISTING (OPTIONAL)
+                PREMIUM UPCHARGES TO THIS LISTING <span className="text-gray-500">(OPTIONAL)</span>
               </legend>
               <div className="mt-6 space-y-6">
                 {upcharges.map((item, index) => (
-                  <div key={index} className="relative flex gap-x-3">
+                  <div key={index} className="relative flex gap-x-1 items-center">
                     <input
                       type="text"
                       value={item.upcharge}
                       onChange={e => updateUpchargeValue(index, e.target.value, "upcharge")}
-                      className="block w-full rounded-md border border-gray-300 bg-white py-2 px-3 text-sm leading-6 text-gray-700"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                       placeholder="Extra person in session"
                     />
 
-                    <label htmlFor={`price-${index}`} className="block text-sm font-medium text-gray-900">
-                      Price
-                    </label>
-
-                    <div className="relative rounded-md shadow-sm">
+                    <div className="relative flex-1">
                       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <span className="text-gray-500 sm:text-sm">$</span>
+                        <span className="text-gray-300 sm:text-sm">$</span>
                       </div>
                       <input
                         type="number"
-                        name={`price-${index}`}
-                        id={`price-${index}`}
-                        className="block w-full rounded-md border-0 pl-7 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                        placeholder="0.00"
-                        aria-describedby={`price-currency-${index}`}
                         value={item.value}
                         onChange={e => updateUpchargeValue(index, e.target.value, "value")}
+                        className="text-right border border-gray-200/20 bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                        placeholder=""
                       />
-                      <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
+                      {/* <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
                         <span className="text-gray-500 sm:text-sm" id={`price-currency-${index}`}>
                           USD
                         </span>
-                      </div>
+                      </div> */}
                     </div>
 
-                    <button type="button" className="text-gray-200" onClick={() => deleteUpcharge(index)}>
+                    <button
+                      type="button"
+                      className="text-gray-200 hover:text-blue-400"
+                      onClick={() => deleteUpcharge(index)}
+                    >
                       Delete
                     </button>
                   </div>
@@ -578,18 +576,25 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           <button
             type="button"
             onClick={handleBlockchainSubmit}
-            className="rounded-md bg-gray-500 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+            className={`border border-gray-200/20 bg-gray-500/20 hover:border-green-600 text-right py-2 px-3 text-sm font-semibold text-gray-300
+              ${isSubmitting ? "bg-gray-700/20" : "focus:bg-gray-700/20 focus:border-green-400"}
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+              focus-visible:outline-indigo-500`}
           >
             {isSubmitting ? "LOADING ... " : "DEPLOY ON BLOCKCHAIN"}
           </button>
         )}
 
+        {/*               <Button className="inline-flex items-center ring-1 ring-gray-500 
+        gap-x-0.5 rounded-md bg-gray-800 border border-gray-700
+         px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+         */}
         <button
           type="submit"
-          className={`rounded-md px-3 py-2 text-sm font-semibold text-white shadow-sm
-                    ${isSubmitting ? "bg-gray-500 hover:bg-gray-500" : "bg-indigo-500 hover:bg-indigo-400"}
-                    focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-                    focus-visible:outline-indigo-500`}
+          className={`border border-gray-200/20 bg-gray-500/20 hover:border-blue-600 text-right py-2 px-3 text-sm font-semibold text-gray-300
+              ${isSubmitting ? "bg-gray-700/20" : "focus:bg-gray-700/20 focus:border-blue-400"}
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+              focus-visible:outline-indigo-500`}
           disabled={isSubmitting}
         >
           {isSubmitting ? "LOADING ..." : "CREATE LISTING"}
