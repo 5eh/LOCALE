@@ -1,16 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { ImGithub, ImInstagram, ImYoutube } from "react-icons/im";
+import { ImInstagram, ImYoutube } from "react-icons/im";
+import { getAddress } from "viem";
+import { useAccount } from "wagmi";
 import { ArrowLeftCircleIcon, ArrowRightCircleIcon, CheckIcon, EnvelopeOpenIcon } from "@heroicons/react/24/outline";
 import Authentication from "~~/app/authentication/page";
 import { Button } from "~~/components/buttons/Button";
 import Ratings from "~~/components/ratings";
 import { WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import creators from "~~/routes/listings/creators";
-
-// import listings from "~~/routes/listings/listings";
+import listings from "~~/routes/listings/listings";
 
 const reviews = [
   {
@@ -40,31 +40,6 @@ const reviews = [
   },
 ];
 
-const listings = [
-  {
-    id: "6628438ca1f4c21b65e1eec7",
-    date: "2023 - AUG 24",
-    price: "540",
-    location: "Austin Texas",
-    description:
-      "This is something absolutely fantastic about something that is glamourous, epic, fanatic, unique and epically epic.",
-  },
-  {
-    id: "65db6ee33d1f4aaa6a5f6759",
-    date: "2023 - JUN 12",
-    price: "610",
-    location: "Austin Texas",
-    description: "This is an in-depth description about something super cool...",
-  },
-  {
-    id: "65c54a61b6e95e848b6c7b88",
-    date: "2023 - FEB 16",
-    price: "210",
-    location: "Austin Texas",
-    description: "This is an in-depth description about something super cool...",
-  },
-];
-
 const portfolioPictures = [
   {
     src: "https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -91,32 +66,53 @@ export default function Page() {
   const [currentReviewIndex, setCurrentReviewIndex] = useState(0);
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
+  const { address, isConnected } = useAccount();
+  const [listingsData, setListingsData] = useState([]);
+  const [walletListings, setWalletListings] = useState([]); // New state for listings by wallet
 
   useEffect(() => {
-    const userEmail = localStorage.getItem("userEmail");
-    setEmail(userEmail);
-  }, []);
+    if (isConnected && address) {
+      console.log("Connected Address:", getAddress(address)); // Log the checksummed address
+    } else {
+      console.log("No wallet connected");
+    }
+  }, [address, isConnected]);
 
   useEffect(() => {
-    const fetchUser = async () => {
+    console.log("Checking connection and address:", { isConnected, address });
+    const fetchUserData = async () => {
       setIsLoading(true);
       try {
+        const fetchedListingData = await listings();
+        const fetchedCreatorsData = await creators();
         const userEmail = localStorage.getItem("userEmail");
-        if (!userEmail) {
-          setIsLoading(false);
-          return;
+
+        if (userEmail) {
+          setEmail(userEmail);
+          const matchingUser = fetchedCreatorsData.find(u => u.email === userEmail);
+          setUser(matchingUser);
+
+          if (matchingUser) {
+            const matchingListings = fetchedListingData.filter(listing => listing.creator === matchingUser._id);
+            setListingsData(matchingListings);
+          }
+
+          if (address) {
+            const listingsByWallet = fetchedListingData.filter(listing => listing.userWallet === address);
+            setWalletListings(listingsByWallet); // Update state for wallet listings
+            console.log("Listings by Wallet Address:", listingsByWallet);
+          }
+        } else {
+          setEmail(null);
         }
-        const fetchedUserData = await creators();
-        const matchingUser = fetchedUserData.find(u => u.email === userEmail);
-        setUser(matchingUser);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
       setIsLoading(false);
     };
 
-    fetchUser();
-  }, []);
+    fetchUserData();
+  }, [address, isConnected]);
 
   const currentReview = reviews[currentReviewIndex];
 
@@ -128,6 +124,20 @@ export default function Page() {
     setCurrentReviewIndex(prevIndex => (prevIndex < reviews.length - 1 ? prevIndex + 1 : 0));
   };
 
+  const [shipStatus, setShipStatus] = useState("SHIP NOW"); // Initial button state
+  const handleShip = async () => {
+    // Create contract that gets the value of the listing and sends it to the creator
+
+    setShipStatus("LOADING");
+    try {
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setShipStatus("CONFIRMED");
+    } catch (error) {
+      console.error("Shipping failed:", error);
+      setShipStatus("SHIP NOW");
+    }
+  };
+
   if (!email) {
     return <Authentication />;
   }
@@ -135,14 +145,13 @@ export default function Page() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
   return (
     <>
       <div id="main" className="mx-auto mt-12 pt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
-        {WEB3_FUNCTIONALITY && (
+        {WEB3_FUNCTIONALITY && walletListings.length > 0 && (
           <div className="rounded w-full grid grid-cols-5 gap-4 pb-6">
-            <div className="flex flex-col   gap-[calc(20%-1rem)]">
-              <Button className="text-left border border-white w-full bg-gray-500/20  py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
+            <div className="flex flex-col gap-[calc(20%-1rem)]">
+              <Button className="text-left border border-white w-full bg-gray-500/20 py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
                 UNFULFILLED
               </Button>
               <Button className="text-left border border-white w-full bg-gray-500/20 py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
@@ -152,13 +161,30 @@ export default function Page() {
                 ANALYTICS
               </Button>
             </div>
-            <div className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm  hover:border-white">
-              <p>| LISTING DATE</p>
-              <p>| EARNINGS RATE</p>
-              <p>| DELIVERY INFORMATION?</p>
-              <Button className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
-                SHIPPED
-              </Button>
+
+            <div className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm hover:border-white">
+              {walletListings.map((listing, index) => {
+                return (
+                  <div key={`wallet-${index}`}>
+                    <p>| {listing.title}</p>
+                    <p>{listing.price} WEI</p>
+                    <p className="text-green-300">LISTING ADDRESS</p>
+                    <Button
+                      className={`text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none`}
+                      onClick={handleShip}
+                    >
+                      {shipStatus}
+                    </Button>
+                    <Button
+                      className={`text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none`}
+                    >
+                      <a href={`/explore/${listing.id}`}>
+                        VIEW LISTING
+                      </a>
+                    </Button>
+                  </div>
+                );
+              })}
             </div>
           </div>
         )}
@@ -200,8 +226,11 @@ export default function Page() {
             </div>
 
             <div className="gap-4">
-              {user.badges.map(badge => (
-                <span className="ml-2 mr-2 align-center inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
+              {user.badges.map((badge, index) => (
+                <span
+                  key={`badge-${index}`}
+                  className="ml-2 mr-2 align-center inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10"
+                >
                   {badge}
                 </span>
               ))}
@@ -287,7 +316,7 @@ export default function Page() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pt-4">
           {/* Listings & Contact Section (MAP THEN ARRAY) */}
           <div className="col-span-1 ">
-            {listings.map(listing => (
+            {listingsData.map(listing => (
               <div key={listing.id}>
                 <a href={`/explore/purchase/${listing.id}`}>
                   <div className="bg-gray-800/20 hover:bg-gray-700/20 p-4 shadow rounded-lg mt-2 mb-2">

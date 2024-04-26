@@ -8,7 +8,6 @@ import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaf
 import {
   COMPANY,
   MARKETPLACE_TEMPLATE_TYPE,
-  SALE_PERCENTAGE_CHARGE,
   WEB3_FUNCTIONALITY,
 } from "~~/marketplaceVariables";
 import creators from "~~/routes/listings/creators";
@@ -48,7 +47,7 @@ export default function Purchase({ params }: PageProps) {
       }));
     }
   };
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -458,25 +457,25 @@ export default function Purchase({ params }: PageProps) {
           </div>
         )} */}
 
-        <div className="col-span-1">
+        {/* <div className="col-span-1">
           <div className="border-2 border-white shadow sm:rounded-lg">
             <div className="px-4 py-5 sm:p-6">
               <h3 className="text-base font-semibold leading-6 text-gray-100">INCLUDED FEATURES</h3>
-              {/* Map out upcharges (Upcharge = description) and (Value = price) */}
-              {/* {listing?.upcharges[0]} */}={" "}
+              Map out upcharges (Upcharge = description) and (Value = price)
+              {listing?.upcharges[0]}
             </div>
           </div>
-        </div>
+        </div> */}
 
-        <div className="col-span-1">
+        {/* <div className="col-span-1">
           <div className="border-2 border-blue-400 shadow sm:rounded-lg">
-            <div className="px-4 py-5 sm:p-6">
-              <h3 className="text-base font-semibold leading-6 text-gray-100">PREMIUM FEATURES</h3>
-              {/* Map out upcharges (Upcharge = description) and (Value = price) */}
-              {/* {listing?.upcharges[0]} */}
-            </div>
-          </div>
-        </div>
+             <div className="px-4 py-5 sm:p-6">
+               <h3 className="text-base font-semibold leading-6 text-gray-100">PREMIUM FEATURES</h3>
+               Map out upcharges (Upcharge = description) and (Value = price)
+               {listing?.upcharges[0]}
+             </div>
+           </div>
+         </div> */}
       </div>
 
       {WEB3_FUNCTIONALITY && (

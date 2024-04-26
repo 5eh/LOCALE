@@ -14,9 +14,6 @@ import { Listing_Data } from "~~/components/Types/userListingData";
 import { Button } from "~~/components/buttons/Button";
 import Ratings from "~~/components/ratings";
 
-// src/app/explore/listings.tsx
-
-/* ESLINT-DISABLE */
 
 interface DataProps {
   creator: Service_Provider | undefined | null;
@@ -28,7 +25,6 @@ export default function Listings({ creator, listing }: DataProps) {
   const [selectedListing, setSelectedListing] = useState<Listing_Data | undefined>(undefined);
   const [selectedCreator, setSelectedCreator] = useState<Service_Provider | undefined>(undefined);
 
-  // To handle the checkout process
   const router = useRouter();
 
   const handleCheckout = () => {
@@ -60,23 +56,23 @@ export default function Listings({ creator, listing }: DataProps) {
                 <div className="mx-auto max-w-7xl ">
                   <div className="mx-auto max-w-2xl  bg-gray-900/95 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
                     <div className=" sm:p-10 lg:flex-auto">
-                      <h3 className="text-2xl font-bold tracking-tight text-gray-200">
+                      <h3 className="text-2xl font-bold text-gray-200">
                         {selectedListing?.title ? selectedListing.title.toUpperCase() : "Unknown"}
                       </h3>
                       <div className="flex gap-2 center">
-                        <p className="text-base leading-7 text-gray-100">${selectedListing?.price}</p>
-                        <p className="text-base leading-7 text-gray-300">{selectedListing?.location.toUpperCase()}</p>
+                        <p className="text-base text-gray-100">${selectedListing?.price}</p>
+                        <p className="text-base text-gray-400">{selectedListing?.location.toUpperCase()}</p>
                       </div>
-                      <p className="text-base leading-7 text-gray-400 italic">
+                      <p className="text-base text-gray-400 italic">
                         {selectedListing?.serviceType ? selectedListing.serviceType.toUpperCase() : "UNDEFINED"}
                       </p>
 
-                      <p className="mt-2 text-base leading-7 text-gray-300">{selectedListing?.description}</p>
+                      <p className="text-base leading-7 text-gray-300">{selectedListing?.description}</p>
 
                       <div className="mt-10 flex items-center gap-x-2">
-                        <h4 className="flex-none text-sm font-semibold leading-6 text-indigo-600">
-                          {creator.name.toUpperCase()}
-                        </h4>
+                        <p className="flex-none text-sm font-semibold leading-6 text-indigo-600">
+                          <a href={`/${creator.username}`}>{creator.name.toUpperCase()}</a>
+                        </p>
 
                         <span className="inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
                           VERIFIED
@@ -90,7 +86,7 @@ export default function Listings({ creator, listing }: DataProps) {
                         <div className="h-px flex-auto bg-gray-300" />
                       </div>
                       <div className="flex mt-2 mr-2 pl-1 pb-1">
-                        <a href={`/profile/${creator.username}`}>
+                        <a href={`/${creator.username}`}>
                           <span className="relative inline-block">
                             <img className="h-24 w-24 rounded-md" src={creator?.profilePicture} alt="" />
                           </span>
@@ -101,26 +97,21 @@ export default function Listings({ creator, listing }: DataProps) {
                           <p className="text-base leading-7 text-gray-100">{creator?.amountOfReviews} REVIEWS</p>
 
                           <p className="text-base leading-7 text-gray-400 italic">
-                            {creator?.bio ? creator.bio : "No bio available"}
+                            {creator?.about.bio ? creator.about.bio : "No bio available"}
                           </p>
                         </div>
                       </div>
-                      <p>
-                        <a href={creator.media.mediaLinkOne} className="text-base leading-7 text-gray-400 italic">
-                          {creator.media.mediaLinkOne}
-                        </a>
-                      </p>
-                      <p>
-                        <a href={creator.media.mediaLinkTwo} className="text-base leading-7 text-gray-400 italic">
-                          {" "}
-                          {creator.media.mediaLinkTwo}
-                        </a>
-                      </p>
-                      <p>
-                        <a href={creator.media.mediaLinkThree} className="text-base leading-7 text-gray-400 italic">
-                          {creator.media.mediaLinkThree}
-                        </a>
-                      </p>
+
+                      <span className="inline-flex items-center pl-1 pr-1 ml-1 mr-1 bg-gray-200/10 px-2 py-1 text-xs font-medium text-pink-300 ring-1 ring-inset ring-pink-400/20">
+                        <a href={creator.media.mediaLinkOne}>INSTAGRAM</a>
+                      </span>
+                      <span className="inline-flex items-center pl-1 pr-1 ml-1 mr-1 bg-white/10 px-2 py-1 text-xs font-medium text-yellow-500 ring-1 ring-inset ring-yellow-400/20">
+                        <a href={creator.media.mediaLinkTwo}> LINKEDIN</a>
+                      </span>
+
+                      <span className="inline-flex items-center pl-1 pr-1 ml-1 mr-1 bg-red-400/10 px-2 py-1 text-xs font-medium text-red-400 ring-1 ring-inset ring-red-400/30">
+                        <a href={creator.media.mediaLinkThree}>YOUTUBE</a>
+                      </span>
                     </div>
 
                     <div className="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:flex-shrink-0">
@@ -196,7 +187,10 @@ export function HoverName(props: DataProps) {
   const renderFeatures = () => {
     if (Array.isArray(listing.features) && listing.features.length > 0) {
       return listing.features.map((feature, index) => (
-        <div key={index} className="flex z-10 items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md">
+        <div
+          key={index}
+          className="flex z-10 items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md"
+        >
           <CheckCircleIcon width={24} height={24} className="m-3" />
           <p className="text-sm flex-1 text-left">
             {feature.feature}: {feature.value}
@@ -217,14 +211,12 @@ export function HoverName(props: DataProps) {
       </HoverCardTrigger>
       <HoverCardContent className="w-80 text-white z-10 bg-gray-900">
         <div className="flex justify-between space-x-4">
-          <div className="space-y-1">
-            <div className="text-sm flex gap-2">
+          <div className="">
+            <div className="text-sm">
               <p className="bold">{creator ? creator.name : "Unknown"}</p>
-              <div className="text-gray-400 italic cursor-pointer">
-                <Link href={`/profile/${creator ? creator.username : ""}`}>
-                  {creator ? "@" + creator.username : "Unknown"}
-                </Link>
-              </div>
+              <p className="text-gray-400 italic cursor-pointer">
+                <Link href={`/${creator ? creator.username : ""}`}>{creator ? "@" + creator.username : "Unknown"}</Link>
+              </p>
             </div>
             <div className="text-sm flex">
               {creator && creator.rating !== undefined ? (
@@ -242,11 +234,11 @@ export function HoverName(props: DataProps) {
 
             <div className="text-xs text-gray-600">
               {listing.quantityOfService === 1 ? (
-                <p className="text-red-400">ONE TIME SERVICE</p>
+                <p className="text-red-400">ONE REMAINING</p>
               ) : listing.quantityOfService > 1 && listing.quantityOfService <= 5 ? (
-                <p className="text-red-200">FEW SPOTS LEFT </p>
+                <p className="text-red-200">FEW PRODUCTS LEFT </p>
               ) : (
-                <p>{listing.quantityOfService} REMAINING SPOTS FOR BOOKING</p>
+                <p className='text-green-400'>{listing.quantityOfService} REMAINING PRODUCTS</p>
               )}
             </div>
           </div>

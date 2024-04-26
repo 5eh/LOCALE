@@ -37,9 +37,9 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     title: "",
     description: "",
     price: 0,
-    photo: "",
+    photo: "https://images.halloweencostumes.co.uk/products/41043/1-1/mens-prehistoric-t-rex-costume.jpg",
     location: "",
-    quantityOfService: 1,
+    quantityOfService: 5,
     features: [],
     upcharges: [],
     creator: "",
@@ -176,32 +176,27 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     setUpcharges(newUpcharges);
   };
 
-  // If Web3 is enabled, when user presses Deploy on blockchain, then the form will be submitted to the blockchain
-  // Otherwise, the form will be submitted to the backend
-
   const { writeContractAsync: writeYourContractAsync } = useScaffoldWriteContract("CommerceContract");
 
   const handleBlockchainSubmit = async () => {
     if (!formData.title || !formData.description || !formData.price || !formData.quantityOfService || !formData.photo) {
       console.error("All fields must be filled out");
-      return; // Ensure all required fields are filled
+      return;
     }
 
-    // First, perform the database submission
     try {
       const timeCreated = new Date().toISOString();
       const completeData = {
         ...formData,
         timeCreated,
         creator,
-        userWallet: address, // Assuming 'address' comes from useAccount() or similar context
+        userWallet: address,
       };
 
       const listingID = await createListing(completeData);
       console.log("Form submission successful. ID:", listingID);
 
-      // Now handle the blockchain submission part
-      const imageHash = "yourImageHashingLogicHere"; // Implement your actual image hashing logic
+      const imageHash = "yourImageHashingLogicHere";
 
       const args = [
         formData.title,
@@ -293,8 +288,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       name="photo"
                       type="file"
                       className="sr-only"
-                      value={formData.photo}
-                      onChange={handleInputChange}
+                      // value={formData.photo}
+                      // onChange={handleInputChange}
                     />
                     <p>or drag and drop</p>
                   </div>
@@ -305,7 +300,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
             <div className="sm:col-span-3">
               <label htmlFor="price" className="block text-sm font-medium leading-6 text-white">
-                TOTAL SERVICE PRICE
+                TOTAL PRICE
               </label>
               <div className="mt-2">
                 <input
@@ -318,6 +313,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   onChange={handleInputChange}
                 />
               </div>
+              <span> IN WEI </span>
             </div>
             <div className="sm:col-span-3">
               <label htmlFor="includedFeatureOne" className="block text-sm font-medium leading-6 text-white">
@@ -362,13 +358,14 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-2 sm:col-start-1">
               <label htmlFor="city" className="block text-sm font-medium leading-6 text-white">
-                CITY OF SERVICE PROVIDED
+                CITY
               </label>
               <div className="mt-2">
                 <input
                   type="text"
                   name="city"
                   id="city"
+                  placeholder="Austin"
                   autoComplete="address-level2"
                   className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={formData.location.split(",")[0] || ""}
@@ -379,7 +376,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
             <div className="sm:col-span-2">
               <label htmlFor="region" className="block text-sm font-medium leading-6 text-white">
-                STATE / PROVINCE OF SERVICE PROVIDED
+                STATE / PROVINCE
               </label>
               <div className="mt-2">
                 <input
@@ -387,6 +384,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="state"
                   id="state"
                   autoComplete="address-level1"
+                  placeholder="Texas"
                   className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
                   value={(formData.location.split(",")[1] || "").trim()} // Extract state from location
                   onChange={handleInputChange}
@@ -492,7 +490,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                     <label htmlFor="quantityOfService" className="font-medium text-white">
                       Unlimited
                     </label>
-                    <p className="text-gray-400">Your listings will remain public until you delete them.</p>
+                    <p className="text-gray-400">Your listings will remain public until you delete the post.</p>
                   </div>
                 </div>
 
@@ -500,7 +498,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   <div className="flex h-6 items-center"></div>
                   <div className="text-sm leading-6">
                     <label htmlFor="quantityOfService" className="font-medium text-white">
-                      Service Quantity
+                      QUANTITY
                     </label>
                     <input
                       type="number"
@@ -514,7 +512,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       value={formData.quantityOfService}
                       onChange={handleInputChange}
                     />
-                    <p className="text-gray-400 mt-2">Enter the limit of this service you will provide.</p>
+                    <p className="text-gray-400 mt-2">Available quantity.</p>
                   </div>
                 </div>
               </div>
@@ -532,7 +530,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       value={item.upcharge}
                       onChange={e => updateUpchargeValue(index, e.target.value, "upcharge")}
                       className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
-                      placeholder="Extra person in session"
+                      placeholder="Extra product half off"
                     />
 
                     <div className="relative flex-1">
