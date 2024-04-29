@@ -29,7 +29,8 @@ A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODER
 
 ### Contract
 
-| Name          | DC          | TG          | Mail                   |
-| :------------ | :---------- | :---------- | :--------------------- |
-| Watson        |             |             |                        |
-| Frank Dierolf | `frankbevr` | `frankbevr` | `frank_dierolf@web.de` |
+| Name           | DC            | TG           | Mail                        |
+| :------------- | :------------ | :----------- | :-------------------------- |
+| Watson         |               |              |                             |
+| Frank Dierolf  | `frankbevr`   | `frankbevr`  | `frank_dierolf@web.de`      |
+| Opeyemi Oginni | `obo.baddest` | `McFarts_II` | `brightoginni123@gmail.com` |
