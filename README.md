@@ -1,4 +1,4 @@
-# LOCALE 
+# LOCALE
 
 <h4 align="center">
   <a href="https://ocovos.com">OCOVOS</a> |
@@ -12,6 +12,7 @@ A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODER
 ## Installation
 
 (Requires YARN, NPM and NODE)
+
 1. `Git clone https://github.com/5eh/LOCALE.git` : Install Repository
 2. `cd packages/nextjs` : Root of marketplace
 3. `npm install` : In NextJS root
@@ -20,9 +21,15 @@ A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODER
 6. `yarn install` : Install yarn dependencies (Doing this before npm install in the packages/nextjs will likely cause you to reinstall packages after package is locked)
 7. `yarn chain` : Begin Contract
 8. `Ctrl + Shift + 5` : Open new terminal
-9.  `cd packages/nextjs` : Reenter NextJS root
+9. `cd packages/nextjs` : Reenter NextJS root
 10. `npm run dev` : Begin localhost
 11. `Ctrl + Shift + 5` : Open new terminal
 12. `node server` : Test database connection
 13. COMPLETE
 
+### Contract
+
+| Name          | DC          | TG          | Mail                   |
+| :------------ | :---------- | :---------- | :--------------------- |
+| Watson        |             |             |                        |
+| Frank Dierolf | `frankbevr` | `frankbevr` | `frank_dierolf@web.de` |
