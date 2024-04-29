@@ -31,6 +31,6 @@ A JOINT VENTURE COLLABORATION TO BRING DEVELOPMENT TO THE REAL WORLD USING MODER
 
 | Name           | DC            | TG           | Mail                        |
 | :------------- | :------------ | :----------- | :-------------------------- |
-| Watson         |               |              |                             |
+| Watson         | `watsonlr`    | `watsonlr`   | `wlewisrodriguez@gmail.com` |
 | Frank Dierolf  | `frankbevr`   | `frankbevr`  | `frank_dierolf@web.de`      |
 | Opeyemi Oginni | `obo.baddest` | `McFarts_II` | `brightoginni123@gmail.com` |
