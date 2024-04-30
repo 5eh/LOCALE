@@ -4,7 +4,41 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "hello": "node ./index.js"
+    "hello": "node ./index.js",
+    "moonbase-local": "dotenv -e .env babel-node src/moonbeam/moonbase-local.js",
+    "test-moonbase-contract": "dotenv -e .env babel-node src/moonbeam/test-moonbase-contract/index.js"
+  },
+  "dependencies": {
+    "@oak-network/adapter": "0.2.6",
+    "@oak-network/api-augment": "2.1.2",
+    "@oak-network/config": "1.0.5",
+    "@oak-network/sdk": "0.2.3",
+    "@oak-network/types": "2.1.0",
+    "@polkadot/api": "^10.11.2",
+    "@polkadot/keyring": "^12.3.2",
+    "@polkadot/util": "^12.3.2",
+    "@polkadot/util-crypto": "^12.3.2",
+    "bn.js": "^5.2.1",
+    "web3": "^4.1.2",
+    "@inquirer/confirm": "^2.0.10",
+    "@inquirer/select": "^1.2.9",
+    "chalk-pipe": "^4.0.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "moment-timezone": "^0.5.38",
+    "@mangata-finance/sdk": "^1.20.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/eslint-parser": "^7.19.1",
+    "@babel/node": "^7.20.2",
+    "@babel/preset-env": "^7.20.2",
+    "dotenv-cli": "^6.0.0",
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-visitor-keys": "^3.3.0",
+    "ts-node": "^10.9.1"
   },
   "author": "",
   "license": "ISC"
