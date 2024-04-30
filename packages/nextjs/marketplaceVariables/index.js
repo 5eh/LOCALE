@@ -41,6 +41,9 @@ export const TOAST_COLOR = "#FFFFFF";
 export const TOAST_PADDING = "0 0 0 0";
 export const TOAST_FONTWEIGHT = "lighter";
 
+// Color Scheme
+export const PRIMARY_COLOR = "#385183";
+
 // Database Format
 export const MONGODB_USER = "watsonlr";
 export const MONGODB_PASS = "test";

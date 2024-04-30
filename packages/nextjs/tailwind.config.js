@@ -1,4 +1,8 @@
+import { PRIMARY_COLOR } from '../nextjs/marketplaceVariables/index'
+
 /** @type {import('tailwindcss').Config} */
+
+
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}", "./utils/**/*.{js,ts,jsx,tsx}"],
   plugins: [require("daisyui")],
@@ -9,7 +13,7 @@ module.exports = {
     themes: [
       {
         light: {
-          primary: "#93BBFB",
+          primary: `${PRIMARY_COLOR}`,
           "primary-content": "#212638",
           secondary: "#DAE8FF",
           "secondary-content": "#212638",
