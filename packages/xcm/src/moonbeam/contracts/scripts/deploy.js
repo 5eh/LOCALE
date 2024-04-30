@@ -18,6 +18,7 @@ const deployContract = async (contractName) => {
 async function main() {
   // await deployContract('Box');
   await deployContract("Incrementer");
+  await deployContract("PriceOracle");
 }
 
 main()
