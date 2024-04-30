@@ -8,6 +8,7 @@
     "packages/xcm"
   ],
   "scripts": {
+    "setup": "node setup.js",
     "hello": "cd packages/xcm && npm run hello",
     "account": "cd packages/hardhat && npm run account",
     "chain": "cd packages/hardhat && npm run chain",
