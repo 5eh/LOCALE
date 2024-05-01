@@ -23,6 +23,7 @@
     "bcrypt": "^5.1.1",
     "blo": "^1.0.1",
     "class-variance-authority": "^0.7.0",
+    "classnames": "^2.5.1",
     "daisyui": "4.5.0",
     "dotenv": "^16.4.5",
     "i": "^0.3.7",

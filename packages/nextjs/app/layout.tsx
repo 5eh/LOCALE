@@ -60,7 +60,7 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
   return (
     <html suppressHydrationWarning>
       <body>
-        <div className="bg-gray-900">
+        <div className="dark:bg-gray-900 bg-gray-100">
           <header className="absolute inset-x-0 top-0 mt-10 mb-2 z-1">
             <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
               <div className="flex lg:flex-1">
