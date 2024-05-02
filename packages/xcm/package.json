@@ -9,6 +9,9 @@
     "test-moonbase-contract": "dotenv -e .env babel-node src/moonbeam/test-moonbase-contract/index.js"
   },
   "dependencies": {
+    "@inquirer/confirm": "^2.0.10",
+    "@inquirer/select": "^1.2.9",
+    "@mangata-finance/sdk": "^1.20.1",
     "@oak-network/adapter": "0.2.6",
     "@oak-network/api-augment": "2.1.2",
     "@oak-network/config": "1.0.5",
@@ -19,14 +22,12 @@
     "@polkadot/util": "^12.3.2",
     "@polkadot/util-crypto": "^12.3.2",
     "bn.js": "^5.2.1",
-    "web3": "^4.1.2",
-    "@inquirer/confirm": "^2.0.10",
-    "@inquirer/select": "^1.2.9",
     "chalk-pipe": "^4.0.0",
+    "ethers": "^6.12.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "moment-timezone": "^0.5.38",
-    "@mangata-finance/sdk": "^1.20.1"
+    "web3": "^4.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
