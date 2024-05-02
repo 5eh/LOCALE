@@ -2,32 +2,31 @@ import { hexToU8a } from "@polkadot/util";
 import Keyring from "@polkadot/keyring";
 import { cryptoWaitReady } from "@polkadot/util-crypto";
 import { chains } from "@oak-network/config";
-import { askScheduleAction } from "../common/utils";
-import { scheduleTask } from "./common";
+import { askScheduleAction } from "../common/utils.js";
+import { scheduleTask } from "./common.js";
 import Web3 from "web3";
-import ethers from "ethers";
+import * as ethers from "ethers";
 
 const web3 = new Web3("http://localhost:8545");
 
-const INCREMENTER_CONTRACT_ADDRESS =
-  "0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8";
 const INCREMENTER_CONTRACT_INPUT = "0xd09de08a";
-
-const ORACLE_CONTRACT_ADDRESS = "0xa72f549a1a12b9b49f30a7f3aeb1f4e96389c5d8";
+const INCREMENTER_CONTRACT_ADDRESS =
+  "0xc01Ee7f10EA4aF4673cFff62710E1D7792aBa8f3";
+const ORACLE_CONTRACT_ADDRESS = "0x970951a12F975E6762482ACA81E57D5A2A4e73F4";
 
 const functionName = "setTokenPrice"; // replace with your function name
 const parameterTypes = ["uint256"]; // replace with your parameter types
-const parameters = [ethers.parseEther(100)]; // replace with your parameters
+const parameters = [ethers.parseEther("100")]; // replace with your parameters
 
 // Get the function signature
 const functionSignature = web3.eth.abi.encodeFunctionSignature(
-  `${functionName}(${parameterTypes.join(",")})`
+  `${functionName}(${parameterTypes.join(",")})`,
 );
 
 // Encode the parameters
 const encodedParameters = web3.eth.abi.encodeParameters(
   parameterTypes,
-  parameters
+  parameters,
 );
 
 // Get the input for the contract
@@ -48,7 +47,7 @@ const main = async () => {
   const moonbeamKeyringPair = keyring.addFromSeed(
     hexToU8a(ALITH_PRIVATE_KEY),
     undefined,
-    "ethereum"
+    "ethereum",
   );
   moonbeamKeyringPair.meta.name = "Alith";
 
@@ -57,6 +56,7 @@ const main = async () => {
   const {
     DevChains: { turingLocal, moonbaseLocal },
   } = chains;
+  console.log("START: Sheduleing incremneter");
   await scheduleTask({
     oakConfig: turingLocal,
     moonbeamConfig: moonbaseLocal,
@@ -68,7 +68,9 @@ const main = async () => {
     keyringPair,
     moonbeamKeyringPair,
   });
+  console.log("DONE: Sheduleing incremneter");
 
+  console.log("START: Sheduleing oracle");
   await scheduleTask({
     oakConfig: turingLocal,
     moonbeamConfig: moonbaseLocal,
@@ -80,6 +82,7 @@ const main = async () => {
     keyringPair,
     moonbeamKeyringPair,
   });
+  console.log("DONE: Sheduleing oracle");
 };
 
 main()

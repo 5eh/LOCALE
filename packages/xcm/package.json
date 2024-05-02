@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "hello": "node ./index.js",
-    "moonbase-local": "dotenv -e .env babel-node src/moonbeam/moonbase-local.js",
+    "moonbase-local": "dotenv -e .env babel-node ./src/moonbeam/moonbase-local.js",
     "test-moonbase-contract": "dotenv -e .env babel-node src/moonbeam/test-moonbase-contract/index.js"
   },
   "dependencies": {

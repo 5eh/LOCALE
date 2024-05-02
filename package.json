@@ -30,12 +30,10 @@
     "next:format": "cd packages/nextjs && npm run format",
     "next:check-types": "cd packages/nextjs && npm run check-types",
     "next:build": "cd packages/nextjs && npm run build",
-    "postinstall": "husky install",
     "precommit": "lint-staged",
     "vercel": "cd packages/nextjs && npm run vercel",
     "vercel:yolo": "cd packages/nextjs && npm run vercel:yolo"
   },
-  "packageManager": "npm@8.x",
   "devDependencies": {
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
