@@ -3,6 +3,7 @@
 import React, { Fragment, useState } from "react";
 import Listings from "./listings";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
+import classNames from "classnames";
 import { ChevronDownIcon, FunnelIcon, MinusIcon, PlusIcon } from "@heroicons/react/20/solid";
 import { XMarkIcon } from "@heroicons/react/24/outline";
 import { Service_Provider } from "~~/components/Types/publicUserData";
@@ -145,16 +146,16 @@ export default function Sorting({ listing, creator }: SortingProps) {
         </Transition.Root>
 
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex items-baseline justify-between border-b border-gray-200 mb-6 mt-24">
-            <h2 className="pt-4 text-4xl font-bold tracking-tight text-gray-300">EXPLORE</h2>
+          <div className="flex items-baseline justify-between border-b border-gray-900 dark:border-gray-200 mb-6 mt-24">
+            <h2 className="pt-4 text-4xl font-bold tracking-tight text-gray-900 dark:text-gray-300">EXPLORE</h2>
 
             <div className="flex items-center">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <Menu.Button className="group inline-flex justify-center text-sm font-medium  text-gray-300 hover:text-gray-300">
+                  <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-900 dark:text-gray-300 hover:text-gray-300">
                     Sort
                     <ChevronDownIcon
-                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-100 group-hover:text-gray-300"
+                      className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-900 dark:text-gray-100 group-hover:text-gray-300"
                       aria-hidden="true"
                     />
                   </Menu.Button>
@@ -169,7 +170,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute bg-gray-900 right-0 lg:z-10 sm:z-2 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute border border-gray-900 bg-gray-400/20 dark:bg-gray-900 right-0 lg:z-10 sm:z-2 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       {sortOptions.map(option => (
                         <Menu.Item key={option.name}>
@@ -177,8 +178,8 @@ export default function Sorting({ listing, creator }: SortingProps) {
                             <a
                               href={option.href}
                               className={classNames(
-                                option.current ? "font-medium text-gray-300" : "text-gray-500",
-                                active ? "bg-gray-100" : "",
+                                option.current ? "font-medium text-primary dark:text-gray-200" : " dark:text-gray-500",
+                                active ? "bg-red-100 text-primary dark:text-primary" : "",
                                 "block px-4 py-2 text-sm",
                               )}
                             >
@@ -194,7 +195,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
 
               <button
                 type="button"
-                className="-m-2 ml-4 p-2 text-gray-300   hover:text-gray-500 sm:ml-6 lg:hidden"
+                className="-m-2 ml-4 p-2 text-gray-700 hover:text-gray-900 dark:text-gray-100 dark:hover:text-gray-200 sm:ml-6 lg:hidden"
                 onClick={() => setMobileFiltersOpen(true)}
               >
                 <span className="sr-only">Filters</span>
@@ -212,26 +213,29 @@ export default function Sorting({ listing, creator }: SortingProps) {
               {/* Filters */}
               <form className="hidden lg:block">
                 <h3 className="sr-only">Categories</h3>
-                <ul role="list" className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-300">
+                <ul
+                  role="list"
+                  className="space-y-4 border-b border-gray-800  dark:border-gray-200 pb-6 text-sm font-medium text-gray-300"
+                >
                   {subCategories.map(category => (
                     <li key={category.name}>
-                      <a href={category.href}>{category.name}</a>
+                      <a href={category.href} className='text-gray-800 dark:text-gray-300'>{category.name}</a>
                     </li>
                   ))}
                 </ul>
 
                 {filters.map(section => (
-                  <Disclosure as="div" key={section.id} className="border-b border-gray-200 py-6">
+                  <Disclosure as="div" key={section.id} className="border-b  border-gray-800 dark:border-gray-200 py-6">
                     {({ open }) => (
                       <>
                         <h3 className="-my-3 flow-root">
                           <Disclosure.Button className="flex w-full items-center justify-between  py-3 text-sm text-gray-300 hover:text-gray-400">
-                            <span className="font-medium text-gray-300">{section.name}</span>
+                            <span className="font-medium text-black dark:text-gray-300">{section.name}</span>
                             <span className="ml-6 flex items-center">
                               {open ? (
-                                <MinusIcon className="h-5 w-5" aria-hidden="true" />
+                                <MinusIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" aria-hidden="true" />
                               ) : (
-                                <PlusIcon className="h-5 w-5" aria-hidden="true" />
+                                <PlusIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" aria-hidden="true" />
                               )}
                             </span>
                           </Disclosure.Button>
@@ -250,7 +254,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
-                                  className="ml-3 text-sm text-gray-100"
+                                  className="ml-3 text-sm text-gray-800 dark:text-gray-100"
                                 >
                                   {option.label}
                                 </label>

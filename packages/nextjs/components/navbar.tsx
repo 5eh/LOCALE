@@ -88,13 +88,13 @@ function NavItem({
       <Link
         href={href}
         className={`relative block px-3 py-2 transition ${isActive
-          ? 'text-blue-500 dark:text-blue-400'
-          : 'hover:text-blue-500 dark:hover:text-blue-400'
+          ? 'text-primary/90 dark:text-primary/80'
+          : 'hover:text-primary/70 transition ease-out dark:hover:text-primary/40'
           }`}
       >
         {children}
         {isActive && (
-          <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-blue-500/0 via-blue-500/40 to-blue-500/0 dark:from-blue-400/0 dark:via-blue-400/40 dark:to-blue-400/0' />
+          <span className='absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-primary/80 via-primary/10 to-primary/60 dark:from-primary/60 dark:via-primary/40 dark:to-primary/90' />
         )}
       </Link>
     </li>
