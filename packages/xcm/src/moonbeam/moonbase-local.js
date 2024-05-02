@@ -89,4 +89,4 @@ main()
     process.exit();
   });
 
-// INCREMENTER_CONTRACT_ADDRESS=<> ORACLE_CONTRACT_ADDRESS=<>  npm run moonbase-local
+// INCREMENTER_CONTRACT_ADDRESS=<> ORACLE_CONTRACT_ADDRESS=<> npm run moonbase-local
