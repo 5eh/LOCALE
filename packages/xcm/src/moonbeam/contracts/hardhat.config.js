@@ -9,13 +9,12 @@ module.exports = {
   solidity: "0.8.18",
   networks: {
     "moonbase-local": {
-      url: "http://127.0.0.1:8868",
+      url: "http://127.0.0.1:9949",
       chainId: 1280,
       accounts: [PRIVATE_KEY],
     },
     "moonbeam-dev": {
       url: "http://127.0.0.1:9944",
-      // chainId: 1281,
       accounts: [PRIVATE_KEY],
     },
     // xcm: {
