@@ -178,9 +178,7 @@ export default function Page() {
                     <Button
                       className={`text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none`}
                     >
-                      <a href={`/explore/${listing.id}`}>
-                        VIEW LISTING
-                      </a>
+                      <a href={`/explore/${listing.id}`}>VIEW LISTING</a>
                     </Button>
                   </div>
                 );
@@ -196,26 +194,26 @@ export default function Page() {
                 <img src={user.profilePicture} alt="Profile Picture" className="h-32 w-32 rounded-full" />
               </div>
               <div className="pl-3">
-                <p className="text-lg text-gray-200 font-semibold">{user.name}</p>
-                <p className="italic text-gray-400">
+                <p className="text-lg text-gray-800 dark:text-gray-200 font-semibold">{user.name}</p>
+                <p className="italic text-gray-700 dark:text-gray-400">
                   <a href="https://ocovos.com/${OCOVOSSTUDIOS}">@{user.username}</a>
                 </p>
               </div>
             </div>
             <div className="block">
-              <div className="text-gray-300">
+              <div className="text-gray-800 dark:text-gray-300">
                 <p>{user.location}</p>
               </div>
 
-              <div className="text-gray-300 mt-1 text-xs italic">
+              <div className="text-gray-800 dark:text-gray-300 mt-1 text-xs italic">
                 <p>
                   ACCOUNT AGE:
-                  <span className="ml-2 text-sm text-gray-100">{user.years} years</span>
+                  <span className="ml-2 text-sm text-gray-600 dark:text-gray-100">{user.years} years</span>
                 </p>
               </div>
             </div>
 
-            <div className="text-gray-300">
+            <div className="text-gray-800 dark:text-gray-300">
               <p>{user.about.bio}</p>
             </div>
           </div>
@@ -243,7 +241,7 @@ export default function Page() {
                     <div className="flex w-full items-center justify-between space-x-6 p-6">
                       <div className="flex-1 truncate">
                         <div className="flex items-center space-x-3">
-                          <h3 className="truncate text-md font-medium text-gray-300">{currentReview.name}</h3>
+                          <h3 className="truncate text-md font-medium dark:text-gray-800 dark:text-gray-300">{currentReview.name}</h3>
                           <span className="ml-2 mr-2 inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
                             {currentReview.badge}
                           </span>

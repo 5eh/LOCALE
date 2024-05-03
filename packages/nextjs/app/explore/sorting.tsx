@@ -122,7 +122,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                                       defaultValue={option.value}
                                       type="checkbox"
                                       defaultChecked={option.checked}
-                                      className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                      className="h-4 w-4 rounded border-gray-300 text-primary/60 focus:ring-primary"
                                     />
                                     <label
                                       htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -170,7 +170,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute border border-gray-900 bg-gray-400/20 dark:bg-gray-900 right-0 lg:z-10 sm:z-2 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute border border-gray-900 bg-white dark:bg-gray-900 right-0 lg:z-10 sm:z-2 mt-2 w-40 origin-top-right rounded-md  shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
                       {sortOptions.map(option => (
                         <Menu.Item key={option.name}>
@@ -179,7 +179,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                               href={option.href}
                               className={classNames(
                                 option.current ? "font-medium text-primary dark:text-gray-200" : " dark:text-gray-500",
-                                active ? "bg-red-100 text-primary dark:text-primary" : "",
+                                active ? "bg-gray-800 text-primary dark:text-primary" : "",
                                 "block px-4 py-2 text-sm",
                               )}
                             >
@@ -219,7 +219,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                 >
                   {subCategories.map(category => (
                     <li key={category.name}>
-                      <a href={category.href} className='text-gray-800 dark:text-gray-300'>{category.name}</a>
+                      <a href={category.href} className='text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary'>{category.name}</a>
                     </li>
                   ))}
                 </ul>
@@ -230,7 +230,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                       <>
                         <h3 className="-my-3 flow-root">
                           <Disclosure.Button className="flex w-full items-center justify-between  py-3 text-sm text-gray-300 hover:text-gray-400">
-                            <span className="font-medium text-black dark:text-gray-300">{section.name}</span>
+                            <span className="font-medium text-black dark:text-gray-300 ">{section.name}</span>
                             <span className="ml-6 flex items-center">
                               {open ? (
                                 <MinusIcon className="h-5 w-5 text-gray-700 dark:text-gray-300" aria-hidden="true" />
@@ -250,7 +250,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
-                                  className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                  className="h-4 w-4 rounded border-gray-300 text-primary/40 focus:ring-primary"
                                 />
                                 <label
                                   htmlFor={`filter-${section.id}-${optionIdx}`}
