@@ -15,18 +15,23 @@
   </p>
 </div>
 
-
 ### Intro
-
 
 ![EXPLORATION SECTION](https://i.ibb.co/gDgjf57/image-2024-04-30-123235379.png)
 
-
 We're Arthur Labs. We develop marketplaces that reduce the time it takes for developers and entrepreneurs to bring ideas to Web3 by 94%, from 6-12 months to 1 week. Our test case LOCALE is a Web3 enahnced commerce platform for plants.
 
-In this Hackathon, we explored XCM as a price feed mechanism. Please check out `./packages/xcm/readme.md` for further docs. 
+In this Hackathon, we explored XCM as a price feed mechanism. Please check out `./packages/xcm/readme.md` for further docs.
 
+<details>
+  <summary>Read the Backstory</summary>
+  We have to insert Text
+</details>
 
+<details>
+  <summar>Read Problem & Solution</summar>
+  We has to insert Text
+</details>
 
 ### Quick start
 
