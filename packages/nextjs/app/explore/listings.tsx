@@ -53,8 +53,8 @@ export default function Listings({ creator, listing }: DataProps) {
           }) => {
             return (
               <Modal open={open} onClose={() => setOpen(false)}>
-                <div className="mx-auto max-w-7xl ">
-                  <div className="mx-auto max-w-2xl  bg-gray-900/95 rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+                <div className="mx-auto z-20 max-w-7xl">
+                  <div className="mx-auto max-w-2xl bg-gray-900/95 dark:bg-gray-900/95 ring-1 ring-primary sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
                     <div className=" sm:p-10 lg:flex-auto">
                       <h3 className="text-2xl font-bold text-gray-200">
                         {selectedListing?.title ? selectedListing.title.toUpperCase() : "Unknown"}
