@@ -9,6 +9,9 @@ import "solidity-coverage";
 import "@nomicfoundation/hardhat-verify";
 import "hardhat-deploy";
 import "hardhat-deploy-ethers";
+import "@nomicfoundation/hardhat-ignition-ethers";
+
+const privateKey = process.env.PRIVATE_KEY as string;
 
 // If not set, it uses ours Alchemy's default API key.
 // You can get your own at https://dashboard.alchemyapi.io
@@ -45,6 +48,11 @@ const config: HardhatUserConfig = {
         url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
         enabled: process.env.MAINNET_FORKING_ENABLED === "true",
       },
+    },
+    moonbase: {
+      url: "https://rpc.api.moonbase.moonbeam.network",
+      chainId: 1287, // 0x507 in hex,
+      accounts: [privateKey],
     },
     mainnet: {
       url: `https://eth-mainnet.alchemyapi.io/v2/${providerApiKey}`,
