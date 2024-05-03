@@ -166,16 +166,21 @@ export const scheduleTask = async ({
   );
 
   console.log("\na). Create a payload to store in Turing’s task ...");
-  const taskPayloadExtrinsic = moonbeamApi.tx.ethereumXcm.transactThroughProxy(
-    moonbeamKeyringPair.address,
-    {
-      V3: {
-        gasLimit: 71000,
-        action: { Call: contract.address },
-        value: 0,
-        input: contract.input,
-      },
-    }
+
+  const xcmTransaction = {
+    V2: {
+      gasLimit: 71000,
+      action: { Call: contract.address },
+      value: 0,
+      input: contract.input,
+    },
+  };
+  // const xcmTransactAs = proxyAccountIdOnMoonbeam;
+
+  const taskPayloadExtrinsic = moonbeamApi.tx.ethereumXcm.transact(
+    xcmTransaction
+    // xcmTransactAs
+    // moonbeamKeyringPair.address
   );
 
   console.log(
@@ -200,8 +205,9 @@ export const scheduleTask = async ({
         scheduleFeeLocation: oakAsset.location,
         executionFeeLocation: moonbeamAsset.location,
         keyringPair: moonbeamKeyringPair,
-        caller: moonbeamAdapter,
-        callerXcmFeeLocation: oakAsset.location,
+        // caller: moonbeamAdapter,
+        // callerXcmFeeLocation: oakAsset.location,
+        scheduleAs: u8aToHex(moonbeamKeyringPair.addressRaw),
       },
       schedule
     );
