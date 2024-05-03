@@ -1,11 +1,9 @@
-// -------------------------------------------------------------------------------------
+// Background Variables
+export const BACKGROUND_COLOR_PRIMARY = "#2AC588";
+export const BACKGROUND_COLOR_SECONDARY = "#30D213";
 
-// -------------------------------------------------------------------------------------
-
-// CONFIGURATION FILE
-
-// Design Variables
-export const PRIMARY_COLOR = "#1387D2";  
+// Light Variables
+export const PRIMARY_COLOR = "#2AC588";  
 export const PRIMARY_CONTENT = "#212638"; // Common between light and dark themes for primary content.
 export const SECONDARY_COLOR_LIGHT = "#DAE8FF";
 export const SECONDARY_CONTENT = "#212638"; // Common between light and dark themes for secondary content.
@@ -22,7 +20,7 @@ export const SUCCESS_COLOR_LIGHT = "#34EEB6";
 export const WARNING_COLOR_LIGHT = "#FFCF72";
 export const ERROR_COLOR_LIGHT = "#FF8863";
 
-// Dark Theme Variables
+// Dark Variables
 export const SECONDARY_COLOR_DARK = "#00FF00";
 export const ACCENT_COLOR_DARK = "#4969A6";
 export const NEUTRAL_COLOR_DARK = "#F9FBFF";

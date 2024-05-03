@@ -234,7 +234,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
         <div className="border-b border-white/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-4">
-              <label htmlFor="title" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="title" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 TITLE
               </label>
               <div className="mt-2">
@@ -243,7 +243,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="title"
                   id="title"
                   autoComplete="title"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   placeholder="Modern Urban Trench Coat"
                   value={formData.title}
                   onChange={handleInputChange}
@@ -251,7 +251,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
               </div>
             </div>
             <div className="col-span-full">
-              <label htmlFor="description" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="description" className="block text-sm font-medium leading-6 ">
                 DESCRIPTION
               </label>
               <p className="mt-1 text-sm leading-6 text-gray-400">
@@ -262,25 +262,25 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                 id="description"
                 name="description"
                 rows={3}
-                className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                 placeholder="Experience the blend of classic style and modern sustainability with our Modern Urban Trench Coat. Crafted from 100% recycled materials, this coat features a sleek, minimalist design perfect for the urban fashionista. The durable, water-resistant fabric makes it an ideal choice for any weather, while the stylish cut ensures you stay chic and comfortable."
                 value={formData.description}
                 onChange={handleInputChange}
               />
             </div>
             <div className="col-span-full">
-              <label htmlFor="photo" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="photo" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 PHOTO
               </label>
 
               <label
                 htmlFor="photo"
-                className="mt-2 flex justify-center rounded-lg border border-dashed border-white/25 px-6 py-10 cursor-pointer"
+                className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900 dark:border-white/25 px-6 py-10 cursor-pointer"
               >
                 <div className="text-center justify-center">
                   <PhotoIcon className="mx-auto h-12 w-12 text-gray-500" aria-hidden="true" />
                   <div className="text-sm leading-6 text-gray-400">
-                    <span className="relative font-semibold text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-indigo-500">
+                    <span className="relative font-semibold text-gray-900 dark:text-white focus-within:outline-none focus-within:ring-2 focus-within:ring-primary/40 focus-within:ring-offset-2 focus-within:ring-offset-gray-900 hover:text-primary">
                       Upload an image file
                     </span>
                     <input
@@ -299,7 +299,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
             </div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="price" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="price" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 TOTAL PRICE
               </label>
               <div className="mt-2">
@@ -307,7 +307,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   type="number"
                   name="price"
                   id="price"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   placeholder="$249"
                   value={formData.price}
                   onChange={handleInputChange}
@@ -316,7 +316,10 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
               <span> IN WEI </span>
             </div>
             <div className="sm:col-span-3">
-              <label htmlFor="includedFeatureOne" className="block text-sm font-medium leading-6 text-white">
+              <label
+                htmlFor="includedFeatureOne"
+                className="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+              >
                 INCLUDED FEATURE 1
               </label>
               <div className="mt-2">
@@ -326,7 +329,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   id="includedFeatureOne"
                   autoComplete="given-name"
                   placeholder="Sustainable Materials"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={formData.features[0]?.feature || ""}
                   onChange={handleInputChange}
                 />
@@ -336,7 +339,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
             <div className="sm:col-span-3"></div>
 
             <div className="sm:col-span-3">
-              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="last-name" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 INCLUDED FEATURE 2
               </label>
               <div className="mt-2">
@@ -345,7 +348,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="includedFeatureTwo"
                   id="includedFeatureTwo"
                   placeholder="Fully local team"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={formData.features[1]?.feature || ""}
                   onChange={handleInputChange}
                 />
@@ -357,7 +360,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
         <div className="border-b border-white/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
             <div className="sm:col-span-2 sm:col-start-1">
-              <label htmlFor="city" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="city" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 CITY
               </label>
               <div className="mt-2">
@@ -367,7 +370,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   id="city"
                   placeholder="Austin"
                   autoComplete="address-level2"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={formData.location.split(",")[0] || ""}
                   onChange={handleInputChange}
                 />
@@ -375,7 +378,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
             </div>
 
             <div className="sm:col-span-2">
-              <label htmlFor="region" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="region" className="block text-sm font-medium leading-6 text-gray-900 dark:text-white">
                 STATE / PROVINCE
               </label>
               <div className="mt-2">
@@ -385,7 +388,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   id="state"
                   autoComplete="address-level1"
                   placeholder="Texas"
-                  className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                  className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={(formData.location.split(",")[1] || "").trim()} // Extract state from location
                   onChange={handleInputChange}
                 />
@@ -394,7 +397,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           </div>
         </div>
 
-        <h2 className="text-base font-semibold leading-7 text-white">EXTRA CONFIGURATION</h2>
+        <h2 className="text-base font-semibold leading-7 text-gray-900 dark:text-white">EXTRA CONFIGURATION</h2>
 
         <div className="border-b border-white/10 pb-12">
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2">
@@ -407,11 +410,11 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="emailPurchase"
                       name="emailPurchase"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-primary/60 focus:ring-primary/60 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="emailPurchase" className="font-medium text-white">
+                    <label htmlFor="emailPurchase" className="font-medium text-gray-900 dark:text-white">
                       Immediate purchase
                     </label>
                     <p className="text-gray-400">Get notified when someone purchases your service.</p>
@@ -424,11 +427,11 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="emailMessage"
                       name="emailMessage"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-primary/60 focus:ring-primary/60 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="emailMessage" className="font-medium text-white">
+                    <label htmlFor="emailMessage" className="font-medium text-gray-900 dark:text-white">
                       Messages
                     </label>
                     <p className="text-gray-400">Get notified when someone messages you for this service.</p>
@@ -445,11 +448,11 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="phonePurchase"
                       name="phonePurchase"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-primary/60 focus:ring-primary/60 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="phonePurchase" className="font-medium text-white">
+                    <label htmlFor="phonePurchase" className="font-medium text-gray-900 dark:text-white">
                       Immediate purchase
                     </label>
                     <p className="text-gray-400">Get notified when someone purchases your service.</p>
@@ -462,11 +465,11 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="phoneMessage"
                       name="phoneMessage"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-primary/60 focus:ring-primary/60 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="phoneMessage" className="font-medium text-white">
+                    <label htmlFor="phoneMessage" className="font-medium text-gray-900 dark:text-white">
                       Messages
                     </label>
                     <p className="text-gray-400">Get notified when someone messages you for this service.</p>
@@ -483,11 +486,11 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="quantityOfService"
                       name="quantityOfService"
                       type="checkbox"
-                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-indigo-600 focus:ring-indigo-600 focus:ring-offset-gray-900"
+                      className="h-4 w-4 rounded border-white/10 bg-white/5 text-primary/60 focus:ring-primary/60 focus:ring-offset-gray-900"
                     />
                   </div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="quantityOfService" className="font-medium text-white">
+                    <label htmlFor="quantityOfService" className="font-medium text-gray-900 dark:text-white">
                       Unlimited
                     </label>
                     <p className="text-gray-400">Your listings will remain public until you delete the post.</p>
@@ -497,7 +500,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                 <div className="relative flex gap-x-3">
                   <div className="flex h-6 items-center"></div>
                   <div className="text-sm leading-6">
-                    <label htmlFor="quantityOfService" className="font-medium text-white">
+                    <label htmlFor="quantityOfService" className="font-medium text-gray-900 dark:text-white">
                       QUANTITY
                     </label>
                     <input
@@ -505,9 +508,9 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       id="quantityOfService"
                       name="quantityOfService"
                       min="1"
-                      max="1000"
+                      max="9999"
                       step="1"
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="Enter quantity"
                       value={formData.quantityOfService}
                       onChange={handleInputChange}
@@ -529,7 +532,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       type="text"
                       value={item.upcharge}
                       onChange={e => updateUpchargeValue(index, e.target.value, "upcharge")}
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/60 hover:border-primary/60 focus:outline-none"
                       placeholder="Extra product half off"
                     />
 
@@ -541,7 +544,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                         type="number"
                         value={item.value}
                         onChange={e => updateUpchargeValue(index, e.target.value, "value")}
-                        className="text-right border border-gray-200/20 bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                        className="text-right border border-gray-200/20 bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                         placeholder=""
                       />
                       {/* <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
@@ -553,14 +556,14 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
                     <button
                       type="button"
-                      className="text-gray-200 hover:text-blue-400"
+                      className="text-gray-900 dark:text-white dark:hover:text-primary/40"
                       onClick={() => deleteUpcharge(index)}
                     >
                       Delete
                     </button>
                   </div>
                 ))}
-                <button type="button" className="text-gray-200" onClick={addUpcharge}>
+                <button type="button" className="text-gray-900 dark:text-white" onClick={addUpcharge}>
                   CREATE UPCHARGE
                 </button>
               </div>
@@ -601,19 +604,19 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
       {WEB3_FUNCTIONALITY && (
         <div className="text-center uppercase mt-4">
-          <span className="text-blue-400">Web3 Disclaimer</span>
+          <span className="text-primary">Web3 Disclaimer</span>
 
           <p className="text-gray-400">
             {COMPANY} is powered and secured by the Ethereum Blockchain. By pressing{" "}
-            <span className="text-blue-400">DEPLOY ON BLOCKCHAIN</span> You understand the risks and considerations when
+            <span className="text-primary">DEPLOY ON BLOCKCHAIN</span> You understand the risks and considerations when
             publishing information into a public database. The information you are providing in the form above will be
             stored in a public ledger, where anyone has access to this information. smart contracts additionally carry
             risks in the form of bugs, hacks, and other vulnerabilities. By pressing{" "}
-            <span className="text-blue-400">DEPLOY ON BLOCKCHAIN</span> you are agreeing to these terms and conditions.
+            <span className="text-primary">DEPLOY ON BLOCKCHAIN</span> you are agreeing to these terms and conditions.
           </p>
 
           <div>
-            <span className="text-blue-400">
+            <span className="text-primary">
               <a href="/blockchain-policy">READ MORE HERE</a>
             </span>
           </div>

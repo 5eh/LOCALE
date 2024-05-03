@@ -64,23 +64,23 @@ export default function Index() {
       {/* CTA section */}
       <div className="relative isolate -z-10 mt-32 sm:mt-40">
         <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
-          <div className="mx-auto flex max-w-2xl flex-col gap-16 bg-black dark:bg-white/5 px-6 py-16 ring-1 ring-black dark:ring-white/10 sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
+          <div className="mx-auto flex max-w-2xl flex-col gap-16 px-6 py-16  sm:rounded-3xl sm:p-8 lg:mx-0 lg:max-w-none lg:flex-row lg:items-center lg:py-20 xl:gap-x-20 xl:px-20">
             <img
               className="h-96 w-full flex-none rounded-2xl object-cover shadow-xl lg:aspect-square lg:h-auto lg:max-w-sm"
               src="https://images.unsplash.com/photo-1519338381761-c7523edc1f46?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&q=80"
               alt=""
             />
             <div className="w-full flex-auto">
-              <h2 className="text-3xl font-bold tracking-tight text-white dark:text-white sm:text-4xl">
+              <h2 className="text-3xl font-bold tracking-tight text-gray-800 dark:text-white sm:text-4xl">
                 BECOME A {MARKETPLACE_SERVICE_PROVIDER.toUpperCase()}
               </h2>
-              <p className="mt-6 text-lg leading-8 text-gray-300 dark:text-gray-300">
+              <p className="mt-6 text-lg leading-8 text-gray-600 dark:text-gray-300">
                 This ecosystem of {MARKETPLACE_SERVICE_PROVIDERS} invites you to showcase your portfolio and find new
                 prospects.
               </p>
               <ul
                 role="list"
-                className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 text-base leading-7 text-white dark:text-white sm:grid-cols-2"
+                className="mt-10 grid grid-cols-1 gap-x-8 gap-y-3 text-base leading-7 text-gray-600 dark:text-white sm:grid-cols-2"
               >
                 {benefits.map(benefit => (
                   <li key={benefit} className="flex gap-x-3">
@@ -90,7 +90,7 @@ export default function Index() {
                 ))}
               </ul>
               <div className="mt-10 flex">
-                <a href="/authentication " className="text-sm font-semibold leading-6 text-primary dark:text-indigo-400">
+                <a href="/authentication " className="text-sm font-semibold leading-6 text-primary">
                   REGISTER FOR FREE <span aria-hidden="true">&rarr;</span>
                 </a>
               </div>
