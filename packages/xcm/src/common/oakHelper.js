@@ -1,7 +1,7 @@
 import "@oak-network/api-augment";
 import { rpc, types, runtime } from "@oak-network/types";
 import { ApiPromise, WsProvider } from "@polkadot/api";
-import ChainHelper from "./chainHelper.js";
+import ChainHelper from "./chainHelper";
 
 class OakHelper extends ChainHelper {
   initialize = async () => {
