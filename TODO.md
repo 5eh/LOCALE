@@ -4,7 +4,8 @@
 
 **Necessary**
 
-- [ ] Add README.md ins `./packages/nextjs/`
+- [*] Add README.md ins `./packages/nextjs/`
+- [*] Add README.md ins `./packages/nextjs/marketplaceVariables`
 - [ ] Add README.md ins `./packages/hardhat/`
 - [ ] Add README.md ins `./packages/xcm/`
 - [ ] Update in README.md in `./README.md`
