@@ -8,6 +8,10 @@
 # dependencies
 node_modules
 
+# secrets and local setup
+.env
+.local-setup
+
 # yarn
 .yarn/*
 !.yarn/patches
