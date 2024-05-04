@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ImInstagram, ImYoutube } from "react-icons/im";
 import { getAddress } from "viem";
 import { useAccount } from "wagmi";
@@ -234,38 +235,52 @@ export default function Page() {
               ))}
             </div>
 
-            <div className="mt-2 pb-2">
-              <div className="mt-2 pb-2">
+            <div className="mt-2 border border-black dark:border-white">
+              <div className="mt-2">
                 <ul role="list">
                   <li key={currentReview.userID} className="col-span-1 divide-y">
                     <div className="flex w-full items-center justify-between space-x-6 p-6">
-                      <div className="flex-1 truncate">
+                      <div className="flex-1">
                         <div className="flex items-center space-x-3">
-                          <h3 className="truncate text-md font-medium dark:text-gray-800 dark:text-gray-300">{currentReview.name}</h3>
+                          <h3 className="truncate text-md font-medium text-gray-800 dark:text-gray-300">
+                            {currentReview.name}
+                          </h3>
                           <span className="ml-2 mr-2 inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
                             {currentReview.badge}
                           </span>
                         </div>
-                        <p className="mt-1 text-sm text-gray-200 line-clamp-3">{currentReview.review}</p>
+                        <p className="mt-1 text-sm text-gray-600 dark:text-gray-200 line-clamp-3">
+                          {currentReview.review}
+                        </p>
                       </div>
-                      <img className="h-10 w-10 flex-shrink-0 rounded-full" src={currentReview.imageUrl} alt="" />
+                      <img
+                        className="h-10 w-10 flex-shrink-0 rounded-full bg-primary/20"
+                        src={currentReview.imageUrl}
+                        alt={`${currentReview.name} Profile Picture`}
+                      />
                     </div>
                     <div>
                       <div className="-mt-px flex">
-                        <div className="flex w-0 flex-1">
+                        <div className="flex w-0 flex-1 hover:bg-primary/20 ">
                           <a
                             onClick={goToPreviousReview}
                             className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
                           >
-                            <ArrowLeftCircleIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
+                            <ArrowLeftCircleIcon
+                              className="h-5 w-5 text-gray-600 dark:text-gray-200"
+                              aria-hidden="true"
+                            />
                           </a>
                         </div>
-                        <div className="-ml-px flex w-0 flex-1">
+                        <div className="-ml-px flex w-0 flex-1 hover:bg-primary/20">
                           <a
                             onClick={goToNextReview}
                             className="cursor-pointer relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
                           >
-                            <ArrowRightCircleIcon className="h-5 w-5 text-gray-200" aria-hidden="true" />
+                            <ArrowRightCircleIcon
+                              className="h-5 w-5 text-gray-600 dark:text-gray-200"
+                              aria-hidden="true"
+                            />
                           </a>
                         </div>
                       </div>
@@ -301,7 +316,7 @@ export default function Page() {
             {portfolioPictures.map((image, index) => (
               <div
                 key={index}
-                className="h-32 bg-red-600/20 overflow-hidden hover:opacity-100 opacity-60 hover:border-gray-800 hover:cursor-pointer"
+                className="h-32 bg-primary/20 overflow-hidden hover:opacity-100 opacity-60 hover:border-gray-800 hover:cursor-pointer"
               >
                 <a href={image.src} target="blank">
                   <img src={image.src} alt={`Gallery Image ${index}`} className="w-full h-full object-cover" />
@@ -312,20 +327,21 @@ export default function Page() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 pt-4">
-          {/* Listings & Contact Section (MAP THEN ARRAY) */}
           <div className="col-span-1 ">
             {listingsData.map(listing => (
               <div key={listing.id}>
                 <a href={`/explore/purchase/${listing.id}`}>
-                  <div className="bg-gray-800/20 hover:bg-gray-700/20 p-4 shadow rounded-lg mt-2 mb-2">
+                  <div className="bg-gray-200/20 dark:bg-gray-800/20 border border-gray-500 dark:border-transparent hover:bg-gray-700/20 p-4 shadow rounded-lg mt-2 mb-2">
                     <div className="flex gap-2">
-                      <p className="text-gray-300">| {listing.date}</p>
-                      <p className="text-gray-400">${listing.price}</p>
+                      <p className="text-gray-800 dark:text-gray-300">| {listing.date}</p>
+                      <p className="textgray-700 dark:text-gray-400">${listing.price}</p>
                     </div>
 
-                    <p className="text-gray-300 mb-1 mt-1">{listing.location}</p>
+                    <p className="text-gray-800 dark:text-gray-300 mb-1 mt-1">{listing.location}</p>
                     <p className="font-sm text-white mt-1 mb-1 pl-1 pr-1">{listing.description}</p>
-                    <p className="text-blue-400">Explore Listing </p>
+                    <p className="text-primary/60 hover:text-primary dark:text-primary/60 dark:hover:text-primary">
+                      Explore Listing{" "}
+                    </p>
                   </div>
                 </a>
               </div>

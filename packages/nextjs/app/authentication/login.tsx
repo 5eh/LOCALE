@@ -7,8 +7,15 @@ import login from "~~/routes/data/login";
 
 // src/app/authentication/login.tsx
 
+// src/app/authentication/login.tsx
+
+// src/app/authentication/login.tsx
+
+// src/app/authentication/login.tsx
+
 export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
   const [submitting, setSubmitting] = useState(false);
+
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const router = useRouter();
@@ -45,13 +52,15 @@ export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-white">SIGN IN</h2>
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900 dark:text-white">
+            SIGN IN
+          </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-800 dark:text-white">
                 EMAIL
               </label>
               <div className="mt-2">
@@ -63,18 +72,21 @@ export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   required
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-800/40 dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-700 dark:text-gray-300 focus:bg-primary/20 dark:focus:bg-gray-700/20 dark:focus:border-primary/60 dark:hover:border-primary/90 focus:outline-none"
                 />
               </div>
             </div>
 
             <div>
               <div className="flex items-center justify-between">
-                <label htmlFor="password" className="block text-sm font-medium leading-6 text-white">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-800 dark:text-white">
                   PASSWORD
                 </label>
                 <div className="text-sm">
-                  <a href="#" className="font-semibold text-indigo-400 hover:text-indigo-300">
+                  <a
+                    href="#"
+                    className="font-semibold text-gray-800 hover:text-black dark:text-primary/80 dark:hover:text-primary"
+                  >
                     Forgot password?
                   </a>
                 </div>
@@ -86,7 +98,7 @@ export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="block w-full rounded-md border-0 bg-white/5 py-1.5 text-white shadow-sm ring-1 ring-inset ring-white/10 focus:ring-2 focus:ring-inset focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  className="text-left border border-gray-800/40 dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-700 dark:text-gray-300 focus:bg-primary/20 dark:focus:bg-gray-700/20 dark:focus:border-primary/60 dark:hover:border-primary/90 focus:outline-none"
                 />
               </div>
             </div>
@@ -94,7 +106,10 @@ export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                className={`w-full align-center justify-center text-center border border-gray-800 hover:border-primary dark:border-gray-200/20  bg-gray-700/20  dark:bg-gray-500/20 dark:hover:border-primary/60 py-2 px-3 text-sm font-semibold text-black dark:text-gray-300
+              ${submitting ? "bg-gray-700/20" : "focus:bg-gray-700/20 focus:border-primary/40"}
+              focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
+              focus-visible:outline-primary/50`}
               >
                 Sign in
               </button>
@@ -143,11 +158,7 @@ export default function LoginForm({ onSwitchForm, onLoginSuccess }) {
           </div>
 
           <p className="mt-10 text-center text-sm text-gray-400">
-            <a
-              href="#"
-              onClick={onSwitchForm}
-              className="font-semibold leading-6 text-indigo-400 hover:text-indigo-300"
-            >
+            <a href="#" onClick={onSwitchForm} className="font-semibold leading-6 text-primary hover:text-primary/80">
               REGISTER FOR FREE
             </a>
           </p>

@@ -20,7 +20,7 @@ const Ratings: React.FC<RatingsProps> = ({ rating, amountOfReviews }) => {
       {Array.from({ length: emptyStars }, (_, i) => (
         <MdOutlineStarOutline key={`empty-star-${i + fullStars + halfStar}`} />
       ))}
-      <span className='ml-2 text-gray-500 italic'>{rating.toFixed(2)}</span>
+      <span className='ml-2 dark:text-gray-200 text-gray-600 italic'>{rating.toFixed(2)}</span>
     </span>
   );
 };

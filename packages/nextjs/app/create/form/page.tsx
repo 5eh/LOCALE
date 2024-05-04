@@ -577,10 +577,10 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           <button
             type="button"
             onClick={handleBlockchainSubmit}
-            className={`border border-gray-200/20 bg-gray-500/20 hover:border-green-600 text-right py-2 px-3 text-sm font-semibold text-gray-300
-              ${isSubmitting ? "bg-gray-700/20" : "focus:bg-gray-700/20 focus:border-green-400"}
+            className={`border border-gray-800 hover:border-primary dark:border-gray-200/20  bg-gray-400  dark:bg-gray-500/20 dark:hover:border-primary/60 text-right py-2 px-3 text-sm font-semibold text-black dark:text-gray-300
+              ${isSubmitting ? "bg-gray-700/20" : "focus:bg-gray-700/20 focus:border-primary/40"}
               focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2
-              focus-visible:outline-indigo-500`}
+              focus-visible:outline-primary/50`}
           >
             {isSubmitting ? "LOADING ... " : "DEPLOY ON BLOCKCHAIN"}
           </button>

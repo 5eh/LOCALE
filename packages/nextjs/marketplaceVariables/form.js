@@ -6,39 +6,39 @@
 
 export const FORM_SELECTION = [
   {
-    id: "Casual",
-    title: "Casual Wear",
+    id: "Houseplants",
+    title: "Houseplants",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1663013729768-8fcfe4cda447?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1665408511793-51dc25f82b2d?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: "Formal",
-    title: "Formal Wear",
+    id: "Succulents and Cacti",
+    title: "Succulents and Cacti",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1675130119382-6f891206f406?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://plus.unsplash.com/premium_photo-1679237001830-baf5e8d51d11?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: "Street",
-    title: "Street Wear",
+    id: "Herbs and Edibles",
+    title: "Herbs and Edibles",
     imageUrl:
-      "https://plus.unsplash.com/premium_photo-1675130119426-0b2c2379a190?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1563822249548-9a72b6353cd1?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: "Eco",
-    title: "Eco-friendly Fashion",
+    id: "Ornamental Flowers",
+    title: "Ornamental Flowers",
     imageUrl:
-      "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
+      "https://plus.unsplash.com/premium_photo-1673569481316-116fb85d82d6?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: "Luxury",
-    title: "Luxury Fashion",
+    id: "Trees and Shrubs",
+    title: "Trees and Shrubs",
     imageUrl:
-      "https://images.unsplash.com/photo-1546572797-e8c933a75a1f?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1458966480358-a0ac42de0a7a?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    id: "Custom",
-    title: "Custom Wear",
+    id: "Aquatic and Pond Plants",
+    title: "Aquatic and Pond Plants",
     imageUrl:
-      "https://images.unsplash.com/photo-1617113930975-f9c7243ae527?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1534162802244-d6f69e9048da?q=80&w=1049&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];

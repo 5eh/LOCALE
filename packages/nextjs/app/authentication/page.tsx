@@ -47,13 +47,13 @@ const Authentication = () => {
         )}
 
         {WEB3_FUNCTIONALITY && (
-          <div className="mt-2 text-gray-400 uppercase text-center sm:mx-auto sm:w-full sm:max-w-sm">
+          <div className="mt-2 text-gray-800 dark:text-gray-400 uppercase text-center sm:mx-auto sm:w-full sm:max-w-sm">
             {MARKETPLACE_NAME} is powered and secured by the Ethereum Blockchain. You will be required to log in with
             your Ethereum Wallet, as well as your email in order to interact with the {MARKETPLACE_NAME}
             platform. This is to secure public transactions, account management, and to ensure nonrelated information on
             chain.
             <div>
-              <span className="text-blue-400">
+              <span className="text-primary">
                 <a href="/blockchain-policy">READ MORE HERE</a>
               </span>
             </div>
