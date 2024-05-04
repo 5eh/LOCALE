@@ -1,3 +1,6 @@
 [submodule "packages/moon_gasless/dps/lib/forge-std"]
 	path = packages/moon_gasless/dps/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "packages/moon_gasless/DPS/lib/forge-std"]
+	path = packages/moon_gasless/DPS/lib/forge-std
+	url = https://github.com/foundry-rs/forge-std
