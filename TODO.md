@@ -33,7 +33,7 @@
 
 ## In Progress
 
-- [ ] Make Pricefeed Work
+- [ ] Make Pricefeed via OAK work (failed)
 
   - [x] Get zombienet running
   - [x] Deploy a contract on moonbase local node
@@ -41,9 +41,14 @@
   - [ ] Try XCM Transfer from Oak on zombie to Moonbase on zombie
 
 - [ ] Deploy contracts on Moonbase Alpha
+
   - [ ] Adjust Hardhat config in `./packages/hardhat/contracts/`
   - [ ] Test deployment for frank.sol
   - [ ] Verify deplyoment of frank.sol via moonscan thingy
+
+- [ ] Write Bug Report for XCM
+- [ ] Tell XCM Story , why important for e commerce
+- [ ] Try Gasless transaction
 
 ## DONE
 
