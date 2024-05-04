@@ -3,7 +3,7 @@ pragma solidity ^0.8.17;
 
 /**
  * @title LOCALE
- * @dev A white-label contract to manage commerce functionalities.
+ * @notice A white-label contract to manage commerce functionalities.
  */
 contract CommerceContract {
     address private owner;
@@ -44,7 +44,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Create a new product listing.
+     * @notice Create a new product listing.
      * @param _title Listing title.
      * @param _description Product description..
      * @param _price Price.
@@ -77,7 +77,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Allows a user to purchase a product.
+     * @notice Allows a user to purchase a product.
      * @param _listingID Listing ID.
      * @param _quantity Purchase quantity.
      */
@@ -101,7 +101,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Allows a user to set own delivery address against their ETH address.
+     * @notice Allows a user to set own delivery address against their ETH address.
      * @param _deliveryAddress New delivery address.
      */
     function setDeliveryAddress(string memory _deliveryAddress) public {
@@ -110,7 +110,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Retrieves delivery address of a user.
+     * @notice Retrieves delivery address of a user.
      * @param user User's ETH address.
      * @return Physcial delivery address of the user.
      */
@@ -120,7 +120,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Allows a user to set custom instructions in addition to own delivery address.
+     * @notice Allows a user to set custom instructions in addition to own delivery address.
      * @param user User's ETH address.
      * @return Custom instructions of the user.
      */
@@ -130,7 +130,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Retrieve custom instructions associated with user delivery address, if set.
+     * @notice Retrieve custom instructions associated with user delivery address, if set.
      * @param user User's ETH address.
      * @return Custom instructions of the user.
      */
@@ -140,7 +140,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Retrieve the title by ListingID.
+     * @notice Retrieve the title by ListingID.
      * @return Listing title.
      */
     function getListingTitle() public view returns (string memory) {
@@ -148,7 +148,7 @@ contract CommerceContract {
     }
 
     /**
-     * @dev Retrieve product data by ListingID.
+     * @notice Retrieve product data by ListingID.
      * @return Product data.
      */
     function getProductData(string memory listingID) public view returns (ProductData memory) {
