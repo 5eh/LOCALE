@@ -1,3 +1,9 @@
+# downloads (do these separtely!)
+/polkadot
+/oak-collator
+/moonbeam
+/zombienet-linux-x6
+
 # dependencies
 node_modules
 
