@@ -52,3 +52,4 @@ In this Hackathon, we explored XCM as a price feed mechanism. Please check out `
 | Watson         | `watsonlr`    | `watsonlr`   | `wlewisrodriguez@gmail.com` |
 | Frank Dierolf  | `frankbevr`   | `frankbevr`  | `frank_dierolf@web.de`      |
 | Opeyemi Oginni | `obo.baddest` | `McFarts_II` | `brightoginni123@gmail.com` |
+| Mork Morkberg  | `morkeltry`   |              |                             |
