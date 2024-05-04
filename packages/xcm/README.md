@@ -15,7 +15,10 @@
 11. `mv zombienet-linux-x64 zombienet`
 12. `chmod +755 ./zombienet`
 13. `mv ./zombienet /usr/bin`
-14. `polkadot --version && oak-collator --version && moonbeam --version && zombienet version`
+14. `POLKADOT_CHAINS_PATH=/usr/bin`
+15. `echo if POLKADOT_CHAINS_PATH $POLKADOT_CHAINS_PATH is not in PATH $PATH, then add it with PATH=PATH:$POLKADOT_CHAINS_PATH`
+16. `# PATH=PATH:$POLKADOT_CHAINS_PATH`
+17. `polkadot --version && oak-collator --version && moonbeam --version && zombienet version`
 
 ```
 polkadot 0.9.43-ba42b9ce51d
@@ -28,7 +31,7 @@ moonbeam 0.32.2-d3172714146
 
 ## Run the process
 
-1. `cd packages/xcm/src`
+1. `cd packages/xcm`
 2. `zombienet spawn ./moonbase.toml`
 3. `cd packages/xcm/src/moonbeam/contracts/`
 4. `npx hardhat compile`

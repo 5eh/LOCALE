@@ -3,7 +3,7 @@ provider = "native"
 timeout = 1000
 
 [relaychain]
-default_command = "/usr/bin/polkadot"
+default_command = "polkadot"
 chain = "rococo-local"
 
     [[relaychain.nodes]]
@@ -23,7 +23,7 @@ chain = "turing-dev"
 
     [parachains.collator]
     name = "turing-col-1"
-    command = "/home/frank/OAK-blockchain/target/release/oak-collator"
+    command = "oak-collator"
     ws_port = 9946
     rpc_port = 8855
 
@@ -34,7 +34,7 @@ chain = "moonbase-local"
 
     [parachains.collator]
     name = "moonbase-local-col-1"
-    command = "/usr/bin/moonbeam"
+    command = "moonbeam"
     ws_port = 9949
     rpc_port = 8868
 
