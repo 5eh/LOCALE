@@ -2,7 +2,8 @@
 /polkadot
 /oak-collator
 /moonbeam
-/zombienet-linux-x6
+/zombienet-linux-x64
+/zombienet
 
 # dependencies
 node_modules
