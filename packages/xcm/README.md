@@ -2,7 +2,7 @@
 
 ## Install Binaries
 
-1. `wget https://github.com/paritytech/polkadot/releases/tag/v0.9.43`
+1. `wget https://github.com/paritytech/polkadot/releases/tag/v0.9.43/polkadot`
 2. `chmod +755`
 3. `mv ./polkadot /usr/bin`
 4. `wget https://github.com/OAK-Foundation/OAK-blockchain/releases/download/v2.0.0/oak-collator`
