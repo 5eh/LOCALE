@@ -28,12 +28,12 @@ moonbeam 0.32.2-d3172714146
 
 ## Run the process
 
-1. `cd ~/packages/xcm/src`
+1. `cd packages/xcm/src`
 2. `zombienet spawn ./moonbase.toml`
-3. `cd ~/packages/xcm/src/moonbeam/contracts/`
+3. `cd packages/xcm/src/moonbeam/contracts/`
 4. `npx hardhat compile`
 5. `npx hardhat run ./scripts/deploy.js`
 6. `export CONTRACT_ADDRESS="<PASTEININCREMENTERCONTRACTADDRESS>"`
-7. `cd ~/packages/xcm/`
+7. `cd packages/xcm/`
 8. `npm run moonbeam-local`
 9. `<Error should appear, work in progress>`
