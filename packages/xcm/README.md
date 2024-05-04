@@ -38,5 +38,5 @@ moonbeam 0.32.2-d3172714146
 5. `npx hardhat run ./scripts/deploy.js`
 6. `export CONTRACT_ADDRESS="<PASTEININCREMENTERCONTRACTADDRESS>"`
 7. `cd packages/xcm/`
-8. `npm run moonbeam-local`
+8. `npm run moonbase-local`
 9. `<Error should appear, work in progress>`
