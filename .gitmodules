@@ -4,3 +4,6 @@
 [submodule "packages/moon_gasless/DPS/lib/forge-std"]
 	path = packages/moon_gasless/DPS/lib/forge-std
 	url = https://github.com/foundry-rs/forge-std
+[submodule "packages/moon_gasless/DPS/lib/openzeppelin-contracts"]
+	path = packages/moon_gasless/DPS/lib/openzeppelin-contracts
+	url = https://github.com/OpenZeppelin/openzeppelin-contracts
