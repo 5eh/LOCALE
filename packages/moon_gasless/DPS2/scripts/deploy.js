@@ -1,44 +1,39 @@
 const { ethers } = require("hardhat");
 const { time } = require("@nomicfoundation/hardhat-toolbox/network-helpers");
 
-const deployContract = async (contractName) => {
-  // 1. Get the contract to deploy
-  const Contract = await ethers.getContractFactory(contractName);
-  console.log(`Deploying ${contractName}...`);
-
-  // 2. Instantiating a new Box smart contract
-  const contract = await Contract.deploy();
-
-  // 3. Waiting for the deployment to resolve
-  await contract.deployed();
-
-  // 4. Use the contract instance to get the contract address
-  console.log(`${contractName} deployed to: `, contract.address);
+const deployMyToken = async () => {
+  const Contract = await ethers.getContractFactory("MyToken");
+  console.log(`Deploying MyToken...`);
+  const contract = await Contract.deploy(100);
+  const address = await contract.getAddress();
+  console.log(`MyToken deployed to: `, address);
 };
 
 const deployLock = async () => {
   const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
   const ONE_GWEI = 1_000_000_000;
-
   const lockedAmount = ONE_GWEI;
   const unlockTime = (await time.latest()) + ONE_YEAR_IN_SECS;
-
-  // Contracts are deployed using the first signer/account by default
-  const [owner, otherAccount] = await ethers.getSigners();
-
   const Lock = await ethers.getContractFactory("Lock");
+  console.log(`Deploying Lock...`);
   const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
   const address = await lock.getAddress();
-  // lock.deployed();
-
-  // 4. Use the contract instance to get the contract address
   console.log(`Lock deployed to: `, address);
 };
 
+const deployDPS = async () => {
+  const [owner, otherAccount] = await ethers.getSigners();
+  const DPSCartographer = await ethers.getContractFactory("DPSCartographer");
+  console.log(`Deploying DPSCartographer...`);
+  const dpsCartographer = await DPSCartographer.deploy(owner);
+  const address = await dpsCartographer.getAddress();
+  console.log(`DPSCartographer deployed to: `, address);
+};
+
 async function main() {
-  // await deployContract('Box');
-  // await deployContract("MyToken");
+  await deployMyToken();
   await deployLock();
+  await deployDPS();
 }
 
 main()
