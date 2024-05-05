@@ -32,7 +32,7 @@ contract DPSCartographer is Ownable {
     event SetContract(uint256 _target, address _contract);
     event TokenRecovered(address indexed _token, address _destination, uint256 _amount);
 
-    constructor() {}
+    constructor(address initialOwner) Ownable(initialOwner) {}
 
     /**
      * @notice swap tmaps for doubloons

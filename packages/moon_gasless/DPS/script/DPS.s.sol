@@ -9,7 +9,7 @@ contract MyScript is Script {
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         vm.startBroadcast(deployerPrivateKey);
 
-        DPSCartographer nft = new DPSCartographer();
+        DPSCartographer nft = new DPSCartographer(msg.sender);
 
         vm.stopBroadcast();
     }
