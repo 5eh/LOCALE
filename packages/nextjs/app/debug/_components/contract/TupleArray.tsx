@@ -97,15 +97,15 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
 
   return (
     <div>
-      <div className="collapse collapse-arrow bg-base-200 pl-4 py-1.5 border-2 border-secondary">
+      <div className="collapse collapse-arrow bg-base-200 pl-4 py-1.5 border-2 border-primary">
         <input type="checkbox" className="min-h-fit peer" />
         <div className="collapse-title p-0 min-h-fit peer-checked:mb-1 text-primary-content/50">
           <p className="m-0 text-[1rem]">{abiTupleParameter.internalType}</p>
         </div>
-        <div className="ml-3 flex-col space-y-2 border-secondary/70 border-l-2 pl-4 collapse-content">
+        <div className="ml-3 flex-col space-y-2 border-primary/70 border-l-2 pl-4 collapse-content">
           {additionalInputs.map((additionalInput, additionalIndex) => (
             <div key={additionalIndex} className="space-y-1">
-              <span className="badge bg-base-300 badge-sm">
+              <span className="badge bg-primary/30 badge-sm">
                 {depth > 1 ? `${additionalIndex}` : `tuple[${additionalIndex}]`}
               </span>
               <div className="space-y-4">
@@ -123,11 +123,11 @@ export const TupleArray = ({ abiTupleParameter, setParentForm, parentStateObject
             </div>
           ))}
           <div className="flex space-x-2">
-            <button className="btn btn-sm btn-secondary" onClick={addInput}>
+            <button className="btn btn-sm btn-primary" onClick={addInput}>
               +
             </button>
             {additionalInputs.length > 0 && (
-              <button className="btn btn-sm btn-secondary" onClick={removeInput}>
+              <button className="btn btn-sm btn-primary" onClick={removeInput}>
                 -
               </button>
             )}

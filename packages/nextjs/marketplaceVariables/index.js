@@ -19,7 +19,7 @@ export const MARKETPLACE_NAME = "LOCALE"; // Name of Marketplace
 export const COMPANY = "POLKADOT & ARTHUR LABS"; // Name of Marketplace company
 export const MARKETPLACE_HEADER = "THE Web3 Plant Marketplace" // Short header of company, used in Title and Header
 export const MARKETPLACE_SERVICE_PROVIDER = "plant seller"; // Singular service provider type
-export const MARKETPLACE_SERVICE_PROVIDERS = "plants"; // Multiple service provider type
+export const MARKETPLACE_SERVICE_PROVIDERS = "planters"; // Multiple service provider type
 export const MARKETPLACE_TEMPLATE_TYPE = "commerce"; // commerce, services, deliveries (READ: USE ONE OF THE THREE SELECTED. THESE WILL CUSTOMIZE USER INPUTS)
 export const MARKETPLACE_DESCRIPTION = "We connect you with the greatest plant sellers and distributors in the world!"; // Description of Marketplace
 
@@ -34,14 +34,7 @@ export const CURRENCY_SYMBOL = "$"; // Used for currency formatting
 // Date Format
 export const DATE_FORMAT = "MM/DD/YY"; // Used for date formatting
 
-// Notifications Format
-export const TOAST_BOARDER = "1px solid #FFFFFF";
-export const TOAST_BACKGROUND = "transparent";
-export const TOAST_COLOR = "#FFFFFF";
-export const TOAST_PADDING = "0 0 0 0";
-export const TOAST_FONTWEIGHT = "lighter";
 
-// Color Scheme
 
 // Database Format
 export const MONGODB_USER = "watsonlr";
@@ -61,7 +54,7 @@ export const dbConnect = process.env.MONGODB_URI;
 
 // IMPORTANT - IF WEB3_FUNCTIONALITY is set to true, then go to `marketplaceVariables` in Hardhat and add contract logic
 export const WEB3_FUNCTIONALITY = true; // True or False (True adds details and Web3 functionality to the marketplace)
-export const WEB3_CONTRACT_TYPE = "Commerce" // Commerce, Services, Deliveries (READ: USE ONE OF THE THREE SELECTED. THESE ARE CUSTOM CONTRACTS FOR YOUR MARKETPLACE.) 
+export const WEB3_CONTRACT_TYPE = "Commerce"; // Commerce, Services, Deliveries (READ: USE ONE OF THE THREE SELECTED. THESE ARE CUSTOM CONTRACTS FOR YOUR MARKETPLACE.) 
 export const WEB3_BLOCKCHAIN = "Ethereum";
 export const WEB3_NETWORK = "Rinkeby";
 export const WEB3_CONTRACT_ADDRESS = "0x0";

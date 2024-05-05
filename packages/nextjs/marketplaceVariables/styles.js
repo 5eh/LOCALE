@@ -1,9 +1,9 @@
 // Background Variables
-export const BACKGROUND_COLOR_PRIMARY = "#58BC82";
-export const BACKGROUND_COLOR_SECONDARY = "#568259";
+export const BACKGROUND_COLOR_PRIMARY = "#52b788";
+export const BACKGROUND_COLOR_SECONDARY = "#214E34";
 
 // Light Variables
-export const PRIMARY_COLOR = "#58BC82";  
+export const PRIMARY_COLOR = "#52b788";
 export const PRIMARY_CONTENT = "#212638"; // Common between light and dark themes for primary content.
 export const SECONDARY_COLOR_LIGHT = "#DAE8FF";
 export const SECONDARY_CONTENT = "#212638"; // Common between light and dark themes for secondary content.
@@ -33,3 +33,10 @@ export const INFO_COLOR_DARK = "#385183";
 export const SUCCESS_COLOR_DARK = "#34EEB6"; // Same as light theme, might consider refactoring if that's not intended.
 export const WARNING_COLOR_DARK = "#FFCF72"; // Same as light theme, might consider refactoring if that's not intended.
 export const ERROR_COLOR_DARK = "#FF8863"; // Same as light theme, might consider refactoring if that's not intended.
+
+// Notifications Format
+export const TOAST_BOARDER = "1px solid #FFFFFF";
+export const TOAST_BACKGROUND = "transparent";
+export const TOAST_COLOR = "#FFFFFF";
+export const TOAST_PADDING = "0 0 0 0";
+export const TOAST_FONTWEIGHT = "lighter";

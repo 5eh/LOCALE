@@ -13,6 +13,7 @@ import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
 import creators from "~~/routes/listings/creators";
 
+
 export default function Form() {
   const searchParams = useSearchParams() || new URLSearchParams();
   const serviceTitle = searchParams.get("title");
@@ -37,7 +38,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     title: "",
     description: "",
     price: 0,
-    photo: "https://images.halloweencostumes.co.uk/products/41043/1-1/mens-prehistoric-t-rex-costume.jpg",
+    photo:
+      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     location: "",
     quantityOfService: 5,
     features: [],
@@ -244,7 +246,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   id="title"
                   autoComplete="title"
                   className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
-                  placeholder="Modern Urban Trench Coat"
+                  placeholder="Monstera Deliciosa"
                   value={formData.title}
                   onChange={handleInputChange}
                 />
@@ -263,7 +265,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                 name="description"
                 rows={3}
                 className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
-                placeholder="Experience the blend of classic style and modern sustainability with our Modern Urban Trench Coat. Crafted from 100% recycled materials, this coat features a sleek, minimalist design perfect for the urban fashionista. The durable, water-resistant fabric makes it an ideal choice for any weather, while the stylish cut ensures you stay chic and comfortable."
+                placeholder="This tropical plant is known for its unique, hole-punched leaves and low maintenance requirements. Ideal for indoor spaces as it thrives in indirect light and requires watering only once a week."
                 value={formData.description}
                 onChange={handleInputChange}
               />
@@ -328,7 +330,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   name="includedFeatureOne"
                   id="includedFeatureOne"
                   autoComplete="given-name"
-                  placeholder="Sustainable Materials"
+                  placeholder="Air purifying"
                   className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={formData.features[0]?.feature || ""}
                   onChange={handleInputChange}
@@ -347,7 +349,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                   type="text"
                   name="includedFeatureTwo"
                   id="includedFeatureTwo"
-                  placeholder="Fully local team"
+                  placeholder="Low light tolerant"
                   className="text-left border-b border-gray-900  dark:border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                   value={formData.features[1]?.feature || ""}
                   onChange={handleInputChange}
@@ -538,7 +540,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
 
                     <div className="relative flex-1">
                       <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                        <span className="text-gray-300 sm:text-sm">$</span>
+                        <span className="text-gray-300 sm:text-sm">WEI</span>
                       </div>
                       <input
                         type="number"

@@ -1,16 +1,12 @@
 // SPDX-License-Identifier: Apache-2.0
 pragma solidity ^0.8.17;
 
-/**
- * @title LOCALE
- * @notice A white-label contract to manage commerce functionalities.
- */
 contract CommerceContract {
     address private owner;
     address private deployer;
 
     mapping(string => ProductData) public products;
-    mapping(string => address) private productBuyers;  // Track buyers for each product
+    mapping(string => address) private productBuyers;
     mapping(address => string) private deliveryAddresses;  // Storing unhashed delivery addresses
     mapping(address => string) private customInstructions;
 
@@ -118,39 +114,22 @@ contract CommerceContract {
         require(bytes(deliveryAddresses[user]).length > 0, "No delivery address set by this user. Are you sure they have purchased?");
         return deliveryAddresses[user];
     }
-
-    /**
-     * @notice Allows a user to set custom instructions in addition to own delivery address.
-     * @param user User's ETH address.
-     * @return Custom instructions of the user.
-     */
     function setCustomInstructions(string memory _instructions) public {
         customInstructions[msg.sender] = _instructions;
         emit CustomInstructionsUpdated(msg.sender, _instructions);
     }
 
-    /**
-     * @notice Retrieve custom instructions associated with user delivery address, if set.
-     * @param user User's ETH address.
-     * @return Custom instructions of the user.
-     */
+
     function getCustomInstructions(address user) public view returns (string memory) {
         require(bytes(customInstructions[user]).length > 0, "No custom instructions set for this user. Are you sure they have purchased?");
         return customInstructions[user];
     }
 
-    /**
-     * @notice Retrieve the title by ListingID.
-     * @return Listing title.
-     */
     function getListingTitle() public view returns (string memory) {
         return listingTitle;
     }
 
-    /**
-     * @notice Retrieve product data by ListingID.
-     * @return Product data.
-     */
+
     function getProductData(string memory listingID) public view returns (ProductData memory) {
         require(products[listingID].creatorWallet != address(0), "Product does not exist");
         return products[listingID];

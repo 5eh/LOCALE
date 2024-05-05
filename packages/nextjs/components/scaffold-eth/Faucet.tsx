@@ -9,6 +9,7 @@ import { Address, AddressInput, Balance, EtherInput } from "~~/components/scaffo
 import { useTransactor } from "~~/hooks/scaffold-eth";
 import { notification } from "~~/utils/scaffold-eth";
 
+
 // Account index to use from generated hardhat accounts.
 const FAUCET_ACCOUNT_INDEX = 0;
 
@@ -40,11 +41,11 @@ export const Faucet = () => {
           <>
             <p className="font-bold mt-0 mb-1">Cannot connect to local provider</p>
             <p className="m-0">
-              - Did you forget to run <code className="italic bg-base-300 text-base font-bold">yarn chain</code> ?
+              - Did you forget to run <code className="italic bg-primary/30 text-base font-bold">yarn chain</code> ?
             </p>
             <p className="mt-1 break-normal">
-              - Or you can change <code className="italic bg-base-300 text-base font-bold">targetNetwork</code> in{" "}
-              <code className="italic bg-base-300 text-base font-bold">scaffold.config.ts</code>
+              - Or you can change <code className="italic bg-primary/30 text-base font-bold">targetNetwork</code> in{" "}
+              <code className="italic bg-primary/30 text-base font-bold">scaffold.config.ts</code>
             </p>
           </>,
         );

@@ -215,7 +215,7 @@ export default function Purchase({ params }: PageProps) {
                 <dt className="text-sm font-medium leading-6 text-white">TOTAL PRICE</dt>
                 <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
                   {/* {earningsRate(listing.price)} */}
-                  {/* {totalPrice(listing.price)} */}${listing.price}.00
+                  {/* {totalPrice(listing.price)} */}{listing.price}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -302,7 +302,7 @@ export default function Purchase({ params }: PageProps) {
                       id="street"
                       value={deliveryInfo.street}
                       onChange={handleInputChange}
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="1234 Main St"
                     />
                     <label htmlFor="city" className="sr-only">
@@ -314,7 +314,7 @@ export default function Purchase({ params }: PageProps) {
                       id="city"
                       value={deliveryInfo.city}
                       onChange={handleInputChange}
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="Anytown"
                     />
                   </div>
@@ -328,7 +328,7 @@ export default function Purchase({ params }: PageProps) {
                       value={deliveryInfo.state}
                       onChange={handleInputChange}
                       id="state"
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="State"
                     />
                     <label htmlFor="zip" className="sr-only">
@@ -340,7 +340,7 @@ export default function Purchase({ params }: PageProps) {
                       id="zip"
                       value={deliveryInfo.zip}
                       onChange={handleInputChange}
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="Zip Code"
                     />
                   </div>
@@ -354,7 +354,7 @@ export default function Purchase({ params }: PageProps) {
                       value={customInstructions}
                       onChange={handleInputChange}
                       rows={3}
-                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none"
+                      className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-primary/40 hover:border-primary/60 focus:outline-none"
                       placeholder="CUSTOM INSTRUCTIONS"
                     />
                   </div>

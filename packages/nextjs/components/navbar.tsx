@@ -95,7 +95,7 @@ function NavItem({ href, children }: { href: string; children: React.ReactNode }
 function DesktopNavigation(props: React.ComponentPropsWithoutRef<"nav">) {
   return (
     <nav {...props}>
-      <ul className="flex rounded pl-12 pr-12 bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
+      <ul className="border border-primary/40 dark:border-primary/30 flex rounded pl-12 pr-12 bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/">
           <SlHome className="size-8 mt-2 mb-2" />
         </NavItem>
@@ -125,7 +125,7 @@ export function Navbar() {
   return (
     <>
       <header
-        className="md:w-full md:justify-center pointer-events-none relative sm:z-20 flex flex-none flex-col"
+        className=" md:w-full md:justify-center pointer-events-none relative sm:z-20 flex flex-none flex-col"
         style={{
           height: "var(--header-height)",
           marginBottom: "var(--header-mb)",

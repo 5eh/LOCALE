@@ -116,7 +116,7 @@ export const EtherInput = ({
           className={`${
             nativeCurrencyPrice > 0
               ? ""
-              : "tooltip tooltip-secondary before:content-[attr(data-tip)] before:right-[-10px] before:left-auto before:transform-none"
+              : "tooltip tooltip-primary before:content-[attr(data-tip)] before:right-[-10px] before:left-auto before:transform-none"
           }`}
           data-tip="Unable to fetch price"
         >
