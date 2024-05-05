@@ -14,4 +14,8 @@ contract Incrementer {
         number++;
         timestamp = block.timestamp;
     }
+
+    function getNumber() public view returns(uint) {
+        return number
+    }
 }
