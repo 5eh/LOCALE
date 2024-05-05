@@ -47,21 +47,21 @@ export const AddressInfoDropdown = ({
 
   return (
     <>
-      <details ref={dropdownRef} className="dropdown dropdown-end leading-3">
-        
-        
-        <summary tabIndex={0} className="btn btn-gray-300/20 btn-sm pl-0 pr-2 shadow-sm dropdown-toggle gap-0 !h-auto">
+      <details ref={dropdownRef} className="dropdown dropdown-end  leading-3">
+        <summary
+          tabIndex={0}
+          className="btn  dark:btn-gray-300/20 btn-sm pl-0 pr-2 bg-primary/20 shadow-sm dropdown-toggle gap-0 !h-auto"
+        >
           <BlockieAvatar address={checkSumAddress} size={30} ensImage={ensAvatar} />
-          <span className="ml-2 mr-1">
+          <span className="ml-2 mr-1 text-black dark:text-white">
             {isENS(displayName) ? displayName : checkSumAddress?.slice(0, 6) + "..." + checkSumAddress?.slice(-4)}
           </span>
           <ChevronDownIcon className="h-6 w-4 ml-2 sm:ml-0" />
         </summary>
 
-
         <ul
           tabIndex={0}
-          className="dropdown-content menu z-[2] p-2 mt-2 shadow-center shadow-accent bg-base-200 rounded-box gap-1"
+          className="dropdown-content menu z-[2] p-2 mt-8 border border-primary backdrop-blur-sm bg-primary/20 dark:bg-primary/10 rounded-box gap-1"
         >
           <NetworkOptions hidden={!selectingNetwork} />
           <li className={selectingNetwork ? "hidden" : ""}>
@@ -71,7 +71,7 @@ export const AddressInfoDropdown = ({
                   className="text-xl font-normal h-6 w-4 cursor-pointer ml-2 sm:ml-0"
                   aria-hidden="true"
                 />
-                <span className=" whitespace-nowrap">Copy address</span>
+                <span className="whitespace-nowrap">Copy address</span>
               </div>
             ) : (
               <CopyToClipboard

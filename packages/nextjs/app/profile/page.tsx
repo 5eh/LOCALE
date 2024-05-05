@@ -127,8 +127,6 @@ export default function Page() {
 
   const [shipStatus, setShipStatus] = useState("SHIP NOW"); // Initial button state
   const handleShip = async () => {
-    // Create contract that gets the value of the listing and sends it to the creator
-
     setShipStatus("LOADING");
     try {
       await new Promise(resolve => setTimeout(resolve, 2000));
@@ -146,12 +144,13 @@ export default function Page() {
   if (isLoading) {
     return <div>Loading...</div>;
   }
+
   return (
     <>
       <div id="main" className="mx-auto mt-12 pt-24 max-w-7xl px-4 sm:px-6 lg:px-8">
         {WEB3_FUNCTIONALITY && walletListings.length > 0 && (
-          <div className="rounded w-full grid grid-cols-5 gap-4 pb-6">
-            <div className="flex flex-col gap-[calc(20%-1rem)]">
+          <div className="rounded w-full grid grid-cols-1 md:grid-cols-4 gap-4 pb-6">
+            <div className="flex flex-col gap-3">
               <Button className="text-left border border-white w-full bg-gray-500/20 py-4 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none">
                 UNFULFILLED
               </Button>
@@ -163,28 +162,28 @@ export default function Page() {
               </Button>
             </div>
 
-            <div className="text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm hover:border-white">
-              {walletListings.map((listing, index) => {
-                return (
-                  <div key={`wallet-${index}`}>
-                    <p>| {listing.title}</p>
-                    <p>{listing.price} WEI</p>
-                    <p className="text-green-300">LISTING ADDRESS</p>
-                    <Button
-                      className={`text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none`}
-                      onClick={handleShip}
-                    >
-                      {shipStatus}
-                    </Button>
-                    <Button
-                      className={`text-left border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-300 focus:bg-gray-700/20 focus:border-blue-400 hover:border-blue-600 focus:outline-none`}
-                    >
-                      <a href={`/explore/${listing.id}`}>VIEW LISTING</a>
-                    </Button>
-                  </div>
-                );
-              })}
-            </div>
+            {/* Dynamically create a grid column for each listing */}
+            {walletListings.map((listing, index) => (
+              <div
+                key={`wallet-${index}`}
+                className="border border-gray-200/20 w-full bg-gray-500/20 py-2 px-3 text-sm"
+              >
+                <p className="dark:text-white text-gray-800">{listing.title}</p>
+                <p className="dark:text-gray-200 text-gray-800">{listing.price}</p>
+                <p className="text-primary">LISTING ADDRESS</p>
+                <div className="flex ml-1 mr-1 gap-1">
+                  <Button
+                    className="border border-gray-200/20 w-full bg-primary/20 dark:bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/30 hover:border-primary focus:outline-none"
+                    onClick={handleShip}
+                  >
+                    {shipStatus}
+                  </Button>
+                  <Button className="border border-gray-200/20  w-full bg-primary/20 dark:bg-gray-500/20 py-2 px-3 text-sm leading-6 text-gray-800 dark:text-gray-300 focus:bg-gray-700/20 focus:border-primary/30 hover:border-primary focus:outline-none">
+                    <a href={`/explore/${listing._id}`}>VIEW LISTING</a>
+                  </Button>
+                </div>
+              </div>
+            ))}
           </div>
         )}
 
@@ -199,6 +198,17 @@ export default function Page() {
                 <p className="italic text-gray-700 dark:text-gray-400">
                   <a href="https://ocovos.com/${OCOVOSSTUDIOS}">@{user.username}</a>
                 </p>
+                <Ratings rating={user.rating} amountOfReviews={user.amountOfReviews} />
+                <div className="gap-4">
+                  {user.badges.map((badge, index) => (
+                    <span
+                      key={`badge-${index}`}
+                      className="ml-2 mr-2 align-center inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10"
+                    >
+                      {badge}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
             <div className="block">
@@ -219,78 +229,59 @@ export default function Page() {
             </div>
           </div>
 
-          <div className="text-yellow-400 p-4 md:col-span-2 lg:col-span-1">
-            <div className="break">
-              <Ratings rating={user.rating} amountOfReviews={user.amountOfReviews} />
-            </div>
-
-            <div className="gap-4">
-              {user.badges.map((badge, index) => (
-                <span
-                  key={`badge-${index}`}
-                  className="ml-2 mr-2 align-center inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10"
-                >
-                  {badge}
-                </span>
-              ))}
-            </div>
-
+          <div className="mt-2">
             <div className="mt-2 border border-black dark:border-white">
-              <div className="mt-2">
-                <ul role="list">
-                  <li key={currentReview.userID} className="col-span-1 divide-y">
-                    <div className="flex w-full items-center justify-between space-x-6 p-6">
-                      <div className="flex-1">
-                        <div className="flex items-center space-x-3">
-                          <h3 className="truncate text-md font-medium text-gray-800 dark:text-gray-300">
-                            {currentReview.name}
-                          </h3>
-                          <span className="ml-2 mr-2 inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
-                            {currentReview.badge}
-                          </span>
-                        </div>
-                        <p className="mt-1 text-sm text-gray-600 dark:text-gray-200 line-clamp-3">
-                          {currentReview.review}
-                        </p>
+              <ul role="list">
+                <li key={currentReview.userID} className="">
+                  <div className="flex w-full items-center justify-between space-x-6 p-6">
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-3">
+                        <h3 className="truncate text-md font-medium text-gray-800 dark:text-gray-300">
+                          {currentReview.name}
+                        </h3>
+                        <span className="ml-2 mr-2 inline-flex items-center gap-x-0.5 rounded-md bg-blue-300 px-2 py-1 text-xs font-medium text-blue-800 ring-1 ring-inset ring-blue-800/10">
+                          {currentReview.badge}
+                        </span>
                       </div>
-                      <img
-                        className="h-10 w-10 flex-shrink-0 rounded-full bg-primary/20"
-                        src={currentReview.imageUrl}
-                        alt={`${currentReview.name} Profile Picture`}
-                      />
+                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-200 line-clamp-3">
+                        {currentReview.review}
+                      </p>
                     </div>
-                    <div>
-                      <div className="-mt-px flex">
-                        <div className="flex w-0 flex-1 hover:bg-primary/20 ">
-                          <a
-                            onClick={goToPreviousReview}
-                            className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                          >
-                            <ArrowLeftCircleIcon
-                              className="h-5 w-5 text-gray-600 dark:text-gray-200"
-                              aria-hidden="true"
-                            />
-                          </a>
-                        </div>
-                        <div className="-ml-px flex w-0 flex-1 hover:bg-primary/20">
-                          <a
-                            onClick={goToNextReview}
-                            className="cursor-pointer relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
-                          >
-                            <ArrowRightCircleIcon
-                              className="h-5 w-5 text-gray-600 dark:text-gray-200"
-                              aria-hidden="true"
-                            />
-                          </a>
-                        </div>
+                    <img
+                      className="h-10 w-10 flex-shrink-0 rounded-full bg-primary/20"
+                      src={currentReview.imageUrl}
+                      alt={`${currentReview.name} Profile Picture`}
+                    />
+                  </div>
+                  <div>
+                    <div className="-mt-px flex">
+                      <div className="flex w-0 flex-1 hover:bg-primary/20 ">
+                        <a
+                          onClick={goToPreviousReview}
+                          className="cursor-pointer relative -mr-px inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-bl-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                        >
+                          <ArrowLeftCircleIcon
+                            className="h-5 w-5 text-gray-600 dark:text-gray-200"
+                            aria-hidden="true"
+                          />
+                        </a>
+                      </div>
+                      <div className="-ml-px flex w-0 flex-1 hover:bg-primary/20">
+                        <a
+                          onClick={goToNextReview}
+                          className="cursor-pointer relative inline-flex w-0 flex-1 items-center justify-center gap-x-3 rounded-br-lg border border-transparent py-4 text-sm font-semibold text-gray-900"
+                        >
+                          <ArrowRightCircleIcon
+                            className="h-5 w-5 text-gray-600 dark:text-gray-200"
+                            aria-hidden="true"
+                          />
+                        </a>
                       </div>
                     </div>
-                  </li>
-                </ul>
-              </div>
+                  </div>
+                </li>
+              </ul>
             </div>
-
-            
           </div>
 
           {/* Portfolio Media Links - Displayed Flex */}

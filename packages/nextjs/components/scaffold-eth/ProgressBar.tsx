@@ -2,12 +2,13 @@
 
 import { useEffect } from "react";
 import NProgress from "nprogress";
+import { PRIMARY_COLOR } from '~~/marketplaceVariables/styles';
 
 type PushStateInput = [data: any, unused: string, url?: string | URL | null | undefined];
 
 export function ProgressBar() {
   const height = "3px";
-  const color = "#2299dd";
+  const color = `${PRIMARY_COLOR}`;
 
   const styles = (
     <style>

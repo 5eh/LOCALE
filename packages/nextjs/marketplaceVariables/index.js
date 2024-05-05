@@ -14,18 +14,18 @@ dotenv.config();
 // CONFIGURATION FILE:
 
 // Marketplace Variables
-export const MARKETPLACE_TYPE = "PLANTS"; // Type of Marketplace
-export const MARKETPLACE_NAME = "LOCALE"; // Name of Marketplace
-export const COMPANY = "POLKADOT & ARTHUR LABS"; // Name of Marketplace company
-export const MARKETPLACE_HEADER = "THE Web3 Plant Marketplace" // Short header of company, used in Title and Header
-export const MARKETPLACE_SERVICE_PROVIDER = "plant seller"; // Singular service provider type
-export const MARKETPLACE_SERVICE_PROVIDERS = "planters"; // Multiple service provider type
+export const MARKETPLACE_TYPE = "Gaming"; // Type of Marketplace
+export const MARKETPLACE_NAME = "BRIGHT INc"; // Name of Marketplace
+export const COMPANY = "BRIGHT & ARTHUR LABS"; // Name of Marketplace company
+export const MARKETPLACE_HEADER = "THE Web3 Gaming Marketplace" // Short header of company, used in Title and Header
+export const MARKETPLACE_SERVICE_PROVIDER = "game sellers"; // Singular service provider type
+export const MARKETPLACE_SERVICE_PROVIDERS = "gamers"; // Multiple service provider type
 export const MARKETPLACE_TEMPLATE_TYPE = "commerce"; // commerce, services, deliveries (READ: USE ONE OF THE THREE SELECTED. THESE WILL CUSTOMIZE USER INPUTS)
-export const MARKETPLACE_DESCRIPTION = "We connect you with the greatest plant sellers and distributors in the world!"; // Description of Marketplace
+export const MARKETPLACE_DESCRIPTION = "We connect you with the greatest game retailers and distributors in the world!"; // Description of Marketplace
 
 // Transaction Costs
 export const SALE_PERCENTAGE_CHARGE = 0.025; // Format it as 0.025 (2.5%)
-export const LOCAL_TAX_RATE = 0.0825; // Format it as 0.0825 (AUstin tax rate is 8.25%)
+export const LOCAL_TAX_RATE = 0.0825; // Format it as 0.0825 (Austin tax rate is 8.25%)
 
 // Currency
 export const CURRENCY = "USD"; // Used for currency formatting
