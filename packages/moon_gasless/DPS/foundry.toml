@@ -14,8 +14,8 @@ solc_version = "0.8.21"
 # libraries = []
 
 [rpc_endpoints]
-# moonbase = "http://127.0.0.1:9944"
-moonbase = "https://rpc.api.moonbase.moonbeam.network"
+moonbase = "http://127.0.0.1:9944"
+# moonbase = "https://rpc.api.moonbase.moonbeam.network"
 anvil = "http://127.0.0.1:8545"
 # moonbase = "https://rpc.api.moonbase.moonbeam.network"
 moonbeam = "https://rpc.api.moobeam.network"
