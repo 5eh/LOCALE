@@ -48,9 +48,9 @@ const TransactionPage: NextPage<PageProps> = ({ params }: PageProps) => {
         Back
       </button>
       {transaction ? (
-        <div className="overflow-x-auto">
-          <h2 className="text-3xl font-bold mb-4 text-center text-primary-content">Transaction Details</h2>{" "}
-          <table className="table rounded-lg bg-base-100 w-full shadow-lg md:table-lg table-md">
+        <div className="overflow-x-auto pt-24">
+          <h2 className="text-3xl font-bold mb-4 text-center text-gray-900 dark:text-white">Transaction Details</h2>{" "}
+          <table className="table rounded border border-black dark:border-white bg-primary/20 w-full shadow-lg md:table-lg table-md">
             <tbody>
               <tr>
                 <td>

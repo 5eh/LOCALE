@@ -289,22 +289,24 @@ export default function Page() {
                 </ul>
               </div>
             </div>
+
+            
           </div>
 
           {/* Portfolio Media Links - Displayed Flex */}
-          <div className="flex flex-wrap gap-3">
-            <Button className="inline-flex flex align-center items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-              <a href={user.media[0]} className="flex gap-2">
+          <div className="flex gap-3">
+            <Button className="flex items-center justify-center ring-1 ring-gray-500 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+              <a href={user.media[0]} className="flex items-center gap-2">
                 <ImYoutube />@{user.name}
               </a>
             </Button>
-            <Button className="inline-flex flex align-center items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-              <a href={user.media[1]} className="flex gap-2">
+            <Button className="flex items-center justify-center ring-1 ring-gray-500 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+              <a href={user.media[1]} className="flex items-center gap-2">
                 <ImInstagram />@{user.name}
               </a>
             </Button>
-            <Button className="inline-flex flex align-center items-center ring-1 ring-gray-500  gap-x-0.5 rounded-md  bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
-              <a href={user.media[2]} className="flex gap-2">
+            <Button className="flex items-center justify-center ring-1 ring-gray-500 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
+              <a href={user.media[2]} className="flex items-center gap-2">
                 <ImYoutube />@{user.name}
               </a>
             </Button>
@@ -334,7 +336,7 @@ export default function Page() {
                   <div className="bg-gray-200/20 dark:bg-gray-800/20 border border-gray-500 dark:border-transparent hover:bg-gray-700/20 p-4 shadow rounded-lg mt-2 mb-2">
                     <div className="flex gap-2">
                       <p className="text-gray-800 dark:text-gray-300">| {listing.date}</p>
-                      <p className="textgray-700 dark:text-gray-400">${listing.price}</p>
+                      <p className="text-gray-700 dark:text-gray-400">${listing.price}</p>
                     </div>
 
                     <p className="text-gray-800 dark:text-gray-300 mb-1 mt-1">{listing.location}</p>

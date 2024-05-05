@@ -34,7 +34,7 @@ export function DebugContracts() {
             <div className="flex flex-row gap-2 w-full max-w-7xl pb-1 px-6 lg:px-10 flex-wrap">
               {contractNames.map(contractName => (
                 <button
-                  className={`btn-secondary btn-sm font-light hover:border-transparent ${
+                  className={`btn-primary btn-sm font-light hover:border-transparent ${
                     contractName === selectedContract
                       ? "dark:bg-primary/50 ring ring-primary dark:text-white dark:hover:bg-primary/60 no-animation"
                       : "bg-base-100 dark:bg-primary/20 dark:text-white dark:hover:bg-primary/50"

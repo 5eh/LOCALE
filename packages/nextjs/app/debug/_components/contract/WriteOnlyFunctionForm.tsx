@@ -96,7 +96,7 @@ export const WriteOnlyFunctionForm = ({
         </p>
         {inputs}
         {abiFunction.stateMutability === "payable" ? (
-          <div className="flex flex-col gap-1.5 w-full">
+          <div className=" flex flex-col gap-1.5 w-full">
             <div className="flex items-center ml-2">
               <span className="text-xs font-medium mr-2 leading-none">payable value</span>
               <span className="block text-xs font-extralight leading-none">wei</span>
@@ -124,9 +124,13 @@ export const WriteOnlyFunctionForm = ({
             }`}
             data-tip={`${writeDisabled && "Wallet not connected or in the wrong network"}`}
           >
-            <button className="btn btn-secondary btn-sm" disabled={writeDisabled || isPending} onClick={handleWrite}>
+            <button
+              className="btn border-primary hover:border-primary btn-sm dark:bg-gray-800/60"
+              disabled={writeDisabled || isPending}
+              onClick={handleWrite}
+            >
               {isPending && <span className="loading loading-spinner loading-xs"></span>}
-              Send 💸
+              SEND 💸
             </button>
           </div>
         </div>
