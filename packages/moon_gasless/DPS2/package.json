@@ -1,5 +1,11 @@
 {
   "name": "hardhat-project",
+  "scripts": {
+    "nodeMoon": "moonbeam --dev --ws-external --rpc-external --sealing 100",
+    "deployMoon": "npx hardhat ignition deploy ./ignition/modules/DPS.js --network dev",
+    "nodeHard": "npx hardhat node",
+    "deployHard": "npx hardhat ignition deploy ./ignition/modules/DPS.js --network localhost"
+  },
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^5.0.0",
     "hardhat": "^2.22.3"
