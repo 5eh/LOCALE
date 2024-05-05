@@ -1,13 +1,15 @@
-import ABI from "../abi/xtokensABI"; // Import the X-Tokens ABI
-import { ethers } from "ethers"; // Import Ethers library
+import { ABI } from "../abi/xtokensABI.js";
+// Import Ethers library
 import dotenv from "dotenv";
+// Import the X-Tokens ABI
+import { ethers } from "ethers";
 
 dotenv.config();
 const privateKey = process.env.PRIVATE_KEY;
 
 // Create Ethers provider and signer
-const provider = new ethers.providers.JsonRpcProvider(
-  "https://rpc.api.moonbase.moonbeam.network"
+const provider = new ethers.JsonRpcProvider(
+  "https://moonbase-alpha.public.blastapi.io"
 );
 const signer = new ethers.Wallet(privateKey, provider);
 
@@ -20,7 +22,8 @@ const xTokens = new ethers.Contract(
 
 // Arguments for the transfer function
 const currencyAddress = "0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080"; // xcUNIT address
-const amount = 1000000000000;
+// const amount = 1000000000000;
+const amount = 1000000000;
 const destination = [
   // Target the relay chain from Moonbase Alpha
   1,
@@ -36,7 +39,8 @@ async function transferToAlice() {
     currencyAddress,
     amount,
     destination,
-    weight
+    weight,
+    { gasLimit: 300000, gasPrice: ethers.parseUnits("1.65", "gwei") }
   );
 
   // Waits for the transaction to be included in a block
