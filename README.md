@@ -17,7 +17,7 @@
 
 ![Screenshot](https://i.ibb.co/nCW7Pkj/image-2024-05-06-093903626.png)
 
-We're Arthur Labs. We develop marketplaces that reduce the time it takes for developers and entrepreneurs to bring ideas to Web3 by 94%, from 6-12 months to 1 week. Our test case LOCALE is a Web3 enahnced commerce platform for plants.
+We're Arthur Labs. We develop open source marketplace boilerplates that reduce the time it takes for developers and entrepreneurs to bring ideas to Web3 by 94%, from 6-12 months to 1 week. Our test case LOCALE is a Web3 enhanced commerce platform for plants.
 
 In Polkadot Global Hackathon - North America Editino we explored XCM as a price feed mechanism. Please check out `./packages/xcm/README.md` for further docs.
 
