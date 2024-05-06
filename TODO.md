@@ -3,15 +3,15 @@
 ## Todo
 
 **Submission requirements**
-- [*] Main README - this is where judges will read the strengths of the project ('Project Details' field are only short and will be on a spreadsheet)
-- [*] Project Description - 100 words but the first 40 or so will be most prominent
-- [*] Pitch video upload link - if github, video will be limited to 50Mb - Drive, maybe?
-- [*] Pitch video video - walk through of project, video only, stitch audio on afterwards. 4 mins max, including time on slides
-- [*] Pitch video slides (if any) - these can have voiceover recoreded directly (or not). Include at minimum intro slide and signoff slide.
-- [*] Pitch video audio - warning, this might take many mnay takes to sound natural!
-- [*] Onchain deployment
-- [*] Web deployment - will need to be live for whole judging period cus ther'e no way judges are installing locally 😂
-- [*] Other standalone submission requirements: tech stack, learnings, future work
+- [ ] Main README - this is where judges will read the strengths of the project ('Project Details' field are only short and will be on a spreadsheet)
+- [ ] Project Description - 100 words but the first 40 or so will be most prominent
+- [ ] Pitch video upload link - if github, video will be limited to 50Mb - Drive, maybe?
+- [ ] Pitch video video - walk through of project, video only, stitch audio on afterwards. 4 mins max, including time on slides
+- [ ] Pitch video slides (if any) - these can have voiceover recoreded directly (or not). Include at minimum intro slide and signoff slide.
+- [ ] Pitch video audio - warning, this might take many mnay takes to sound natural!
+- [ ] Onchain deployment
+- [ ] Web deployment - will need to be live for whole judging period cus ther'e no way judges are installing locally 😂
+- [ ] Other standalone submission requirements: tech stack, learnings, future work
 
 
 
@@ -23,7 +23,7 @@
 - [ ] Add README.md ins `./packages/xcm/`
 - [ ] Update in README.md in `./README.md`
 
-- [ ] Add Natspec in `./packages/hardhat/contracts/`
+- [*] Add Natspec in `./packages/hardhat/contracts/`
 - [ ] Clean Up in `./packages/hardhat/contracts/`
 
 - [ ] Deploy contracts on Moonbase Alpha
