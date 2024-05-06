@@ -48,7 +48,7 @@ export default function SendxcUnitToken({ amount }: { amount: number }) {
         }}
         disabled={isPending}
       >
-        Make Payment
+        Pay from Moonbase Alpha
       </button>
     </div>
   );
