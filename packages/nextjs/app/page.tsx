@@ -3,10 +3,14 @@
 import { CheckCircleIcon } from "@heroicons/react/20/solid";
 import {  FORM_SELECTION } from "~~/marketplaceVariables/form";
 import {
+  INDEX_HEADING,
+  INDEX_SUBHEADING,
   MARKETPLACE_SERVICE_PROVIDER,
   MARKETPLACE_SERVICE_PROVIDERS,
-  MARKETPLACE_TYPE,
+  INDEX_STATS,
+
 } from "~~/marketplaceVariables/index";
+
 
 export default function Index() {
   const benefits = [
@@ -18,22 +22,17 @@ export default function Index() {
     "Include premium services",
   ];
 
-  const stats = [
-    { label: `Unique ${MARKETPLACE_SERVICE_PROVIDERS} active`, value: "256" },
-    { label: "Different services available", value: "30+" },
-    { label: "Monthly transaction revenue", value: "250k" },
-    { label: `Paid out to ${MARKETPLACE_SERVICE_PROVIDERS}`, value: "$7M" },
-  ];
+
 
   return (
     <>
       <div className="px-6 pt-14 lg:px-8">
         <div className="mx-auto max-w-2xl pt-24 text-center sm:pt-40">
           <h2 className="text-2xl font-bold tracking-tight text-black dark:text-white sm:text-6xl">
-            PREMIUM {MARKETPLACE_TYPE}
+            {INDEX_HEADING.toUpperCase()}
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-700 dark:text-gray-300">
-            Find exceptional {MARKETPLACE_SERVICE_PROVIDERS} near you.
+            {INDEX_SUBHEADING}
           </p>
         </div>
       </div>
@@ -41,7 +40,7 @@ export default function Index() {
       <div className="mx-auto mt-20 max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-none">
           <dl className="mt-16 grid grid-cols-1 gap-x-8 gap-y-12 sm:mt-20 sm:grid-cols-2 sm:gap-y-16 lg:mt-28 lg:grid-cols-4">
-            {stats.map((stat, statIdx) => (
+            {INDEX_STATS.map((stat, statIdx) => (
               <div
                 key={statIdx}
                 className="flex flex-col-reverse gap-y-3 border-l border-gray-400 dark:border-white/20 pl-6"
@@ -91,8 +90,8 @@ export default function Index() {
                 ))}
               </ul>
               <div className="mt-10 flex">
-                <a href="/authentication " className="text-sm font-semibold leading-6 text-primary">
-                  REGISTER FOR FREE <span aria-hidden="true">&rarr;</span>
+                <a href="/authentication" className="hover:pointer text-sm font-semibold leading-6 text-primary">
+                  REGISTER FOR FREE
                 </a>
               </div>
             </div>

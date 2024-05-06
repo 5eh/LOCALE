@@ -28,7 +28,7 @@ const Footer = () => {
 
   return (
     <>
-      <footer className="relative pt-4 mt-6 sm:mt-4" aria-labelledby="footer-heading">
+      <footer className=" pt-4 mt-6 sm:mt-4" aria-labelledby="footer-heading">
         <div className="mx-auto max-w-7xl px-6 pb-8 lg:px-8">
           <div className="xl:grid xl:grid-cols-3 xl:gap-8">
             <div className="space-y-8">
@@ -68,23 +68,6 @@ const Footer = () => {
                 </div>
               </div>
               <div className="md:grid md:grid-cols-2 md:gap-8">
-                {/* <div>
-                  <h3 className="text-sm font-semibold leading-6 text-white">
-                    Company
-                  </h3>
-                  <ul role="list" className="mt-6 space-y-4">
-                    {navigation.company.map((item) => (
-                      <li key={item.name}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-gray-300 hover:text-white"
-                        >
-                          {item.name
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div> */}
                 <div className="mt-10 md:mt-0">
                   <h3 className="text-sm font-semibold leading-6 text-black dark:text-white">Legal</h3>
                   <ul role="list" className="mt-6 space-y-4">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Listings from "./listings";
 import { Dialog, Disclosure, Menu, Transition } from "@headlessui/react";
 import classNames from "classnames";
@@ -22,7 +22,7 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-const subCategories = FORM_SELECTION.map(service => ({ name: service.title, href: `/explore/${service.id}` }));
+const initialSubCategories = FORM_SELECTION.map(service => ({ name: service.title, id: service.id }));
 
 const filters = [
   {
@@ -36,11 +36,37 @@ const filters = [
       { value: "200+", label: "$200+", checked: false },
     ],
   },
-  // Other filters can be added here
 ];
 
 export default function Sorting({ listing, creator }: SortingProps) {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
+  const [subCategories, setSubCategories] = useState(initialSubCategories);
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
+  const [filteredListing, setFilteredListing] = useState(listing);
+
+  useEffect(() => {
+    console.log("Listing prop updated:", listing);
+  }, [listing]);
+
+  // Filter listings based on selected category
+  useEffect(() => {
+    if (selectedCategoryId === "") {
+      setFilteredListing(listing);
+    } else {
+      const filtered = listing.filter(item => item.serviceType === selectedCategoryId);
+      setFilteredListing(filtered);
+    }
+  }, [selectedCategoryId, listing]);
+
+  // Additional useEffect to log the updated state
+  useEffect(() => {
+    console.log("Filtered Listings after update:", filteredListing);
+  }, [filteredListing]);
+
+  const handleCategorySelect = categoryId => {
+    console.log("Category selected:", categoryId);
+    setSelectedCategoryId(categoryId);
+  };
 
   return (
     <div className="">
@@ -88,10 +114,12 @@ export default function Sorting({ listing, creator }: SortingProps) {
                     <h3 className="sr-only">Categories</h3>
                     <ul role="list" className="px-2 py-3 font-medium text-gray-300">
                       {subCategories.map(category => (
-                        <li key={category.name}>
-                          <a href={category.href} className="block px-2 py-3">
-                            {category.name}
-                          </a>
+                        <li
+                          key={category.id}
+                          onClick={() => handleCategorySelect(category.id)}
+                          className="block cursor-pointer"
+                        >
+                          {category.name}
                         </li>
                       ))}
                     </ul>
@@ -218,8 +246,12 @@ export default function Sorting({ listing, creator }: SortingProps) {
                   className="space-y-4 border-b border-gray-800  dark:border-gray-200 pb-6 text-sm font-medium text-gray-300"
                 >
                   {subCategories.map(category => (
-                    <li key={category.name}>
-                      <a href={category.href} className='text-gray-800 dark:text-gray-300 hover:text-primary dark:hover:text-primary'>{category.name}</a>
+                    <li
+                      key={category.id}
+                      onClick={() => handleCategorySelect(category.id)}
+                      className="block cursor-pointer hover:text-primary/90"
+                    >
+                      {category.name}
                     </li>
                   ))}
                 </ul>
@@ -270,7 +302,7 @@ export default function Sorting({ listing, creator }: SortingProps) {
 
               {/* Listing grid */}
               <div className="lg:col-span-3">
-                <Listings creator={creator} listing={listing} />
+                <Listings creator={creator} listing={filteredListing} />
               </div>
             </div>
           </section>

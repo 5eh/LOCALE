@@ -1,9 +1,9 @@
 // Background Variables
-export const BACKGROUND_COLOR_PRIMARY = "#d62828";
-export const BACKGROUND_COLOR_SECONDARY = "#fcbf49";
+export const BACKGROUND_COLOR_PRIMARY = "#00A878";
+export const BACKGROUND_COLOR_SECONDARY = "#3BA99C";
 
 // Light Variables
-export const PRIMARY_COLOR = "#fcbf49";
+export const PRIMARY_COLOR = "#00CC66";
 export const PRIMARY_CONTENT = "#212638"; // Common between light and dark themes for primary content.
 export const SECONDARY_COLOR_LIGHT = "#DAE8FF";
 export const SECONDARY_CONTENT = "#212638"; // Common between light and dark themes for secondary content.
