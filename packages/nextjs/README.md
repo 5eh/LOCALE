@@ -13,20 +13,22 @@ We're Arthur Labs - this folder contains the frontend application. If you are wa
 ## Build your marketplace
 
 1.  `marketplaceVariables` - Modify variables
-2.  `npm run deploy` 
+2.  `npm run deploy`
 3.  `npm run chain`
 4.  `deploy to Vercel`
 
 ## Marketplace functionalities
+
 1. Commerce: Any product, or niche group of products.
 2. Service: Any physical exchange of services through promises.
 3. Delivery: Any agreement on delivery from A to B.
 
 ### marketplaceVariables Config
 
-The marketplaceVariables is built to enable any level developer to configurate a marketplace on Polkadot and deploy a contract and unique business idea. 
+The marketplaceVariables is built to enable any level developer to configurate a marketplace on Polkadot and deploy a contract and unique business idea.
 
 There are a few files, but it is best to read the Readme. The structure is straightforward and looks like:
+
 ```
 marketplaceVariables/
 │
@@ -36,4 +38,3 @@ marketplaceVariables/
 ├── form.js
 └── documentation.js
 ```
-
