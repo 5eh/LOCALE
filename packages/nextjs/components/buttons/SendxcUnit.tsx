@@ -16,7 +16,6 @@ export default function SendxcUnitToken({ amount }: { amount: number }) {
     setIsPending(true)
     const currencyAddress = "0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080"; // xcUNIT address
     const destination = [
-      // Target the relay chain from Moonbase Alpha
       1,
       ["0x01c4db7bcb733e117c0b34ac96354b10d47e84a006b9e7e66a229d174e8ff2a06300"],
     ];
