@@ -26,7 +26,7 @@ export default function SendxcUnitToken({ amount }: { amount: number }) {
         address: "0x0000000000000000000000000000000000000804",
         abi: ABI,
         functionName: "transfer",
-        args: [currencyAddress, parseEther(amount.toString()), destination, weight],
+        args: [currencyAddress, amount, destination, weight],
       });
 
       const reciept = await waitForTransactionReceipt(wagmiConfig, { hash: result });
@@ -40,16 +40,15 @@ export default function SendxcUnitToken({ amount }: { amount: number }) {
   }
 
   return (
-    <div>
-      <button
-        type="button"
-        onClick={async () => {
-          await transferPaymentToRelay();
-        }}
-        disabled={isPending}
-      >
-        Pay from Moonbase Alpha
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={async () => {
+        await transferPaymentToRelay();
+      }}
+      disabled={isPending}
+      className="inline-flex items-center ring-1 ring-green-400 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
+    >
+      Pay from Moonbase Alpha
+    </button>
   );
 }

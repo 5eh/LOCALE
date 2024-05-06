@@ -4,12 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import PreviewCard from "./previewCard";
 import { Button } from "~~/components/buttons/Button";
+import SendxcUnitToken from "~~/components/buttons/SendxcUnit";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
-import {
-  COMPANY,
-  MARKETPLACE_TEMPLATE_TYPE,
-  WEB3_FUNCTIONALITY,
-} from "~~/marketplaceVariables";
+import { COMPANY, MARKETPLACE_TEMPLATE_TYPE, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import creators from "~~/routes/listings/creators";
 import listings from "~~/routes/listings/listings";
 
@@ -215,7 +212,8 @@ export default function Purchase({ params }: PageProps) {
                 <dt className="text-sm font-medium leading-6 text-white">TOTAL PRICE</dt>
                 <dd className="mt-1 text-sm text-right leading-6 text-gray-400 sm:col-span-2 sm:mt-0">
                   {/* {earningsRate(listing.price)} */}
-                  {/* {totalPrice(listing.price)} */}{listing.price}
+                  {/* {totalPrice(listing.price)} */}
+                  {listing.price}
                 </dd>
               </div>
               <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -512,12 +510,16 @@ export default function Purchase({ params }: PageProps) {
               </Button>
 
               {WEB3_FUNCTIONALITY ? (
-                <Button
-                  onClick={handleBlockchainPurchase}
-                  className="inline-flex items-center ring-1 ring-green-400 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
-                >
-                  PURCHASE SERVICE ON BLOCKCHAIN
-                </Button>
+                <div>
+                  <Button
+                    onClick={handleBlockchainPurchase}
+                    className="inline-flex items-center ring-1 ring-green-400 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white"
+                  >
+                    PURCHASE SERVICE ON BLOCKCHAIN
+                  </Button>
+
+                  <SendxcUnitToken amount={listing.price} />
+                </div>
               ) : (
                 <Button className="inline-flex items-center ring-1 ring-gray-500 gap-x-0.5 rounded-md bg-gray-800 border border-gray-700 px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
                   <a href={`/purchase/`}>PROCEED TO CHECKOUT</a>
