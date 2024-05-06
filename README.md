@@ -5,7 +5,7 @@
 <h3 align="center">LOCALE</h3>
   <p align="center">
   <br />
-    <a href="">Youtube</a>
+    <a href="https://drive.google.com/file/d/1cQzj4q9q7yn0LPZ4G287Bjo_bN-n7KkM/view?usp=sharing">Youtube</a>
     ·
     <a href="https://drive.google.com/file/d/1Lt-Ocd0fLM6UAZ5BbDNExJSKPsVkLkG4/view?usp=sharing">Long Video</a>
     ·
@@ -15,7 +15,7 @@
 
 ### Intro
 
-![Screenshot](https://i.ibb.co/gDgjf57/image-2024-04-30-123235379.png)
+![Screenshot](https://i.ibb.co/nCW7Pkj/image-2024-05-06-093903626.png)
 
 We're Arthur Labs. We develop marketplaces that reduce the time it takes for developers and entrepreneurs to bring ideas to Web3 by 94%, from 6-12 months to 1 week. Our test case LOCALE is a Web3 enahnced commerce platform for plants.
 
