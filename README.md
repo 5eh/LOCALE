@@ -39,8 +39,26 @@ The implentation of xc-20 transfers can be found here `./packages/nextjs/compone
 3.  `npm run chain`
 4.  `npm run deploy`
 5.  `cd packages/nextjs`
-6.  `.env` - Read comments
+6.  `.env` - Read comments [here](https://github.com/5eh/LOCALE/blob/main/packages/nextjs/.env.example)
 7.  `npm run start`
+
+
+### Deep dive
+
+Check the READMEs in the individual package folders
+
+[Configure a new marketplace!](https://github.com/5eh/LOCALE/blob/main/packages/nextjs/marketplaceVariables/readme.md)
+
+[LOCALE frontend](https://github.com/5eh/LOCALE/tree/main/packages/nextjs#readme)
+
+[Smart contracts and hardhat deployment](https://github.com/5eh/LOCALE/blob/main/packages/hardhat/README.md)
+
+[Moonbeam gasless TXs](https://github.com/5eh/LOCALE/blob/main/packages/moon_gasless/README.md)
+
+[Moonbeam XC20 cross-chain payments]()
+
+[OAK Network -> Moonbeam cross-chain calls](https://github.com/5eh/LOCALE/tree/main/packages/xcm#readme)
+
 
 ### Contact
 
