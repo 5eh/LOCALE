@@ -5,7 +5,7 @@ import { ABI } from "../../lib/abi/xtokensABI.js";
 import { parseEther } from "viem";
 import { useWriteContract } from "wagmi";
 import { waitForTransactionReceipt } from "wagmi/actions";
-import { wagmiConfig } from "~~/services/web3/wagmiConfig.jsx";
+import { wagmiConfig } from "~~/services/web3/wagmiConfig.tsx";
 
 // Create X-Tokens contract instance
 export default function SendxcUnitToken({ amount }: { amount: number }) {

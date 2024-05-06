@@ -85,7 +85,7 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
             </section>
           </main>
 
-          <div className='z-1'>
+          <div className=''>
             <Footer />
             </div>
         </div>

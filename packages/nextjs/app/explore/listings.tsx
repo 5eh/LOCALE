@@ -1,6 +1,3 @@
-// src/app/explore/listings.tsx
-
-/* ESLINT-DISABLE */
 "use client";
 
 import React, { useState } from "react";
@@ -13,7 +10,6 @@ import { Service_Provider } from "~~/components/Types/publicUserData";
 import { Listing_Data } from "~~/components/Types/userListingData";
 import { Button } from "~~/components/buttons/Button";
 import Ratings from "~~/components/ratings";
-
 
 interface DataProps {
   creator: Service_Provider | undefined | null;
@@ -186,19 +182,22 @@ export function HoverName(props: DataProps) {
 
   const renderFeatures = () => {
     if (Array.isArray(listing.features) && listing.features.length > 0) {
-      return listing.features.map((feature, index) => (
-        <div
-          key={index}
-          className="flex z-10 items-center hover:bg-gray-800 transition-opacity duration-400 rounded-md"
-        >
-          <CheckCircleIcon width={24} height={24} className="m-3" />
-          <p className="text-sm flex-1 text-left">
-            {feature.feature}: {feature.value}
-          </p>
-        </div>
-      ));
-    } else {
-      return <p className="text-sm">No Features Listed</p>;
+      return listing.features
+        .map((feature, index) => {
+          if (feature.feature && feature.feature.trim() !== "") {
+            return (
+              <div
+                key={index}
+                className="flex z-10 items-center hover:bg-gray-800/20 hover:border hover:border-primary transition-opacity duration-400 rounded-md"
+              >
+                <CheckCircleIcon width={24} height={24} className="m-3" />
+                <p className="text-sm flex-1 text-left">{feature.feature}</p>
+              </div>
+            );
+          }
+          return null;
+        })
+        .filter(item => item !== null);
     }
   };
 
@@ -209,15 +208,13 @@ export function HoverName(props: DataProps) {
           {listing.title ? listing.title : "Unknown"}
         </Button>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80 text-white z-10 bg-gray-900">
+      <HoverCardContent className="w-80 text-white z-10 backdrop-blur-lg bg-gray-900/50">
         <div className="flex justify-between space-x-4">
-          <div className="">
-            <div className="text-sm">
-              <p className="bold">{creator ? creator.name : "Unknown"}</p>
-              <p className="text-gray-400 italic cursor-pointer">
-                <Link href={`/${creator ? creator.username : ""}`}>{creator ? "@" + creator.username : "Unknown"}</Link>
-              </p>
-            </div>
+          <div className="text-sm">
+            <p className="bold">{creator ? creator.name : "Unknown"}</p>
+            <p className="text-gray-400 italic cursor-pointer">
+              <Link href={`/${creator ? creator.username : ""}`}>{creator ? "@" + creator.username : "Unknown"}</Link>
+            </p>
             <div className="text-sm flex">
               {creator && creator.rating !== undefined ? (
                 <Ratings rating={creator?.rating ?? 0} amountOfReviews={creator?.amountOfReviews ?? 0} />
@@ -238,7 +235,7 @@ export function HoverName(props: DataProps) {
               ) : listing.quantityOfService > 1 && listing.quantityOfService <= 5 ? (
                 <p className="text-red-200">FEW PRODUCTS LEFT </p>
               ) : (
-                <p className='text-green-400'>{listing.quantityOfService} REMAINING PRODUCTS</p>
+                <p className="text-green-400">{listing.quantityOfService} REMAINING PRODUCTS</p>
               )}
             </div>
           </div>
