@@ -1,0 +1,562 @@
+[
+  {
+    "assetId": "108457044225666871745333730479173774551",
+    "metadata": {
+      "deposit": "0",
+      "name": "Crust Shadow Native Token",
+      "symbol": "xcCSM",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "16797826370226091782818345603793389938",
+    "metadata": {
+      "deposit": "0",
+      "name": "Astar",
+      "symbol": "xcASTR",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "76100021443485661246318545281171740067",
+    "metadata": {
+      "deposit": "0",
+      "name": "HKO",
+      "symbol": "xcHKO",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "244316754493307480955066032215622931381",
+    "metadata": {
+      "deposit": "0",
+      "name": "Picasso Cosmos Hub",
+      "symbol": "xcPicaATOM",
+      "decimals": "6",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "62171815555800780292345782481836202130",
+    "metadata": {
+      "deposit": "0",
+      "name": "Polkadex Test Token",
+      "symbol": "xcPDEX",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "22417088946346045371238623691600461855",
+    "metadata": {
+      "deposit": "0",
+      "name": "Picasso",
+      "symbol": "xcPICA",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "138512078356357941985706694377215053953",
+    "metadata": {
+      "deposit": "0",
+      "name": "Tinker",
+      "symbol": "xcTNKR",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "90225766094594282577230355136633846906",
+    "metadata": {
+      "deposit": "0",
+      "name": "Polkadex Test Token",
+      "symbol": "xcPDEX",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "280024949790879322861822169150106601773",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcMockRMRK",
+      "symbol": "xcmRMRK",
+      "decimals": "10",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "144012926827374458669278577633504620722",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Filecoin Network Token",
+      "symbol": "xcFIL",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "66249247788835743307843320271452141931",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Voucher BNC",
+      "symbol": "xcvBNC",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "108036400430056508975016746969135344601",
+    "metadata": {
+      "deposit": "0",
+      "name": "XRT",
+      "symbol": "xcXRT",
+      "decimals": "9",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "91372035960551235635465443179559840483",
+    "metadata": {
+      "deposit": "0",
+      "name": "Centrifuge",
+      "symbol": "xcCFG",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "133300872918374599700079037156071917454",
+    "metadata": {
+      "deposit": "0",
+      "name": "Turing Network",
+      "symbol": "xcTUR",
+      "decimals": "10",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "187224307232923873519830480073807488153",
+    "metadata": {
+      "deposit": "0",
+      "name": "Equilibrium Dollar",
+      "symbol": "xcEQD",
+      "decimals": "9",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "69606720909260275826784788104880799692",
+    "metadata": {
+      "deposit": "0",
+      "name": "HydraDX",
+      "symbol": "xcHDX",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "128910205779035707777113095265150484699",
+    "metadata": {
+      "deposit": "0",
+      "name": "Nodle",
+      "symbol": "xcNODL",
+      "decimals": "11",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "337673893687553151312436182236099273778",
+    "metadata": {
+      "deposit": "0",
+      "name": "MangataX",
+      "symbol": "xcMGX",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "190590555344745888270686124937537713878",
+    "metadata": {
+      "deposit": "0",
+      "name": "Equilibrium Token",
+      "symbol": "xcEQ",
+      "decimals": "9",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "65216491554813189869575508812319036608",
+    "metadata": {
+      "deposit": "0",
+      "name": "Litentry",
+      "symbol": "xcLIT",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "156305701417244550631956600137082963628",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcTestToken1",
+      "symbol": "xcTT1",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "173481220575862801646329923366065693029",
+    "metadata": {
+      "deposit": "0",
+      "name": "Pangolin Alpha Network Native Token",
+      "symbol": "xcPARING",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "189307976387032586987344677431204943363",
+    "metadata": {
+      "deposit": "0",
+      "name": "PHA",
+      "symbol": "xcPHA",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "264344629840762281112027368930249420542",
+    "metadata": {
+      "deposit": "0",
+      "name": "Voucher KSM",
+      "symbol": "xcvKSM",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "255809804329513816629144221493516966233",
+    "metadata": {
+      "deposit": "0",
+      "name": "Polkadex Token",
+      "symbol": "xcPDEX",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "69536036667157951501899290870203586130",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcAlphaUniqueQuartz",
+      "symbol": "xcAUQ",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "131139301019163526510593524852905318253",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Polkadot",
+      "symbol": "xcBNC",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "56557508561302779576079054873115361688",
+    "metadata": {
+      "deposit": "0",
+      "name": "Zeitgeist",
+      "symbol": "ZTG",
+      "decimals": "10",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "306639095083798603270835754515874921389",
+    "metadata": {
+      "deposit": "0",
+      "name": "BIT",
+      "symbol": "xcBIT",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "142155548796783636521833385094843759961",
+    "metadata": {
+      "deposit": "0",
+      "name": "bncs-20 inscription token BNCS",
+      "symbol": "xcBNCS",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "214920334981412447805621250067209749032",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcKarura-Dollar",
+      "symbol": "xcKUSD",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "123450836468524163052361263379051220337",
+    "metadata": {
+      "deposit": "0",
+      "name": "Curio Governance Token",
+      "symbol": "xcCGT",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "565025040449484090264950386168462197",
+    "metadata": {
+      "deposit": "0",
+      "name": "BNC",
+      "symbol": "xcBNC",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "105075627293246237499203909093923548958",
+    "metadata": {
+      "deposit": "0",
+      "name": "TEER",
+      "symbol": "xcTEER",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "204507659831918931608354793288110796652",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Voucher Glimmer",
+      "symbol": "xcvGLMR",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "52280927600883288560727505734200597597",
+    "metadata": {
+      "deposit": "0",
+      "name": "NEER",
+      "symbol": "xcNEER",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "205153165378836428058230526014907639736",
+    "metadata": {
+      "deposit": "0",
+      "name": "Subsocial Cross-chain Token",
+      "symbol": "xcSOON",
+      "decimals": "10",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "289989900872525819559124583375550296953",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Voucher MANTA",
+      "symbol": "vMANTA",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "35487752324713722007834302681851459189",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcBETADEV",
+      "symbol": "BetaDev",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "170050401128744171791743427490841452054",
+    "metadata": {
+      "deposit": "0",
+      "name": "Amplitude",
+      "symbol": "xcAMPE",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "113757166108095571031373835444145329310",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcLiquid-KSM",
+      "symbol": "xcLKSM",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "166446646689194205559791995948102903873",
+    "metadata": {
+      "deposit": "0",
+      "name": "Manta Token",
+      "symbol": "xcMANTA",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "12009972993464827654650227422635011273",
+    "metadata": {
+      "deposit": "0",
+      "name": "Interlay",
+      "symbol": "xcINTR",
+      "decimals": "10",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "54799287759721089563242211737206786491",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcGenshiro",
+      "symbol": "xcGENS",
+      "decimals": "9",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "102433417954722588084020852587557555194",
+    "metadata": {
+      "deposit": "0",
+      "name": "Basilisk",
+      "symbol": "xcBSX",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "42259045809535163221576417993425387648",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcUNIT",
+      "symbol": "xcUNIT",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "272547899416482196831721420898811311297",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Voucher Filecoin",
+      "symbol": "xcvFIL",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "10810581592933651521121702237638664357",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcKarura",
+      "symbol": "xcKAR",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "52837329483626033197882584414163773570",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcKintsugi",
+      "symbol": "XCKINT",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "114018676402354620972806895487280206446",
+    "metadata": {
+      "deposit": "0",
+      "name": "Bifrost Voucher ASTR",
+      "symbol": "vASTR",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "311268264572112097121297553553681143695",
+    "metadata": {
+      "deposit": "0",
+      "name": "SORA",
+      "symbol": "xcXOR",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "122531866982275221270783173426160033062",
+    "metadata": {
+      "deposit": "0",
+      "name": "Kintsugi Wrapped BTC",
+      "symbol": "xcKBTC",
+      "decimals": "8",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "43334822478192663701103039265086012377",
+    "metadata": {
+      "deposit": "0",
+      "name": "xcSubsquidToken",
+      "symbol": "xcSQD",
+      "decimals": "2",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "246731721631919099516624243100078522143",
+    "metadata": {
+      "deposit": "0",
+      "name": "ICZ",
+      "symbol": "xcICZ",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "238111524681612888331172110363070489924",
+    "metadata": {
+      "deposit": "0",
+      "name": "OriginTrail Parachain Token",
+      "symbol": "xcOTP",
+      "decimals": "12",
+      "isFrozen": false
+    }
+  },
+  {
+    "assetId": "75066649112131892397889252914026143264",
+    "metadata": {
+      "deposit": "0",
+      "name": "Agung",
+      "symbol": "xcAGNG",
+      "decimals": "18",
+      "isFrozen": false
+    }
+  }
+]

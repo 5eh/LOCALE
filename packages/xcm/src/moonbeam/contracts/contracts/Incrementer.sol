@@ -16,6 +16,6 @@ contract Incrementer {
     }
 
     function getNumber() public view returns(uint) {
-        return number
-    }
+        return number;
+   }
 }
