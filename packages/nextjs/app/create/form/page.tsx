@@ -38,8 +38,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     description: "",
     price: 0,
     photo:
-      // "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    "",
+      "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    // "",
       location: "",
     quantityOfService: 5,
     features: [],
@@ -290,8 +290,8 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
                       name="photo"
                       type="file"
                       className="sr-only"
-                      value={formData.photo}
-                      onChange={handleInputChange}
+                      // value={formData.photo}
+                      // onChange={handleInputChange}
                     />
                     <p>or drag and drop</p>
                   </div>

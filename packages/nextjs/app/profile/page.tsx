@@ -43,22 +43,22 @@ const reviews = [
 
 const portfolioPictures = [
   {
-    src: "https://images.unsplash.com/photo-1545291730-faff8ca1d4b0?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://plus.unsplash.com/premium_photo-1681290358247-c160fc097bdb?q=80&w=1064&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    src: "https://images.unsplash.com/photo-1632765854612-9b02b6ec2b15?q=80&w=1586&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://images.unsplash.com/photo-1520412099551-62b6bafeb5bb?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    src: "https://images.unsplash.com/photo-1678801868975-32786ae5aeeb?q=80&w=1530&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://images.unsplash.com/photo-1545147986-a9d6f2ab03b5?q=80&w=1288&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    src: "https://images.unsplash.com/photo-1528120369764-0423708119ae?q=80&w=1588&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    src: "https://images.unsplash.com/photo-1463320898484-cdee8141c787?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    src: "https://images.unsplash.com/photo-1710454632542-d0a059ee09c2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fEZhc2hpb24lMjBwaG90b2dyYXBoeSUyMGRhcmt8ZW58MHx8MHx8fDA%3D",
+    src: "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
-    src: "https://plus.unsplash.com/premium_photo-1697477314014-e58fdd5b5132?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NzN8fEZhc2hpb24lMjBwaG90b2dyYXBoeSUyMGRhcmt8ZW58MHx8MHx8fDA%3D",
+    src: "https://images.unsplash.com/photo-1491147334573-44cbb4602074?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
 ];
 
@@ -188,7 +188,7 @@ export default function Page() {
         )}
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
-          <div className=" p-4 rounded-lg">
+          <div className=" p-4 rounded-full">
             <div className=" rounded-lg flex items-center">
               <div className="h-32 w-32 bg-red-600/20 rounded-full">
                 <img src={user.profilePicture} alt="Profile Picture" className="h-32 w-32 rounded-full" />
