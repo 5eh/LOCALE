@@ -11,9 +11,9 @@ We checkout the [XCM-Demo](https://github.com/OAK-Foundation/xcm-demo/tree/maste
 ## Our Struggles
 
 1. Getting the right binaries  
-    Oak Collar - We submitted a [Issue](https://github.com/OAK-Foundation/xcm-demo/issues/113) to the Repo  
-    Moonbeam - Moonbeam binary only showed runtime. Tried compiling the source code. It failed. Next version worked smoothly had downloadable binary. It worked.  
-   After finding all correct version, zombienet spawn up. 🥳
+    Oak Collator - Check the 2 [issues](https://github.com/OAK-Foundation/xcm-demo/issues/113) we have submitted to OAK Network repos
+    Moonbeam - Moonbeam binary only showed runtime. Tried compiling the source code. It failed. Next version worked smoothly and had downloadable binary, which worked.  
+   After finding all the correct versions, zombienet spawn up. 🥳
 
 2. How to work with Zobmienet
    We had to modified the provided [moonbase.toml](https://github.com/OAK-Foundation/OAK-blockchain/blob/master/zombienets/turing/moonbase.toml) file to our local binaries.  
@@ -30,15 +30,18 @@ We checkout the [XCM-Demo](https://github.com/OAK-Foundation/xcm-demo/tree/maste
    - Next up to spin up zombienet and deploy it there. It worked. Yeay ^^
 
 4. Use moonbase-local.js scripts  
-   This was horrible. First there are a bunch of polkadot warnings. Somewhen we solved that by locking the version. Alias remove the cartet in package.json. We tooked the time to look in the necessary repos and locked the right version. Ask Bright for more, I was typing he was github'ing. In the end it was not responsible for the working.
-   Then there was a issue with xcm, it says version 2 not found use version 3. Then you add version 3 and it wants version 2. And then we rabbitholed us a bit thruh and in the beginning of the last weekend, we shifted to xc20. To get at least something with xcm working. We were really happy that zombienet worked and how to create a .toml file for chains.
+   This was horrible. First there are a bunch of polkadot warnings. Somewhen we solved that by locking the version. Alias remove the caret in package.json. We took the time to look in the necessary repos to find the correct versions to pin. 
+   One of the confusing issues with the OAK XCM demo (other than the required transactAs param, see issue) was where, on the advice of documentation we found, we wrongly swapped the `transactAs` and `transaction` parameters to (`sendExtrinsicPromise`)[taskPayloadExtrinsic). The error we got ended up confusing us. When the transaction contained an object `V2`, our error told us `V2 not found in {V1, V3}`. When we changed it to `V3`, we got `V3 not found in {V1, V2}`!
+    We were really happy that we got zombienet working smoothly and learned how to create a .toml file for chains.
 
 ## Our internal setup Instructions.
 
 1. `wget https://github.com/paritytech/polkadot/releases/download/v0.9.43/polkadot`
 2. `chmod +755`
 3. `mv ./polkadot /usr/bin`
-4. `wget https://github.com/OAK-Foundation/OAK-blockchain/releases/download/v2.0.0/oak-collator`
+4a. `wget https://github.com/OAK-Foundation/OAK-blockchain/releases/download/v2.0.0/oak-collator`
+OR
+4b. `wget https://github.com/OAK-Foundation/OAK-blockchain/releases/download/v2.1.4/oak-collator`
 5. `chmod +755 oak-collator`
 6. `mv ./oak-collator /usr/bin`
 7. `wget https://github.com/moonbeam-foundation/moonbeam/releases/download/v0.32.2/moonbeam`
