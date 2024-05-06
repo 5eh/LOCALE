@@ -12,10 +12,8 @@ export default function SendxcUnitToken({ amount }: { amount: number }) {
   const [isPending, setIsPending] = useState(false);
 
   async function transferPaymentToRelay() {
-        try {
-
+    try {
     setIsPending(true)
-    // Arguments for the transfer function
     const currencyAddress = "0xFfFFfFff1FcaCBd218EDc0EbA20Fc2308C778080"; // xcUNIT address
     const destination = [
       // Target the relay chain from Moonbase Alpha
