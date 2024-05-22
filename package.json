@@ -2,15 +2,9 @@
   "name": "se-2",
   "version": "0.0.1",
   "private": true,
-  "workspaces": [
-    "packages/hardhat",
-    "packages/nextjs",
-    "packages/xcm"
-  ],
+  "workspaces": ["packages/hardhat", "packages/nextjs"],
   "scripts": {
     "setup": "node setup.js",
-    "hello": "cd packages/xcm && npm run hello",
-    "moon": "cd packages/moon_gasless && npm run moon",
     "account": "cd packages/hardhat && npm run account",
     "chain": "cd packages/hardhat && npm run chain",
     "fork": "cd packages/hardhat && npm run fork",
@@ -36,7 +30,6 @@
     "vercel:yolo": "cd packages/nextjs && npm run vercel:yolo"
   },
   "devDependencies": {
-    "husky": "^8.0.1",
     "lint-staged": "^13.0.3"
   }
 }

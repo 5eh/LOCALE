@@ -1,5 +1,0 @@
-forge-std/=lib/forge-std/src/
-contracts/wenGame/=src/wenGame/
-contracts/interfaces/=src/interfaces/
-@openzeppelin/=lib/@openzeppelin/
-openzeppelin-contracts=./lib/openzeppelin-contracts
