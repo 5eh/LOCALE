@@ -7,11 +7,10 @@ import { useAccount } from "wagmi";
 import { PhotoIcon } from "@heroicons/react/20/solid";
 import Authentication from "~~/app/authentication/page";
 import { Listing_Data, Upcharge } from "~~/components/Types/userListingData";
-import {  useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
 import { COMPANY, WEB3_FUNCTIONALITY } from "~~/marketplaceVariables";
 import createListing from "~~/routes/listings/createListing";
 import creators from "~~/routes/listings/creators";
-
 
 export default function Form() {
   const searchParams = useSearchParams() || new URLSearchParams();
@@ -40,7 +39,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
     photo:
       "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?q=80&w=988&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     // "",
-      location: "",
+    location: "",
     quantityOfService: 5,
     features: [],
     upcharges: [],
@@ -588,7 +587,7 @@ function FormInput({ serviceTitle }: { serviceTitle: string | null }) {
           </button>
         )}
 
-        {/*               <Button className="inline-flex items-center ring-1 ring-gray-500 
+        {/*               <Button className="inline-flex items-center ring-1 ring-gray-500
         gap-x-0.5 rounded-md bg-gray-800 border border-gray-700
          px-2 py-1 text-xs font-medium text-gray-200 hover:bg-gray-700 hover:text-white">
          */}
