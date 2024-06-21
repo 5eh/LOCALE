@@ -2,8 +2,8 @@ import "@rainbow-me/rainbowkit/styles.css";
 import { Metadata } from "next";
 import { ScaffoldEthAppWithProviders } from "~~/components/ScaffoldEthAppWithProviders";
 import { ThemeProvider } from "~~/components/ThemeProvider";
-import Background from '~~/components/background';
-import Footer from '~~/components/footer';
+import Background from "~~/components/background";
+import Footer from "~~/components/footer";
 import { Navbar } from "~~/components/navbar";
 import {
   COMPANY,
@@ -71,12 +71,11 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
 
               <Navbar />
               <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
-          
             </nav>
           </header>
 
           <main className="relative isolate">
-          <Background />
+            <Background />
 
             <section className="">
               <ThemeProvider enableSystem>
@@ -85,9 +84,9 @@ const ScaffoldEthApp = ({ children }: { children: React.ReactNode }) => {
             </section>
           </main>
 
-          <div className=''>
+          <div>
             <Footer />
-            </div>
+          </div>
         </div>
       </body>
     </html>
